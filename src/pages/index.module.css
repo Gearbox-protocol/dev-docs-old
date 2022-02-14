@@ -8,6 +8,15 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-image: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+}
+
+.heroTitle {
+  color: white
+}
+
+.heroSubtitle {
+  color: white;
 }
 
 @media screen and (max-width: 966px) {
