@@ -1,4 +1,5 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Link from "@docusaurus/Link";
 import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
@@ -11,40 +12,41 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    image: '/img/undraw_docusaurus_mountain.svg',
+    title: 'What is Gearbox',
+    image: '/img/gearbox_man.png',
+    url: 'docs/fundaments/intro',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Learn about the core concepts of Gearbox, its definitions, smart contracts and parameters
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    image: '/img/undraw_docusaurus_tree.svg',
+    title: 'Set up a dev environment',
+    image: '/img/gearbox_contracts.png',
+    url: 'docs/tutorials/intro',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Get from zero to hero by setting up a local development environment with our step by step tutorials
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    image: '/img/undraw_docusaurus_react.svg',
+    title: 'Discover our SDK',
+    image: '/img/gearbox_men.png',
+    url: 'docs/sdk/intro',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Dive into our SDK and learn how it can accelerate your dApp development
       </>
     ),
   },
 ];
 
-function Feature({title, image, description}: FeatureItem) {
+function Feature({title, image, description, url}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
+      <Link to={url} class="navbar__link">
       <div className="text--center">
         <img
           className={styles.featureSvg}
@@ -56,6 +58,7 @@ function Feature({title, image, description}: FeatureItem) {
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
+      </Link>
     </div>
   );
 }
