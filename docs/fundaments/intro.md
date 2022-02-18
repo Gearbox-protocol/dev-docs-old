@@ -1,5 +1,4 @@
 ---
-id: introduction
 title: What Is Gearbox?
 sidebar_position: 1
 ---
