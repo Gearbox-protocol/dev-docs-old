@@ -13,7 +13,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "What is Gearbox",
+    title: "Gearbox Fundaments",
     image: "/img/gearbox_man.png",
     url: "docs/fundaments/intro",
     description: (
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "Set up a dev environment",
+    title: "Learn by following our tutorials",
     image: "/img/gearbox_contracts.png",
     url: "docs/tutorials/intro",
     description: (
