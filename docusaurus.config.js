@@ -6,8 +6,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Gearbox Protocol Tutorial Docs",
-  tagline: "Developer tutorials for Gearbox Protocol",
+  title: "Gearbox Protocol Developer Docs",
+  tagline: "How to build with the Gearbox Leverage Protocol",
   url: "https://dev-docs-gearbox.vercel.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -57,7 +57,25 @@ const config = {
           type: "doc",
           docId: "intro",
           position: "left",
+          label: "Introduction",
+        },
+        {
+          type: "doc",
+          docId: "fundaments/intro",
+          position: "left",
+          label: "Fundaments",
+        },
+        {
+          type: "doc",
+          docId: "tutorials/intro",
+          position: "left",
           label: "Tutorials",
+        },
+        {
+          type: "doc",
+          docId: "sdk/intro",
+          position: "left",
+          label: "SDK",
         },
       ],
     },
