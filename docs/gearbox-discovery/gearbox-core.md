@@ -147,9 +147,9 @@ Reusable Credit Accounts is an innovative technology that makes Gearbox gas-effi
 
 ![](../../static/img/tutorial/Gearbox\_white\_high.021.png)
 
-Each time, when a user opens a credit account in Gearbox protocol, it takes a pre-deployed credit account contract from the AccountFactory and when the user closes the credit account returns it.
+Each time, when a user opens a credit account in Gearbox protocol, `CreditManager` takes a pre-deployed credit account contract from the `AccountFactory` and when the user closes the credit account, `CreditManager` returns it.
 
-If account factory has no pre-deployed contracts, it clones it using [https://eips.ethereum.org/EIPS/eip-1167](https://eips.ethereum.org/EIPS/eip-1167)
+If `AccountFactory` has no pre-deployed contracts, it clones it using [https://eips.ethereum.org/EIPS/eip-1167](https://eips.ethereum.org/EIPS/eip-1167)
 
 #### Advantages
 
@@ -163,19 +163,24 @@ If account factory has no pre-deployed contracts, it clones it using [https://ei
 
 #### Implementation
 
-[Account Factory] supplies credit account for CM contracts on demand and keeps them when they are not used.
+`AccountFactory` supplies credit account for `CreditManager` on demand and keeps them when they are not used.
 
 The account factory uses a list to keep credit accounts and two pointers: head and tail.
 
 ![](../../static/img/tutorial/va\_list.jpeg)
 
-When some pool asks for a virtual account it takes it from the head pointer, when the pool returns a credit account, it adds it to the tail.
+When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
 
 ### DataCompressor
-2131
 
-### PriceOracle
-31231
+`DataCompressor` collects data from different contracts and send it to dApp. We can get any kind of states of Gearbox by interacting with `DataCompressor`. Let's list some main function in `DataCompressor`:
+  * `getCreditAccountList(address borrower)` for getting the list of `CreditAccountData`s of a specified borrower
+  * `getCreditAccountData(address _creditManager, address borrower)` for getting `CreditAccountData` of a specified borrower under a specified `CreditManager`
+  * `getCreditAccountDataExtended(address creditManager, address borrower)` for getting `CreditAccountDataExtended` of a specified borrower under a specified `CreditManager`, `CreditAccountDataExtended` is the extension types of `CreditAccountData`, you can check `Types.sol` for more details.
+  * `getCreditManagersList(address borrower)` for getting list of `CreditManagerData` of a specified borrower
+  * `getPoolsList()` for getting list of `PoolData`
+
+Because most of the functions need a `borrower` address as parameter, so we would not show how to use it in this document, you can use a wallet to open an account and try to use it.
 
 
