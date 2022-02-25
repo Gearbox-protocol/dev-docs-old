@@ -20,7 +20,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--primary button--lg"
-            to="/docs/concepts/intro"
+            to="/docs/core-concepts/intro"
           >
             Gearbox Core Concepts - 5min ⏱️
           </Link>
