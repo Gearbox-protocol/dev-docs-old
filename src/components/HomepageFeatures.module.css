@@ -49,23 +49,6 @@
   align-items: stretch;
 }
 
-.feature-row {
-  margin: -20px -10px 0px;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: stretch;
-  align-items: stretch;
-}
-
-.card-list-item {
-  display: flex;
-  height: 100%;
-  -webkit-box-align: stretch;
-  align-items: stretch;
-}
-
 .card {
   padding: 17px 10px 10px 17px;
   display: flex;
