@@ -69,19 +69,13 @@ const config = {
       items: [
         {
           type: "doc",
-          docId: "intro",
-          position: "left",
-          label: "What is Gearbox?",
-        },
-        {
-          type: "doc",
           docId: "concepts/intro",
           position: "left",
           label: "Fundaments",
         },
         {
           type: "doc",
-          docId: "intro",
+          docId: "tutorials/intro",
           position: "left",
           label: "Tutorials",
         },
@@ -100,8 +94,12 @@ const config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
+              label: "Concepts",
+              to: "/docs/concepts/intro",
+            },
+            {
+              label: "Tutorials",
+              to: "/docs/tutorials/intro",
             },
           ],
         },

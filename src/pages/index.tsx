@@ -18,8 +18,11 @@ function HomepageHeader() {
           {siteConfig.tagline}
         </p>
         <div className={styles.buttons}>
-          <Link className="button button--primary button--lg" to="/docs/intro">
-            Gearbox Tutorial - 5min ⏱️
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/concepts/intro"
+          >
+            Gearbox Core Concepts - 5min ⏱️
           </Link>
         </div>
       </div>
