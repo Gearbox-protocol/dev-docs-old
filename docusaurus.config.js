@@ -3,8 +3,8 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const math = require('remark-math');
-const katex = require('rehype-katex');
+const math = require("remark-math");
+const katex = require("rehype-katex");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -49,15 +49,15 @@ const config = {
     ],
   ],
 
-	stylesheets: [
-  	{
-    	href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-    	type: 'text/css',
-    	integrity:
-    	  'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-    	crossorigin: 'anonymous',
-  	},
-	],
+  stylesheets: [
+    {
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
+      integrity:
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
+    },
+  ],
 
   themeConfig: {
     navbar: {
@@ -68,18 +68,16 @@ const config = {
       },
       items: [
         {
-                    type: "doc",
-                    docId: "intro",
-                    position: "left",
-                    label: "Introduction",
-
+          type: "doc",
+          docId: "intro",
+          position: "left",
+          label: "What is Gearbox?",
         },
         {
-                    type: "doc",
-                    docId: "fundaments/intro",
-                    position: "left",
-                    label: "Fundaments",
-
+          type: "doc",
+          docId: "concepts/intro",
+          position: "left",
+          label: "Fundaments",
         },
         {
           type: "doc",
