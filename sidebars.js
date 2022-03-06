@@ -59,14 +59,29 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "2.2 Core",
+          label: "2.2 Gearbox Core",
           id: "tutorials/gearbox-discovery/gearbox-core",
         },
         {
           type: "doc",
-          label: "2.3 Gearbox-Pools",
+          label: "2.3 Gearbox Pool",
           id: "tutorials/gearbox-discovery/gearbox-pools",
         },
+        {
+          type: "category",
+          label: "2.4 Extracting Data",
+          link: {
+            type: "doc",
+            id: "tutorials/gearbox-discovery/extracting-data/extracting-data",
+          },
+          items: [
+            {
+              type: "doc",
+              label: "2.4.1 Get Opened Accounts",
+              id: "tutorials/gearbox-discovery/extracting-data/get-opened-accounts"
+            }
+          ]
+        }
       ],
     },
   ],
