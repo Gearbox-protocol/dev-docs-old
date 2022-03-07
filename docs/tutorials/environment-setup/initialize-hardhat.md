@@ -19,12 +19,14 @@ n install 16
 
 ## Install Hardhat
 
-Now, we create an empty project by
+Now, you'll need to create an empty folder and enter it by running the following commands:
 
 ```bash
 mkdir gearbox-sandbox;
 cd gearbox-sandbox
 ```
+
+Next, initialize Hardhat to this folder:
 
 ```bash
 npx hardhat init
@@ -36,6 +38,8 @@ You need to install hardhat locally to use it, we recommand use version `^2.8.4`
 npm install --save-dev hardhat
 ```
 
+And finally build it all:
+
 ```bash npm2yarn
 npm run build
 ```
@@ -45,18 +49,18 @@ npm run build
 
 In this guide, we will go through the steps to get a Hardhat project working with [TypeScript](https://www.typescriptlang.org/) following [TypeScript Support](https://hardhat.org/guides/typescript.html).
 
-```console
-gear@box:~$ npm install --save-dev ts-node typescript
+```bash npm2yarn
+npm install --save-dev ts-node typescript
 ```
 
-```console
-gear@box:~$ npm install --save-dev chai @types/node @types/mocha @types/chai
+```bash npm2yarn
+npm install --save-dev chai @types/node @types/mocha @types/chai
 ```
 
 Now, we are going to rename the config file from `hardhat.config.js` to `hardhat.config.ts`, just run:
 
-```console
-gear@box:~$ mv hardhat.config.js hardhat.config.ts
+```bash
+mv hardhat.config.js hardhat.config.ts
 ```
 
 We need to make a small changes to our config file for it to work with TypeScript. Since we create an empty project, the config file should look like:

@@ -24,23 +24,23 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [
-            math,
+          beforeDefaultRemarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
+          remarkPlugins: [math],
           rehypePlugins: [katex],
           editUrl:
             "https://github.com/Gearbox-protocol/dev-docs/tree/main/packages/create-docusaurus/templates/shared/",
         },
         pages: {
-          remarkPlugins: [
+          beforeDefaultRemarkPlugins: [
             require("@docusaurus/remark-plugin-npm2yarn"),
             { sync: true },
           ],
         },
         blog: {
           showReadingTime: true,
-          remarkPlugins: [
+          beforeDefaultRemarkPlugins: [
             require("@docusaurus/remark-plugin-npm2yarn"),
             { sync: true },
           ],
