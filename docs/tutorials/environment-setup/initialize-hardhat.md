@@ -47,7 +47,7 @@ npm run build
 
 ## Typescript support
 
-In this guide, we will go through the steps to get a Hardhat project working with [TypeScript](https://www.typescriptlang.org/) following [TypeScript Support](https://hardhat.org/guides/typescript.html).
+In this guide, you will go through the steps to get a Hardhat project working with [TypeScript](https://www.typescriptlang.org/) following [TypeScript Support](https://hardhat.org/guides/typescript.html).
 
 ```bash npm2yarn
 npm install --save-dev ts-node typescript
@@ -57,15 +57,9 @@ npm install --save-dev ts-node typescript
 npm install --save-dev chai @types/node @types/mocha @types/chai
 ```
 
-Now, we are going to rename the config file from `hardhat.config.js` to `hardhat.config.ts`, just run:
+You will need to make a small adjustment to the the config file as you're migrating it from Javascript to Typescript. Your `hardhat.config.js` will look like this by default:
 
-```bash
-mv hardhat.config.js hardhat.config.ts
-```
-
-We need to make a small changes to our config file for it to work with TypeScript. Since we create an empty project, the config file should look like:
-
-```js
+```js title="hardhat.config.js"
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -74,17 +68,23 @@ module.exports = {
 };
 ```
 
-We need to make a change to `hardhat.config.ts` now, and modify the export mechanism
+You must rename the config file from `hardhat.config.js` to `hardhat.config.ts`. To do so, just run the following:
 
-```ts
+```bash
+mv hardhat.config.js hardhat.config.ts
+```
+
+You need to make a change to `hardhat.config.ts` now, and modify the export mechanism to be in line with the Typescript export mechanism:
+
+```js title="hardhat.config.ts"
 export default {
   solidity: "0.7.3"
 };
 ```
 
-We also need a `tsconfig.json` file. Here's a example:
+You will also need a `tsconfig.json` file. Here's a example:
 
-```ts
+```ts title="tsconfig.json"
 {
   "compilerOptions": {
     /* Basic Options */
