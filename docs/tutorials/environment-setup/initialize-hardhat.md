@@ -6,12 +6,14 @@ In the guide, we will do the [Hardhat](https://hardhat.org/) installation and co
 
 Now, we create an empty project by
 
-```
-mkdir play-with-gearbox
+```console
+gear@box:~$ mkdir play-with-gearbox
+gear@box:~$ cd play-with-gearbox
 ```
 
-```
-npx hardhat init
+
+```console
+gear@box:~$ npx hardhat init
 ```
 
 You need to install hardhat locally to use it, we recommand use version `^2.8.4`. Please run:

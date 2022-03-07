@@ -2,9 +2,9 @@
 
 `PoolSevice` contract provides API for managing liquidity and computing interest rates. PoolService lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./gearbox-pools#pool-operations) are the main functions of `PoolService` contract.
 
-![](<../../static/img/tutorial/Gearbox\_white.010.jpeg>)
+![Pool Service](<../../../static/img/tutorial/Gearbox\_white.010.jpeg>)
 
-### Pool Economy
+## Pool Economy
 
 Capital is required for traders to get leverage on the platform. For this, there are Liquidity Pools(LPs): anyone can become a liquidity provider by depositing funds in the Liquidity Pool.
 
@@ -12,18 +12,18 @@ The profitability of LPs depends on the pool utilization ratio - the higher util
 
 In the current version, we implement linear extrapolation for interest rate calculation as Aave did, in v2 we are going to use a specially designed curve - see the [note](https://colab.research.google.com/drive/1bjBWHNGHiSDd27_WsINQLXa3ImhTrt-W).
 
-#### Diesel tokens
+### Diesel tokens
 
 Each pool has its own diesel (LP) tokens. Each time, when a liquidity provider adds money to the pool, he gets diesel tokens back (like c-tokens in Compound).
 
 $$
-rate = \frac{expected\;liquidity}{diesel\;tokens\;supply} 
+rate = \frac{expected\;liquidity}{diesel\;tokens\;supply}
 $$
 
 Liquidity providers get profits from holding diesel tokens cause they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest or can use them as collateral in lending protocols or even sell them on the secondary market.
 Diesel tokens are 100% liquid yield-generating assets.
 
-#### Basic parameters
+### Basic parameters
 
 * EL(t) - [expected liquidity](./gearbox-pools#expected-liquidity)
 * B(t) - total borrowed
@@ -31,7 +31,7 @@ Diesel tokens are 100% liquid yield-generating assets.
 * d(t) - diesel rate
 * CI(t) - cumulative index (it shows value of money at moment t)
 
-##### **Periods and timestamp**
+#### **Periods and timestamp**
 
 All functions are piecewise linear functions. Each change in available liquidity  or borrowed amount [updates rate parameters](./gearbox-pools#rate-parameters-update). In follow formulas we use the convention:
 
@@ -42,11 +42,11 @@ $$
 t_{n-1} - timestamp\;of\;last\;rate\;update
 $$
 
-##### Available liquidity
+#### Available liquidity
 
 The amount of money available in pool.
 
-##### EL(t) - Expected Liquidity <a href="#expected-liquidity" id="expected-liquidity"></a>
+#### EL(t) - Expected Liquidity <a href="#expected-liquidity" id="expected-liquidity"></a>
 
 The amount of money should be in the pool if all users close their Credit Accounts and return debt. If no action happens during $t_{n-1}$ and $t_n$, then the equation of $EL$ should be
 
@@ -56,7 +56,7 @@ $$
 
 Beside, [Add Liquidity](./gearbox-pools#add-liquidity) and [Remove Liquidity](./gearbox-pools#remove-liquidity) will have a new fumula of $EL$.
 
-##### B(t) - Total borrowed <a href="#total-borrowed" id="total-borrowed"></a>
+#### B(t) - Total borrowed <a href="#total-borrowed" id="total-borrowed"></a>
 
 Represents total borrowed amount without accrued interest rate:
 
@@ -64,13 +64,11 @@ $$
 B(t) = \sum b_i
 $$
 
-##### r(t) - Borrow APY <a href="#borrow-apy" id="borrow-apy"></a>
+#### r(t) - Borrow APY <a href="#borrow-apy" id="borrow-apy"></a>
 
 Represents current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](./gearbox-pools#linear-interest-rate-model).
 
-
-
-##### d(t) Diesel rate <a href="#diesel-rate" id="diesel-rate"></a>
+#### d(t) Diesel rate <a href="#diesel-rate" id="diesel-rate"></a>
 
 Liquidity providers get profits from holding diesel tokens cause they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest.
 
@@ -83,7 +81,7 @@ $$
 d(t) = 1, \text{if diesel supply is 0}
 $$
 
-##### Cumulative Index
+#### Cumulative Index
 
 Cumulative Index is aggregated variable that shows value of borrowing money.
 
@@ -95,7 +93,7 @@ $$
 r(t_{n})=calc\;interest\;rate(EL(t_{n}), available\;liquidity(t_n))
 $$
 
-##### Rate parameters update
+#### Rate parameters update
 
 Updates borrow rate & cumulative index. Called each time when borrowed amount or available liquidity is changed:
 
@@ -112,9 +110,9 @@ $$
 r(t_{n})=calc\;interest\;rate(EL(t_{n}), available\;liquidity(t_n))
 $$
 
-#### Pool operations <a href="#pool-operations" id="pool-operations"></a>
+### Pool operations <a href="#pool-operations" id="pool-operations"></a>
 
-##### Add liquidity <a href="#add-liquidity" id="add-liquidity"></a> 
+#### Add liquidity <a href="#add-liquidity" id="add-liquidity"></a>
 
 $$
 EL(t_n) = EL(t_{n-1})+amount_U+B(t_{n-1})*r(t_{n-1})*(t_{n}-t_{n-1})
@@ -126,8 +124,7 @@ $$
 
 where amount\_U - is amount of added underlying liquidity.  Then called Pool Update().&#x20;
 
-##### Remove liquidity <a href="#remove-liquidity" id="remove-liquidity"></a>
-
+#### Remove liquidity <a href="#remove-liquidity" id="remove-liquidity"></a>
 
 $$
 EL(t_n) = EL(t_{n-1})+
@@ -143,9 +140,7 @@ $$
 
 where amount\_LP - amount of removed LP tokens.Then call Pool Update().&#x20;
 
-
-
-##### Lend Credit Account
+#### Lend Credit Account
 
 $$
 B(t_n) = B(t_{n-1})+amount_B
@@ -153,9 +148,7 @@ $$
 
 where amount\_B - borrowed amount. Then Pool Update().&#x20;
 
-
-
-##### Repay Credit Account
+#### Repay Credit Account
 
 PnL - is result of VA repaying:
 
@@ -193,7 +186,7 @@ $$
 EL(t_n) = EL(t_{n-1})-|PnL|+amount\;to\;burn\;from\;treasury*diesel\;rate(t_n)
 $$
 
-#### Fees distribution
+### Fees distribution
 
 Each time the trader/farmer closes the credit account, he pays back to the pool:
 
@@ -203,7 +196,7 @@ Each time the trader/farmer closes the credit account, he pays back to the pool:
 
 The fees remain in the pool, instead, the treasury receives the pool's LP tokens. The protocol has a feature to leave part of the fees in the pool, thereby increasing the price of diesel tokens, that is, increasing the APY of the pool.
 
-#### Insurance and rebalancing
+### Insurance and rebalancing
 
 In some rare cases, the remaining funds after paying liquidation premium could be less than borrowed amount + interest rate + fee. In this case, the protocol uses treasury to compensate for the shortage by burning diesel tokens to keep the diesel rate as it should be.
 
@@ -229,15 +222,14 @@ $$
 
 So, in this case, the treasury was used to cover some losses and behave like an insurance fund.
 
-#### Linear Interest Rate Model <a href="#linear-interest-rate-model" id="linear-interest-rate-model"></a>
+### Linear Interest Rate Model <a href="#linear-interest-rate-model" id="linear-interest-rate-model"></a>
 
-# LinearInterestRateModel
+## LinearInterestRateModel
 
 Linear interest rate model, similar to which Aave uses: [https://docs.aave.com/risk/asset-risk/methodology](https://docs.aave.com/risk/asset-risk/methodology). In the next version, we are going to use a specially designed curve - see the [note](https://colab.research.google.com/drive/1bjBWHNGHiSDd27_WsINQLXa3ImhTrt-W).
 
 LinearInterestRateModel implements [IInterestRateModel.sol](https://github.com/Gearbox-protocol/gearbox-v2/blob/master/contracts/interfaces/IInterestRateModel.sol).
 
-### Configuration
+## Configuration
 
 For the current version, pools use Immutable configuration, which means that all parameters should be set before contract deployment.
-

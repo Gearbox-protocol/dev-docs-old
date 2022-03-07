@@ -5,7 +5,7 @@ As illustreated in [Architecture](./architecture), Gearbox core is a service lay
 
 ### AddressProvider
 
-Let's start from AddressProvider. AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../setting-up-environment/a-simple-example.md) we build previous, we start to use other functionality of AddressProvider. Assume we have a mainnet forking now (if you haven't fork the mainnet, please run `yarn fork` first), we create a script file `scripts/gearbox-discovery.ts`.
+Let's start from AddressProvider. AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../environment-setup/a-simple-example.md) we build previous, we start to use other functionality of AddressProvider. Assume we have a mainnet forking now (if you haven't fork the mainnet, please run `yarn fork` first), we create a script file `scripts/gearbox-discovery.ts`.
 ```jsx title="scripts/gearbox-discovery.ts"
 import { run, ethers } from "hardhat";
 import { AddressProvider__factory } from "@diesellabs/gearbox-sdk";
@@ -145,7 +145,7 @@ ETH <=> WETH wrapper for Gearbox protocol. It implements IWETHGateway interface.
 
 Reusable Credit Accounts is an innovative technology that makes Gearbox gas-efficient by keeping user balances with minimal overhead. Users "rent" deployed credit account smart contracts from protocol to save deployment costs.
 
-![](../../static/img/tutorial/Gearbox\_white\_high.021.png)
+![](../../../static/img/tutorial/Gearbox\_white\_high.021.png)
 
 Each time, when a user opens a credit account in Gearbox protocol, `CreditManager` takes a pre-deployed credit account contract from the `AccountFactory` and when the user closes the credit account, `CreditManager` returns it.
 
@@ -167,7 +167,7 @@ If `AccountFactory` has no pre-deployed contracts, it clones it using [https://e
 
 The account factory uses a list to keep credit accounts and two pointers: head and tail.
 
-![](../../static/img/tutorial/va\_list.jpeg)
+![](../../../static/img/tutorial/va\_list.jpeg)
 
 When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
