@@ -67,28 +67,28 @@ const sidebars = {
           label: "2.3 Gearbox Pool",
           id: "tutorials/gearbox-discovery/gearbox-pools",
         },
-        {
-          type: "category",
-          label: "2.4 Extracting Data",
-          link: {
-            type: "doc",
-            id: "tutorials/gearbox-discovery/extracting-data/extracting-data",
-          },
-          items: [
-            {
-              type: "doc",
-              label: "2.4.1 Get Opened Accounts",
-              id: "tutorials/gearbox-discovery/extracting-data/get-opened-accounts"
-            },
-            {
-              type: "doc",
-              label: "2.4.2 Monitor Your Health Factor",
-              id: "tutorials/gearbox-discovery/extracting-data/monitor-your-health-factor"
-            }
-          ]
-        }
       ],
     },
+    {
+      type: "category",
+      label: "3. Extracting Data",
+      link: {
+        type: "doc",
+        id: "tutorials/extracting-data/extracting-data",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "3.1 Get Opened Accounts",
+          id: "tutorials/extracting-data/get-opened-accounts"
+        },
+        {
+          type: "doc",
+          label: "3.2 Monitor Your Health Factor",
+          id: "tutorials/extracting-data/monitor-your-health-factor"
+        }
+      ]
+    }
   ],
 };
 
