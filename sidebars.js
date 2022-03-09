@@ -79,6 +79,11 @@ const sidebars = {
               type: "doc",
               label: "2.4.1 Get Opened Accounts",
               id: "tutorials/gearbox-discovery/extracting-data/get-opened-accounts"
+            },
+            {
+              type: "doc",
+              label: "2.4.2 Monitor Your Health Factor",
+              id: "tutorials/gearbox-discovery/extracting-data/monitor-your-health-factor"
             }
           ]
         }
