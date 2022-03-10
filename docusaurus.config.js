@@ -15,8 +15,8 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "GearboxProtocol", // Usually your GitHub org/user name.
-  projectName: "dev-docs", // Usually your repo name.
+  organizationName: "GearboxProtocol",
+  projectName: "dev-docs",
 
   presets: [
     [
@@ -24,15 +24,26 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
+          beforeDefaultRemarkPlugins: [
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
+          ],
           remarkPlugins: [math],
           rehypePlugins: [katex],
-          // Please change this to your repo.
           editUrl:
             "https://github.com/Gearbox-protocol/dev-docs/tree/main/packages/create-docusaurus/templates/shared/",
         },
+        pages: {
+          beforeDefaultRemarkPlugins: [
+            require("@docusaurus/remark-plugin-npm2yarn"),
+            { sync: true },
+          ],
+        },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
+          beforeDefaultRemarkPlugins: [
+            require("@docusaurus/remark-plugin-npm2yarn"),
+            { sync: true },
+          ],
           editUrl:
             "https://github.com/Gearbox-protocol/dev-docs/tree/main/packages/create-docusaurus/templates/shared/",
         },

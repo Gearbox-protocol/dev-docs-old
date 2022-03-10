@@ -1,47 +1,65 @@
+import CodeBlock from '@theme/CodeBlock';
+
 # Initialize Hardhat
 
 In the guide, we will do the [Hardhat](https://hardhat.org/) installation and configuration. Hardhat is a development environment to compile, deploy, test and debug your Ethereum software. You can start an instance of Hardhat Network that forks mainnet. This means that it will simulate having the same state as mainnet, but it will work as a local development network. Thus you can interact with the deplyed contract of Gearbox Protocol locally to test your integration software.
 
-### Install Hardhat
+## Install compatible version of NodeJS (16.x)
 
-Now, we create an empty project by
+Hardhat and the rest of the tooling are currently (as of March 2022) uncompatible with NodeJX 18.x
+To use the tooling successfully, please install NodeJS 17.x on your system.
 
-```console
-gear@box:~$ mkdir play-with-gearbox
-gear@box:~$ cd play-with-gearbox
+To manage NodeJS versions, we recommend to use `n`. [You can find installation instructions for your OS here](https://www.npmjs.com/package/n#installation)
+
+Once you've installed `n`, please run the following to install NodeJS 16.x:
+
+```bash
+n install 16
 ```
 
+## Install Hardhat
 
-```console
-gear@box:~$ npx hardhat init
+Now, you'll need to create an empty folder and enter it by running the following commands:
+
+```bash
+mkdir gearbox-sandbox;
+cd gearbox-sandbox
+```
+
+Next, initialize Hardhat to this folder:
+
+```bash
+npx hardhat init
 ```
 
 You need to install hardhat locally to use it, we recommand use version `^2.8.4`. Please run:
 
-```
+```bash npm2yarn
 npm install --save-dev hardhat
 ```
 
-### Typescript support 
+And finally build it all:
 
-In this guide, we will go through the steps to get a Hardhat project working with [TypeScript](https://www.typescriptlang.org/) following [TypeScript Support](https://hardhat.org/guides/typescript.html).
-
+```bash npm2yarn
+npm run build
 ```
+
+
+## Typescript support
+
+In this guide, you will go through the steps to get a Hardhat project working with [TypeScript](https://www.typescriptlang.org/) following [TypeScript Support](https://hardhat.org/guides/typescript.html).
+
+```bash npm2yarn
 npm install --save-dev ts-node typescript
 ```
 
-```
+```bash npm2yarn
 npm install --save-dev chai @types/node @types/mocha @types/chai
 ```
 
-Now, we are going to rename the config file from `hardhat.config.js` to `hardhat.config.ts`, just run:
+You will need to make a small adjustment to the the config file as you're migrating it from Javascript to Typescript. Your `hardhat.config.js` will look like this by default:
 
-```
-mv hardhat.config.js hardhat.config.ts
-```
-
-We need to make a small changes to our config file for it to work with TypeScript. Since we create an empty project, the config file should look like:
-```js
+```js title="hardhat.config.js"
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -49,16 +67,24 @@ module.exports = {
   solidity: "0.7.3"
 };
 ```
-we change it into `hardhat.config.ts`
 
-```ts
+You must rename the config file from `hardhat.config.js` to `hardhat.config.ts`. To do so, just run the following:
+
+```bash
+mv hardhat.config.js hardhat.config.ts
+```
+
+You need to make a change to `hardhat.config.ts` now, and modify the export mechanism to be in line with the Typescript export mechanism:
+
+```js title="hardhat.config.ts"
 export default {
   solidity: "0.7.3"
 };
 ```
-We also need a `tsconfig.json` file. Here's a example:
 
-```ts
+You will also need a `tsconfig.json` file. Here's a example:
+
+```ts title="tsconfig.json"
 {
   "compilerOptions": {
     /* Basic Options */
