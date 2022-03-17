@@ -88,6 +88,76 @@ const sidebars = {
           id: "tutorials/extracting-data/monitor-your-health-factor"
         }
       ]
+    },
+    {
+      type: "category",
+      label: "4. Build Upon Gearbox",
+      link: {
+        type: "doc",
+        id: "tutorials/build-upon-gearbox/build-upon-gearbox",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "4.1 Adapter",
+          id: "tutorials/build-upon-gearbox/adapter"
+        },
+        {
+          type: "doc",
+          label: "4.2 Trading Bot",
+          id: "tutorials/build-upon-gearbox/trading-bot"
+        }
+      ]
+    },
+    {
+      type: "category",
+      label: "5. Liquidation Bot",
+      link: {
+        type: "doc",
+        id: "tutorials/liquidation-bot/liquidation-bot",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "5.1 Run Liquidation Bot",
+          id: "tutorials/liquidation-bot/run-liquidation-bot"
+        },
+        {
+          type: "doc",
+          label: "5.2 Bot Smart Contracts",
+          id: "tutorials/liquidation-bot/bot-smart-contracts"
+        },
+        {
+          type: "doc",
+          label: "5.3 Credit Service",
+          id: "tutorials/liquidation-bot/credit-service"
+        },
+        {
+          type: "doc",
+          label: "5.4 Price Oracle",
+          id: "tutorials/liquidation-bot/price-oracle"
+        },
+        {
+          type: "doc",
+          label: "5.5 Token Service",
+          id: "tutorials/liquidation-bot/token-service"
+        }
+      ]
+    },
+    {
+      type: "doc",
+      label: "Deployed Contracts",
+      id: "tutorials/deployed-contracts"
+    },
+    {
+      type: "doc",
+      label: "Fast check and HealthFactor protection",
+      id: "tutorials/fast-check-and-healthfactor-protection"
+    },
+    {
+      type: "doc",
+      label: "\"Risk Free Long\" attack",
+      id: "tutorials/risk-free-long-attack"
     }
   ],
 };
