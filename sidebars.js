@@ -84,7 +84,12 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "3.2 Monitor Your Health Factor",
+          label: "3.2 Extracting Data by Python",
+          id: "tutorials/extracting-data/extracting-data-by-python"
+        },
+        {
+          type: "doc",
+          label: "3.3 Monitor Your Health Factor",
           id: "tutorials/extracting-data/monitor-your-health-factor"
         }
       ]
