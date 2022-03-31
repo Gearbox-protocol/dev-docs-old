@@ -1,35 +1,36 @@
-# Gearbox SDK and Mainnet Forking
+import CodeBlock from '@theme/CodeBlock';
 
-After finish the [Initialize Hardhat](./initialize-hardhat.md), we will import the [Gearbox SDK](https://github.com/Gearbox-protocol/gearbox-sdk) in this chapter. Then we will use Hardhat to do the mainnet forking for further deployment.
+# Gearbox SDK  and Mainnet Forking 
 
-### Gearbox SDK
+After we've set up [Hardhat](./initialize-hardhat.md), we will import the [Gearbox SDK](https://github.com/Gearbox-protocol/gearbox-sdk) into our codebase. We will then use Hardhat to fork the Ethereum Mainnet.
 
-First of all, we need to import gearbox's sdk to our project.
+### Gearbox SDK ⚙️🧰
 
-```
+First of all, we need to import the Gearbox SDK into our project.
+
+```bash npm2yarn
 npm install --save-dev @diesellabs/gearbox-sdk
 ```
 
-Now we will do modification on `hardhat.config.ts` to set some parameters for using Gearbox SDK and forking mainnet. Before modifying the config file, we need to install some dependencies for it.
+Next, we'll install some additional dependencies:
 
-```
-npm install --save-dev dotenv @nomiclabs/hardhat-ethers @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-waffle @typechain/ethers-v5 @typechain/hardhat hardhat-abi-exporter hardhat-contract-sizer hardhat-gas-reporter solidity-coverage 
+```bash npm2yarn
+npm install --save-dev dotenv hardhat-abi-exporter hardhat-contract-sizer
 ```
 
-After installation of the dependencies, we change `hardhat.config.ts` into
+We will modify `hardhat.config.ts` to set some parameters for using Gearbox SDK and forking mainnet.
 
 ```tsx title="hardhat.config.ts"
 import "hardhat-contract-sizer";
 import "solidity-coverage";
+import dotenv from "dotenv";
+
 import { LOCAL_NETWORK, MAINNET_NETWORK } from "@diesellabs/gearbox-sdk";
 
-// gets data from .env file
-dotEnvConfig();
+dotenv.config();
 
 const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
-const KOVAN_PRIVATE_KEY =
-  process.env.KOVAN_PRIVATE_KEY! ||
-  "0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"; // well known private key
+const KOVAN_PRIVATE_KEY = process.env.KOVAN_PRIVATE_KEY! || "0xc87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"; // well known private key
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
@@ -85,15 +86,21 @@ const config: HardhatUserConfig = {
 
 export default config;
 ```
-As we can see, `hardhat.config.file` will read the `.env` file. Thus we make a `.env` file. For supporting mainnet forking, we only need `ETH_MAINNET_PROVIDER`.
+
+:::info
+
+As we can see, `hardhat.config.file` will read the `.env` file. Thus we create a `.env` file in the root of the project folder. For supporting mainnet forking, we only need `ETH_MAINNET_PROVIDER`.
+
+:::
 
 ```title=".env"
   ETH_MAINNET_PROVIDER=https://eth-mainnet.alchemyapi.io/v2/YOUR_MAINNET_API_KEY
 
 ```
-**NOTE**
-To use this feature you need to connect to an archive node. We recommend using [Alchemy](https://www.alchemy.com/).
 
+:::note
+To use this feature you need to connect to an archive node. We recommend using [Alchemy](https://www.alchemy.com/). Please get your mainnet API key from there, once you've created an account.
+:::
 ### Mainnet Forking
 
 Since we have done most of the preparation works for mainnet fork. Now, we only need a script more to do the mainnet fork. Let's create a folder under `play-with-gearbox`.
