@@ -7,7 +7,7 @@ In the guide, we will do the [Hardhat](https://hardhat.org/) installation and co
 ## Install compatible version of NodeJS (16.x)
 
 Hardhat and the rest of the tooling are currently (as of March 2022) uncompatible with NodeJX 18.x
-To use the tooling successfully, please install NodeJS 17.x on your system.
+To use the tooling successfully, please install NodeJS 16.x on your system.
 
 To manage NodeJS versions, we recommend to use `n`. [You can find installation instructions for your OS here](https://www.npmjs.com/package/n#installation)
 
@@ -33,9 +33,9 @@ npx hardhat init
 ```
 
 :::note
-
 Choose the `Create an advanced sample project that uses TypeScript` option to set up the project using TS.
-
 :::
+
+## Congratulations on setting up hardhat
 
 You're now all set, and have a local installation of hardhat ready to use!
