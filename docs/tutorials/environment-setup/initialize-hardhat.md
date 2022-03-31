@@ -19,7 +19,7 @@ n install 16
 
 ## 👷 Install Hardhat 👷
 
-Now, you'll need to create an empty folder and enter it by running the following commands:
+We will create an empty project which uses Typescript. To do so, you'll need to create an empty folder and enter it by running the following commands:
 
 ```bash
 mkdir gearbox-sandbox;
@@ -34,79 +34,8 @@ npx hardhat init
 
 :::note
 
-Choose the `Create an advanced sample project that uses TypeScript` option.
+Choose the `Create an advanced sample project that uses TypeScript` option to set up the project using TS.
 
 :::
 
-You need to install hardhat locally to use it, we recommend using version `^2.9.x`. Please run:
-
-```bash npm2yarn
-npm install --save-dev hardhat
-```
-
-And finally build it all:
-
-```bash npm2yarn
-npm run build
-```
-
-
-## Typescript support
-
-In this guide, you will go through the steps to get a Hardhat project working with [TypeScript](https://www.typescriptlang.org/) following [TypeScript Support](https://hardhat.org/guides/typescript.html).
-
-```bash npm2yarn
-npm install --save-dev ts-node typescript
-```
-
-```bash npm2yarn
-npm install --save-dev chai @types/node @types/mocha @types/chai
-```
-
-You will need to make a small adjustment to the the config file as you're migrating it from Javascript to Typescript. Your `hardhat.config.js` will look like this by default:
-
-```js title="hardhat.config.js"
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-module.exports = {
-  solidity: "0.7.3"
-};
-```
-
-You must rename the config file from `hardhat.config.js` to `hardhat.config.ts`. To do so, just run the following:
-
-```bash
-mv hardhat.config.js hardhat.config.ts
-```
-
-You need to make a change to `hardhat.config.ts` now, and modify the export mechanism to be in line with the Typescript export mechanism:
-
-```js title="hardhat.config.ts"
-export default {
-  solidity: "0.7.3"
-};
-```
-
-You will also need a `tsconfig.json` file. Here's a example:
-
-```ts title="tsconfig.json"
-{
-  "compilerOptions": {
-    /* Basic Options */
-    // "incremental": true,                   /* Enable incremental compilation */
-    "target": "es2018" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
-    "module": "commonjs" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
-
-     /* Strict Type-Checking Options */
-    "strict": true /* Enable all strict type-checking options. */,
-
-
-    /* Module Resolution Options */
-    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
-    "outDir": "dist"
-  },
-  "include": ["./scripts", "./test"],
-  "files": ["./hardhat.config.ts"]
-}
-```
+You're now all set, and have a local installation of hardhat ready to use!
