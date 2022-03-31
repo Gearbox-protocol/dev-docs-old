@@ -99,9 +99,9 @@ async function main() {
       // Check if it has been closed
       cca_events.every(close_event => {
         if (event.blockNumber < close_event.blockNumber ||
-            (event.blockNumber == close_event.blockNumber &&
+            (event.blockNumber === close_event.blockNumber &&
              event.transactionIndex < close_event.transactionIndex)) {
-          if (event.args.onBehalfOf == close_event.args.owner) {
+          if (event.args.onBehalfOf === close_event.args.owner) {
             have_been_closed_or_liqudated = true;
             return false;
           }
@@ -111,9 +111,9 @@ async function main() {
       // Check if it has been liquidated
       lca_events.every(liquidate_event => {
         if (event.blockNumber < liquidate_event.blockNumber ||
-            (event.blockNumber == liquidate_event.blockNumber &&
+            (event.blockNumber === liquidate_event.blockNumber &&
              event.transactionIndex < liquidate_event.transactionIndex)) {
-          if (event.args.onBehalfOf == liquidate_event.args.owner) {
+          if (event.args.onBehalfOf === liquidate_event.args.owner) {
             have_been_closed_or_liqudated = true;
             return false;
           }
@@ -121,10 +121,7 @@ async function main() {
         return true;
       });
       if (!have_been_closed_or_liqudated) {
-        console.log(
-            event.args.onBehalfOf, ',', event.args.creditAccount, ',',
-            event.address, ',', token_symbol, ',', event.args.amount, ',',
-            event.args.borrowAmount)
+        console.log(`${event.args.onBehalfOf}, ${event.args.creditAccount}, ${event.address}, ${token_symbol}, ${event.args.amount}, ${event.args.borrowAmount}`)
       }
     });
   }

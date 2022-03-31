@@ -17,7 +17,7 @@ Once you've installed `n`, please run the following to install NodeJS 16.x:
 n install 16
 ```
 
-## Install Hardhat
+## 👷 Install Hardhat 👷
 
 Now, you'll need to create an empty folder and enter it by running the following commands:
 
@@ -32,7 +32,13 @@ Next, initialize Hardhat to this folder:
 npx hardhat init
 ```
 
-You need to install hardhat locally to use it, we recommand use version `^2.8.4`. Please run:
+:::note
+
+Choose the `Create an advanced sample project that uses TypeScript` option.
+
+:::
+
+You need to install hardhat locally to use it, we recommend using version `^2.9.x`. Please run:
 
 ```bash npm2yarn
 npm install --save-dev hardhat
