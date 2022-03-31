@@ -60,6 +60,8 @@ const config = {
     ],
   ],
 
+  plugins: [require.resolve("@easyops-cn/docusaurus-search-local")],
+
   stylesheets: [
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
@@ -95,7 +97,7 @@ const config = {
           docId: "sdk/intro",
           position: "left",
           label: "SDK",
-        },
+        }
       ],
     },
     footer: {
