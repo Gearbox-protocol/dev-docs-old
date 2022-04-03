@@ -108,9 +108,24 @@ const sidebars = {
           id: "tutorials/build-upon-gearbox/adapter"
         },
         {
-          type: "doc",
+          type: "category",
           label: "4.2 Trading Bot",
-          id: "tutorials/build-upon-gearbox/trading-bot"
+          link: { 
+            type: "doc",
+            id: "tutorials/build-upon-gearbox/trading-bot/trading-bot" 
+          },
+          items: [
+            {
+              type: "doc",
+              label: "4.2.1 Composable BTC short",
+              id: "tutorials/build-upon-gearbox/trading-bot/composable-btc-short"
+            },
+            {
+              type: "doc",
+              label: "4.2.2 Time Arbitrage on sETH",
+              id: "tutorials/build-upon-gearbox/trading-bot/time-arbitrage-on-seth"
+            }
+          ]
         }
       ]
     },

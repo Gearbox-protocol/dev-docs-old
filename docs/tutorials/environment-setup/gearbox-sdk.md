@@ -7,7 +7,7 @@ After finish the [Initialize Hardhat](./initialize-hardhat.md), we will import t
 First of all, we need to import gearbox's sdk to our project.
 
 ```
-npm install --save-dev @diesellabs/gearbox-sdk
+npm install --save-dev @gearbox-protocol/sdk
 ```
 
 Now we will do modification on `hardhat.config.ts` to set some parameters for using Gearbox SDK and forking mainnet. Before modifying the config file, we need to install some dependencies for it.
@@ -21,7 +21,7 @@ After installation of the dependencies, we change `hardhat.config.ts` into
 ```tsx title="hardhat.config.ts"
 import "hardhat-contract-sizer";
 import "solidity-coverage";
-import { LOCAL_NETWORK, MAINNET_NETWORK } from "@diesellabs/gearbox-sdk";
+import { LOCAL_NETWORK, MAINNET_NETWORK } from "@gearbox-protocol/sdk";
 
 // gets data from .env file
 dotEnvConfig();

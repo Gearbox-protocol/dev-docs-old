@@ -9,7 +9,14 @@ In this section, we're gonna make a simple monitor to check your `HealthFactor`.
   **NOTE:** In step 1, if you output the return data from `DataCompressor`, you will see the `HealthFactor` is also there. Why don't we query `getCreditAccountList` each time to get the `HealthFactor` of all our `CreditAccount`? The answer is that this query is inefficient, it will query many other data at the same. Further, we could actually save the `CreditFilter` list first, so that we don't need to query the `Creditfilter` every time.
 
 ```jsx title="scripts/monitor_hf.ts"
-import {AccountFactory__factory, AddressProvider__factory, ContractsRegister__factory, CreditAccount__factory, CreditFilter__factory, CreditManager__factory, DataCompressor__factory, ERC20__factory} from '@diesellabs/gearbox-sdk';
+import {AccountFactory__factory, 
+        AddressProvider__factory, 
+        ContractsRegister__factory, 
+        CreditAccount__factory, 
+        CreditFilter__factory, 
+        CreditManager__factory, 
+        DataCompressor__factory, 
+        ERC20__factory} from '@gearbox-protocol/sdk';
 import {Contract, Provider} from 'ethcall';
 import {ethers, run} from 'hardhat';
 

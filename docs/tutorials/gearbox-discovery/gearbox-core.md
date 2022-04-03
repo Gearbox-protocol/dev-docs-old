@@ -8,7 +8,7 @@ As illustreated in [Architecture](./architecture), Gearbox core is a service lay
 Let's start from AddressProvider. AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../environment-setup/a-simple-example.md) we build previous, we start to use other functionality of AddressProvider. Assume we have a mainnet forking now (if you haven't fork the mainnet, please run `yarn fork` first), we create a script file `scripts/gearbox-discovery.ts`.
 ```jsx title="scripts/gearbox-discovery.ts"
 import { run, ethers } from "hardhat";
-import { AddressProvider__factory } from "@diesellabs/gearbox-sdk";
+import { AddressProvider__factory } from "@gearbox-protocol/sdk";
 
 async function main() {
   // If you don't specify a //url//, Ethers connects to the default 
