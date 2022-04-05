@@ -60,7 +60,9 @@ const config = {
     ],
   ],
 
-  plugins: [require.resolve("@easyops-cn/docusaurus-search-local")],
+  plugins: [
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+  ],
 
   stylesheets: [
     {
@@ -91,6 +93,12 @@ const config = {
           docId: "tutorials/intro",
           position: "left",
           label: "Tutorials",
+        },
+        {
+          type: "doc",
+          docId: "analytics/intro",
+          position: "left",
+          label: "Analytics",
         },
         {
           type: "doc",

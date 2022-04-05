@@ -84,12 +84,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "3.2 Extracting Data by Python",
-          id: "tutorials/extracting-data/extracting-data-by-python"
-        },
-        {
-          type: "doc",
-          label: "3.3 Monitor Your Health Factor",
+          label: "3.2 Monitor Your Health Factor",
           id: "tutorials/extracting-data/monitor-your-health-factor"
         }
       ]
@@ -179,6 +174,14 @@ const sidebars = {
       label: "\"Risk Free Long\" attack",
       id: "tutorials/risk-free-long-attack"
     }
+  ],
+  analyticsSidebar: [
+    "analytics/intro",
+    {
+      type: "doc",
+      label: "1 Python Analytical Tool",
+      id: "analytics/python-analytical-tool"
+    },
   ],
 };
 
