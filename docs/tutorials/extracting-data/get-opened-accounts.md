@@ -47,8 +47,7 @@ async function main() {
       await ContractsRegister__factory.connect(ContractsRegister, provider);
   const credit_manager_list = await cr.getCreditManagers();
 
-  console.log(
-      'Borrower,CreditAccount,CreditManager,UnderlyingToken,BorrowerOwnedAmount,BorrowedAmount');
+  console.log('Borrower,CreditAccount,CreditManager,UnderlyingToken,BorrowerOwnedAmount,BorrowedAmount');
   for (let i = 0; i < credit_manager_list.length; ++i) {
     // connect to ith CreditManager contract
     const cm =
@@ -72,7 +71,7 @@ async function main() {
     let lca_events = await cm.queryFilter(
         cm.filters.LiquidateCreditAccount(), 13858003, 'latest');
 
-    // sorting for avoid some errors
+    // sorting to avoid some errors
     oca_events = oca_events.sort((a, b) => {
       if (a.blockNumber == b.blockNumber) {
         return a.transactionIndex < b.transactionIndex ? -1 : 1;
