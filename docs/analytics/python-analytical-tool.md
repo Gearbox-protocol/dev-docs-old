@@ -1,4 +1,4 @@
-# Extracting Data By Python
+# Python Analytical Tool
 
 For some developers who prefer to use Python, we make an additional section here to show how to use jupyter notebook to get `CreditAccount` and make some analysis. So first of all, we need to install `web3` python package and `multicall` package. Yes, we will use `multicall` in the example below. If you go through the whole workflow below, you will get something like [GearboxCreditAccounts.ipyn](https://colab.research.google.com/drive/1YORBt-1ZzClkFYJGOjkAHD9Xx3_nf9eT?usp=sharing).
 

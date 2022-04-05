@@ -7,8 +7,9 @@ In this section, we'll get all the opened CreditAccounts by querying the `Credit
 
   **NOTE:** For filtering out, we sort all the event by `blockNum` and `transactionIndex` because it is possible that a borrower has opened an `CreditAccount` with a `CreditManager` twice and the addresses of both `CreditAccount`s are same.
 
+
 ```jsx title="scripts/get-opened-accounts.ts"
-import {AccountFactory__factory, AddressProvider__factory, ContractsRegister__factory, CreditAccount__factory, CreditManager__factory, ERC20__factory} from '@diesellabs/gearbox-sdk';
+import {AccountFactory__factory, AddressProvider__factory, ContractsRegister__factory, CreditAccount__factory, CreditManager__factory, ERC20__factory} from '@gearbox-protocol/sdk';
 import {Contract, Provider} from 'ethcall';
 import {ethers, run} from 'hardhat';
 

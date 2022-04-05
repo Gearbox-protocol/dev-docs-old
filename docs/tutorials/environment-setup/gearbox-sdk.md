@@ -33,7 +33,7 @@ import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
-import { LOCAL_NETWORK, MAINNET_NETWORK } from "@diesellabs/gearbox-sdk";
+import { LOCAL_NETWORK, MAINNET_NETWORK } from "@gearbox-protocol/sdk";
 
 dotenv.config();
 

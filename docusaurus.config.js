@@ -60,7 +60,9 @@ const config = {
     ],
   ],
 
-  plugins: [require.resolve("@easyops-cn/docusaurus-search-local")],
+  plugins: [
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+  ],
 
   stylesheets: [
     {
@@ -82,7 +84,7 @@ const config = {
       items: [
         {
           type: "doc",
-          docId: "core-concepts/intro",
+          docId: "fundaments/intro",
           position: "left",
           label: "Fundaments",
         },
@@ -91,6 +93,12 @@ const config = {
           docId: "tutorials/intro",
           position: "left",
           label: "Tutorials",
+        },
+        {
+          type: "doc",
+          docId: "analytics/intro",
+          position: "left",
+          label: "Analytics",
         },
         {
           type: "doc",
@@ -107,8 +115,8 @@ const config = {
           title: "Docs",
           items: [
             {
-              label: "Concepts",
-              to: "/docs/core-concepts/intro",
+              label: "Fundaments",
+              to: "/docs/fundaments/intro",
             },
             {
               label: "Tutorials",

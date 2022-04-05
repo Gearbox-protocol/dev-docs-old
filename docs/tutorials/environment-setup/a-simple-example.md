@@ -39,7 +39,7 @@ It means that we are running an instance of Hardhat Network that forks mainnet, 
 // Runtime Environment's members available in the global scope.
 
 import { run, ethers } from "hardhat";
-import { AddressProvider__factory } from "@diesellabs/gearbox-sdk";
+import { AddressProvider__factory } from "@gearbox-protocol/sdk";
 
 async function main() {
   // If you don't specify a //url//, Ethers connects to the default 
