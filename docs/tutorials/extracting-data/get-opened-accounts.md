@@ -7,7 +7,8 @@ In this section, we'll get all the opened CreditAccounts by querying the `Credit
 
   **NOTE:** For filtering out, we sort all the event by `blockNum` and `transactionIndex` because it is possible that a borrower has opened an `CreditAccount` with a `CreditManager` twice and the addresses of both `CreditAccount`s are same.
 
-```jsx title="scripits/get-opened-accounts.ts"
+
+```jsx title="scripts/get-opened-accounts.ts"
 import {AccountFactory__factory, AddressProvider__factory, ContractsRegister__factory, CreditAccount__factory, CreditManager__factory, ERC20__factory} from '@gearbox-protocol/sdk';
 import {Contract, Provider} from 'ethcall';
 import {ethers, run} from 'hardhat';
@@ -47,8 +48,7 @@ async function main() {
       await ContractsRegister__factory.connect(ContractsRegister, provider);
   const credit_manager_list = await cr.getCreditManagers();
 
-  console.log(
-      'Borrower,CreditAccount,CreditManager,UnderlyingToken,BorrowerOwnedAmount,BorrowedAmount');
+  console.log('Borrower,CreditAccount,CreditManager,UnderlyingToken,BorrowerOwnedAmount,BorrowedAmount');
   for (let i = 0; i < credit_manager_list.length; ++i) {
     // connect to ith CreditManager contract
     const cm =
@@ -72,7 +72,7 @@ async function main() {
     let lca_events = await cm.queryFilter(
         cm.filters.LiquidateCreditAccount(), 13858003, 'latest');
 
-    // sorting for avoid some errors
+    // sorting to avoid some errors
     oca_events = oca_events.sort((a, b) => {
       if (a.blockNumber == b.blockNumber) {
         return a.transactionIndex < b.transactionIndex ? -1 : 1;
@@ -99,9 +99,9 @@ async function main() {
       // Check if it has been closed
       cca_events.every(close_event => {
         if (event.blockNumber < close_event.blockNumber ||
-            (event.blockNumber == close_event.blockNumber &&
+            (event.blockNumber === close_event.blockNumber &&
              event.transactionIndex < close_event.transactionIndex)) {
-          if (event.args.onBehalfOf == close_event.args.owner) {
+          if (event.args.onBehalfOf === close_event.args.owner) {
             have_been_closed_or_liqudated = true;
             return false;
           }
@@ -111,9 +111,9 @@ async function main() {
       // Check if it has been liquidated
       lca_events.every(liquidate_event => {
         if (event.blockNumber < liquidate_event.blockNumber ||
-            (event.blockNumber == liquidate_event.blockNumber &&
+            (event.blockNumber === liquidate_event.blockNumber &&
              event.transactionIndex < liquidate_event.transactionIndex)) {
-          if (event.args.onBehalfOf == liquidate_event.args.owner) {
+          if (event.args.onBehalfOf === liquidate_event.args.owner) {
             have_been_closed_or_liqudated = true;
             return false;
           }
@@ -121,10 +121,7 @@ async function main() {
         return true;
       });
       if (!have_been_closed_or_liqudated) {
-        console.log(
-            event.args.onBehalfOf, ',', event.args.creditAccount, ',',
-            event.address, ',', token_symbol, ',', event.args.amount, ',',
-            event.args.borrowAmount)
+        console.log(`${event.args.onBehalfOf}, ${event.args.creditAccount}, ${event.address}, ${token_symbol}, ${event.args.amount}, ${event.args.borrowAmount}`)
       }
     });
   }
