@@ -1,11 +1,13 @@
 # A Simple Example
 
-We have finished [Chapter 1.1](./initialize-hardhat) and [Chapter 1.2](./gearbox-sdk), so we have an environment to interact with Gearbox contracts, deploy our own software, etc. To make you feel more concrete, let's deploy a simple example to query the latest version of Gearbox's deployed contracts. First of all, we need to fork mainnet by
+We have finished [Chapter 1.1](./initialize-hardhat) and [Chapter 1.2](./gearbox-sdk), so we have an environment to interact with Gearbox contracts, deploy our own software, etc. To make it feel more concrete, let's deploy a simple example to query the latest version of Gearbox's deployed contracts. First of all, we need to fork mainnet by executing:
 
+```bash npm2yarn
+npm run fork
 ```
-yarn fork
-```
-After run the command above, we will see something like this in the terminal.
+
+After running the command above, we will see something like this in the terminal.
+
 ```
 yarn run v1.22.17
 warning package.json: No license field
@@ -30,7 +32,10 @@ WARNING: These accounts, and their private keys, are publicly known.
 Any funds sent to them on Mainnet or any other live network WILL BE LOST.
 
 ```
-It means that we are running an instance of Hardhat Network that forks mainnet, there 20 accounts that we can use to deploy. This means that it will simulate having the same state as mainnet, but it will work as a local development network with JSON-RPC server at `http://127.0.0.1:8545`. Thus, we can start to write our example code, we open a new command window and create a Typescript file `scripts/simple-example.ts`.
+
+Congratulations, if you see an output like the above it means that we are running an instance of Hardhat Network that forks mainnet.
+We are being shown 20 wallets that we can use to deploy. Using a Mainnet fork means that we have the same state as mainnet, but it will work as a local development network with JSON-RPC server at `http://127.0.0.1:8545`. Thus, we can start to write our example code, we open a new command window and create a Typescript file `scripts/simple-example.ts`.
+
 ```tsx title="scripts/simple-example.ts"
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
@@ -69,11 +74,15 @@ main()
     process.exit(1);
   });  
 ```
-Then we run this script by 
-```
+
+Then we run this script by executing the following shell command:
+
+```bash
 npx hardhat run scripts/simple-example.ts
 ```
-We can see the below infomations showing in the window, it means that we have made it and the latest version is `v1`.
+
+If you can see the below output in your terminal, it means that we were successful and the latest version is `v1`.
+
 ```
 No need to generate any newer typings.
  ·-----------------|-------------·
