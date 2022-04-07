@@ -1,26 +1,31 @@
 # Architecture
 
-The Gearbox protocol contracts can be assigned into three groups: Core contracts, Pools and Credit contracts. 
+The Gearbox protocol contracts can be assigned into three groups: Core, Pool and Credit Manager.
 
 ![Core contracts](../../../static/img/tutorial/Gearbox\_white\_high.011.png)
 
-### Core 
+## Core
 
 Core is a service layer which provides unified services for contracts discovery, price oracles, ACL and so on.
 
-### Pool
+## Pool
 
-Pool is connected with creditManager, which is responsible for all policies for credit account. One pool is corresponding to one underlying token and there could be more than Credit Manager connected to one pool. Credit manager also could borrow money from pool and provide to the credit account. Credit manager is also reroutes financial orders from adapter to credit account.
+Pool allows liquidity to be accessed throughout the service via a common liquidity pool.
+
+Pool is connected with Credit Manager, which is responsible for all policies for a credit account.
+Pool corresponds to one underlying token and there could be more than one Credit Manager connected to one Pool.
+A Credit Manager can borrow money from Pool to provide to the Credit Account. 
+Credit Manager reroutes financial orders from Adapter to Credit Account.
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.001.png)
 
-Liquidity providers interact with Pool contracts which implement operations with liquidity (add / remove) and also lend to/ repay from credit managers contracts.
+Liquidity providers interact with Pool contracts by using the `addLiquidity` / `removeLiquidity` methods. Credit Managers can interact with Pool contracts by using the  `lendCreditAccount` / `repayCreditAccount` methods.
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.003.png)
 
-Credit manager contracts are connected to pool contracts and can borrow / repay money from them. The implement logic for open / close leveraged position using virtual account concepts and also manages trading / farming operations.
+Credit Manager contracts are connected to Pool contracts and can `borrow` / `repay` money from them. They implement logic to `open` / `close` leveraged positions using virtual account concepts and also manages trading / farming operations.
 
-### Credit manager
+## Credit Manager
 
 Each Credit Manager connects with one pool, pool can have some Credit Managers connected. Each Credit Manager has only one CreditFilter.
 
