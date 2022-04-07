@@ -9,7 +9,11 @@ Gearbox Protocol is a peer-to-peer system designed to provide users with a non-c
 The protocol is implemented as a suite of upgradable smart contracts that together create a credit provider which is accessible and confined only to a wallet which we define as a "Credit Account". By design the system is secure, self-custodial, and functions without any trusted intermediaries who may selectively restrict access.
 
 
-There is currently one versions of the Gearbox protocol. V1 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE). Each version of Gearbox, once deployed, will function in perpetuity, with 100% uptime, provided the continued existence of the Ethereum blockchain.
+There are currently two versions of the Gearbox protocol.  
+V1 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE).  
+V2 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE). 
+
+Each version of Gearbox, once deployed, will function in perpetuity, with 100% uptime, provided the continued existence of the Ethereum blockchain.
 
 ## How does the Gearbox protocol allow to take credit onchain in a safe way?
 
