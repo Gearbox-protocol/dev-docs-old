@@ -1,11 +1,20 @@
 # Gearbox Core
 
-As illustreated in [Architecture](./architecture), Gearbox core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle. These services are provided by serveal i smart contracts: AddressProvider, AccountFactory, ContractsRegister, WETHGateway, ACL&ACL Trait, DataCompressor and Oracles. In this section, let's dig deep in these smart contracts.
+As illustrated in [Architecture](./architecture), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
+These services are provided by serveal smart contracts: AddressProvider, AccountFactory, ContractsRegister, WETHGateway, ACL&ACL Trait, DataCompressor and Oracles.  
 
+In this section we'll dig deeper into these smart contracts.
 
-### AddressProvider
+## AddressProvider
 
-Let's start from AddressProvider. AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../environment-setup/a-simple-example.md) we build previous, we start to use other functionality of AddressProvider. Assume we have a mainnet forking now (if you haven't fork the mainnet, please run `yarn fork` first), we create a script file `scripts/gearbox-discovery.ts`.
+AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../environment-setup/a-simple-example.md) we built previously, we can start to use other functionality of AddressProvider.
+
+:::note
+We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk.md) for instructions.
+:::
+
+Create a new source file called `scripts/gearbox-discovery.ts`
+
 ```jsx title="scripts/gearbox-discovery.ts"
 import { run, ethers } from "hardhat";
 import { AddressProvider__factory } from "@gearbox-protocol/sdk";
@@ -61,9 +70,16 @@ main()
     process.exit(1);
   });
 ```
-Run this code by `npx hardhat run scripts/gearbox-discovery.ts`, we can get
+
+Run this code by executing this shell command:
+
+```bash
+npx hardhat run scripts/gearbox-discovery.ts
 ```
-No need to generate any newer typings.
+
+This should produce the following output:
+
+```
  ·-----------------|-------------·                                 
  |  Contract Name  ·  Size (KB)  │                                    
  ·-----------------|-------------·
@@ -76,15 +92,23 @@ DataCompressor is  0x0050b1ABD1DD2D9b01ce954E663ff3DbCa9193B1
 WETHGateway is  0x4F952c4C5415B2609899AbDC2F8F352F600d14D6
 ```
 
+## ContractsRegister
 
-### ContractsRegister
+ContractsRegister maintains all the pools and credit managers.
 
-If you complete the process above, we can get the `ContractsRegister` by querying `AddressProvider`. Now let's move into `ContractsRegister`. `ContractsRegister` maintains all the pools and credit managers, there are mainly two function that we can use. Now we import `ContractsRegister__factory` from `gearbox-sdk` and add some code between `ContractsRegister` and `ACL` in `scripts/gearbox-discovery.ts` to check it:
+The `ContractsRegister` can be retrieved by querying `AddressProvider`.  
+`ContractsRegister` exports two functions that we can use, `getpools` and `getCreditManagers`.
+
+The `gearbox-sdk` allows us to import `ContractsRegister__factory` to perform these operations.
+
+We'll add some code in `scripts/gearbox-discovery.ts` between `ContractsRegister` and `ACL` to use this functionality.
+
 ```jsx title="scripts/gearbox-discovery.ts"
   ...
   // Get ContractsRegister
   const ContractsRegister = await ap.getContractsRegister();
   console.log("ContractsRegister is ", ContractsRegister);
+  
   //******************** ContractsRegister ********************
   const cr = await ContractsRegister__factory.connect(ContractsRegister, provider);
   const pool_list = await cr.getPools();
@@ -98,9 +122,17 @@ If you complete the process above, we can get the `ContractsRegister` by queryin
   console.log("ACL is ", ACL);
   ...
 ```
-We can see the pool list and credit list if we run the code:
+
+
+Run this code by executing this shell command:
+
+```bash
+npx hardhat run scripts/gearbox-discovery.ts
 ```
-No need to generate any newer typings.
+
+This should produce the following output, where we can see the pool list and credit account list:
+
+```
  ·-----------------|-------------·                    
  |  Contract Name  ·  Size (KB)  │                  
  ·-----------------|-------------·
@@ -126,24 +158,24 @@ WETHGateway is  0x4F952c4C5415B2609899AbDC2F8F352F600d14D6
 ```
 
 
-### ACL
+## ACL
 
-ACL keeps permission for different addresses. For the moment, it keeps 2 different roles:
+ACL keeps permissions for different addresses. For the moment, it keeps 2 different roles:
 
   * **PausableAdmin**: Can pause and unpause contracts
   * **Configurator**: Can configure contracts parameters
 
-This part is mainly related to security and we can see from this [article](./anomaly-detection) how it will be used. 
+This part is mainly related to security and we can see from this [article](./anomaly-detection) how it will be used.
 
 
-### WETHGateway
+## WETHGateway
 
 ETH <=> WETH wrapper for Gearbox protocol. It implements IWETHGateway interface.
 
 
-### AccountFactory
+## AccountFactory
 
-Reusable Credit Accounts is an innovative technology that makes Gearbox gas-efficient by keeping user balances with minimal overhead. Users "rent" deployed credit account smart contracts from protocol to save deployment costs.
+Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs. 
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.021.png)
 
@@ -151,19 +183,19 @@ Each time, when a user opens a credit account in Gearbox protocol, `CreditManage
 
 If `AccountFactory` has no pre-deployed contracts, it clones it using [https://eips.ethereum.org/EIPS/eip-1167](https://eips.ethereum.org/EIPS/eip-1167)
 
-#### Advantages
+### Advantages
 
-  * **Gas efficiency:** This solution is much more gas-efficient, cause it doesn't require creating a new contract each time and has minimal operational overhead.
+  * **Gas efficiency:** This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
 
-  * **Hacker-proof:** Contract funds are allocated on isolated contracts which makes a possible attack more complex and less economically reasonable.  Furthermore, the gearbox protocol uses anomaly detection to pause contracts and keep funds safe if suspicious behavior is found. User can protect their funds by splitting them between a few virtual accounts, and it makes the attack less economic reasonable.
+  * **Hacker-proof:** Contract funds are allocated on isolated contracts which makes a possible attack more complex and less economically reasonable. Furthermore, the gearbox protocol uses anomaly detection to pause contracts and keep funds safe if suspicious behavior is found. User can protect their funds by splitting them between a few virtual accounts, and it makes the attack less economic reasonable.
 
   * **Balance transparency on Etherscan:** Trader or farmer could check all their transactions on Etherscan if they know at which block they start and finish virtual account renting.
 
   * **Ethereum network ecology:** It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
 
-#### Implementation
+### Implementation
 
-`AccountFactory` supplies credit account for `CreditManager` on demand and keeps them when they are not used.
+`AccountFactory` supplies a Credit Account to `CreditManager` on demand and keeps them when they are not used.
 
 The account factory uses a list to keep credit accounts and two pointers: head and tail.
 
@@ -172,15 +204,20 @@ The account factory uses a list to keep credit accounts and two pointers: head a
 When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
 
-### DataCompressor
+## DataCompressor
 
-`DataCompressor` collects data from different contracts and send it to dApp. We can get any kind of states of Gearbox by interacting with `DataCompressor`. Let's list some main function in `DataCompressor`:
+`DataCompressor` collects data from different contracts in order to transmit this information in an aggregated way to a dApp.  
+
+Let's list some main function in `DataCompressor`:
+
   * `getCreditAccountList(address borrower)` for getting the list of `CreditAccountData`s of a specified borrower
   * `getCreditAccountData(address _creditManager, address borrower)` for getting `CreditAccountData` of a specified borrower under a specified `CreditManager`
   * `getCreditAccountDataExtended(address creditManager, address borrower)` for getting `CreditAccountDataExtended` of a specified borrower under a specified `CreditManager`, `CreditAccountDataExtended` is the extension types of `CreditAccountData`, you can check `Types.sol` for more details.
   * `getCreditManagersList(address borrower)` for getting list of `CreditManagerData` of a specified borrower
   * `getPoolsList()` for getting list of `PoolData`
 
-Because most of the functions need a `borrower` address as parameter, so we would not show how to use it in this document, you can use a wallet to open an account and try to use it.
+:::info
+Datacompressor has an unstable API
+:::
 
-
+Because most of the functions need a `borrower` address as parameter, we are unable to demo its output. You can use your (test) wallet to open an account and try to use it yourself.
