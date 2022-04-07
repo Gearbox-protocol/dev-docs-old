@@ -15,7 +15,23 @@
 const sidebars = {
 
   fundementalSidebar: [
-    "fundaments/intro",
+    {
+      type: "doc",
+      label: "Deployed Contracts",
+      id: "tutorials/deployed-contracts"
+    },
+    {
+      type: 'html',
+      value: '<div />', // The HTML to be rendered
+      defaultStyle: true, // Use the default menu item styling
+    },
+    "documentation/intro",
+   
+    {
+      type: "doc",
+      label: "Architecture",
+      id: "documentation/architecture",
+    },
   ],
   tutorialSidebar: [
     "tutorials/intro",
@@ -52,11 +68,7 @@ const sidebars = {
         id: "tutorials/gearbox-discovery/gearbox-discovery",
       },
       items: [
-        {
-          type: "doc",
-          label: "2.1 Architecture",
-          id: "tutorials/gearbox-discovery/architecture",
-        },
+       
         {
           type: "doc",
           label: "2.2 Gearbox Core",
@@ -159,11 +171,7 @@ const sidebars = {
         }
       ]
     },
-    {
-      type: "doc",
-      label: "Deployed Contracts",
-      id: "tutorials/deployed-contracts"
-    },
+    
     {
       type: "doc",
       label: "Fast check and HealthFactor protection",
