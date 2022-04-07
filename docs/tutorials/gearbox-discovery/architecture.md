@@ -12,10 +12,10 @@ Core is a service layer which provides unified services for contracts discovery,
 
 Pool allows liquidity to be accessed throughout the service via a common liquidity pool.
 
-Pool is connected with Credit Manager, which is responsible for all policies for a credit account.
-Pool corresponds to one underlying token and there could be more than one Credit Manager connected to one Pool.
-A Credit Manager can borrow money from Pool to provide to the Credit Account. 
-Credit Manager reroutes financial orders from Adapter to Credit Account.
+Pool is connected with Credit Manager, which is responsible for all policies for a credit account.  
+Pool corresponds to one underlying token and there could be more than one Credit Manager connected to one Pool.  
+A Credit Manager can borrow money from Pool to provide to the Credit Account.  
+Credit Manager reroutes financial orders from Adapter to Credit Account.  
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.001.png)
 
