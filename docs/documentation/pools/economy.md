@@ -1,6 +1,6 @@
 # Pools
 
-`PoolSevice` contract provides API for managing liquidity and computing interest rates. PoolService lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./gearbox-pools#pool-operations) are the main functions of `PoolService` contract.
+`PoolSevice` contract provides API for managing liquidity and computing interest rates. PoolService lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./economy#pool-operations) are the main functions of `PoolService` contract.
 
 ![Pool Service](<../../../static/img/tutorial/Gearbox\_white.010.jpeg>)
 
@@ -25,7 +25,7 @@ Diesel tokens are 100% liquid yield-generating assets.
 
 ### Basic parameters
 
-* EL(t) - [expected liquidity](./gearbox-pools#expected-liquidity)
+* EL(t) - [expected liquidity](./economy#expected-liquidity)
 * B(t) - total borrowed
 * r(t) - borrow rate
 * d(t) - diesel rate
@@ -33,7 +33,7 @@ Diesel tokens are 100% liquid yield-generating assets.
 
 #### **Periods and timestamp**
 
-All functions are piecewise linear functions. Each change in available liquidity  or borrowed amount [updates rate parameters](./gearbox-pools#rate-parameters-update). In follow formulas we use the convention:
+All functions are piecewise linear functions. Each change in available liquidity  or borrowed amount [updates rate parameters](./economy#rate-parameters-update). In follow formulas we use the convention:
 
 $$
 t_n - current\;timestamp,
@@ -54,7 +54,7 @@ $$
 EL(t_{n})= EL(t_{n-1})+B(t_{n-1})*r(t_{n-1})*(t_{n}-t_{n-1})
 $$
 
-Beside, [Add Liquidity](./gearbox-pools#add-liquidity) and [Remove Liquidity](./gearbox-pools#remove-liquidity) will have a new fumula of $EL$.
+Beside, [Add Liquidity](./economy#add-liquidity) and [Remove Liquidity](./economy#remove-liquidity) will have a new fumula of $EL$.
 
 #### B(t) - Total borrowed <a href="#total-borrowed" id="total-borrowed"></a>
 
@@ -66,7 +66,7 @@ $$
 
 #### r(t) - Borrow APY <a href="#borrow-apy" id="borrow-apy"></a>
 
-Represents current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](./gearbox-pools#linear-interest-rate-model).
+Represents current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](./economy#linear-interest-rate-model).
 
 #### d(t) Diesel rate <a href="#diesel-rate" id="diesel-rate"></a>
 

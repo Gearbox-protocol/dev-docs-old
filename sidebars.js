@@ -93,16 +93,10 @@ const sidebars = {
         id: "tutorials/gearbox-discovery/gearbox-discovery",
       },
       items: [
-       
         {
           type: "doc",
-          label: "2.2 Gearbox Core",
+          label: "2.1 Gearbox Core",
           id: "tutorials/gearbox-discovery/gearbox-core",
-        },
-        {
-          type: "doc",
-          label: "2.3 Gearbox Pool",
-          id: "tutorials/gearbox-discovery/gearbox-pools",
         },
       ],
     },
