@@ -2,7 +2,7 @@
 
 The Gearbox protocol contracts can be assigned into three groups: Core, Pool and Credit Manager.
 
-![Core contracts](../../../static/img/tutorial/Gearbox\_white\_high.011.png)
+![Core contracts](/img/tutorial/Gearbox_white_high.011.png)
 
 ## Core
 
@@ -18,11 +18,11 @@ Pool corresponds to one underlying token and there could be more than one Credit
 Credit Manager can borrow money from Pool to provide to Credit Account.  
 Credit Manager reroutes financial orders from Adapter to Credit Account.  
 
-![](../../../static/img/tutorial/Gearbox\_white\_high.001.png)
+![](/img/tutorial/Gearbox\_white\_high.001.png)
 
 Liquidity providers interact with Pool contracts by using the `addLiquidity` / `removeLiquidity` methods. Credit Managers can interact with Pool contracts by using the  `lendCreditAccount` / `repayCreditAccount` methods.
 
-![](../../../static/img/tutorial/Gearbox\_white\_high.003.png)
+![](/img/tutorial/Gearbox\_white\_high.003.png)
 
 [FIXME: Clarify exactly which methods are to be invoked]
 Credit Manager contracts are connected to Pool contracts and can `borrow` / `repay` money from them. They implement logic to `open` / `close` leveraged positions using virtual account concepts and also manages trading / farming operations.
@@ -34,7 +34,7 @@ Credit Manager takes margin loans from pools, and provides leveraged positions t
 Each Credit Manager connects only with one Pool, but Pool can have multiple Credit Managers connected. Each Credit Manager has only one CreditFilter.
 
 
-![](../../../static/img/tutorial/Gearbox\_white\_high.012.jpeg)
+![](/img/tutorial/Gearbox\_white\_high.012.jpeg)
 
 
 :::info

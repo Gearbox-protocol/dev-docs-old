@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: "Gearbox Concepts",
     image: "/img/gearbox_man.png",
-    url: "docs/fundaments/intro",
+    url: "docs/documentation/intro",
     description: (
       <>
         Learn about the core concepts of Gearbox, its definitions, smart
