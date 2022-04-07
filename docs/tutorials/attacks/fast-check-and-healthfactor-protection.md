@@ -1,6 +1,6 @@
-# Fast check and healthFactor protection
+# "Fast check and healthFactor protection" attack
 
-### Attack description
+## Attack description
 
 1. Attacker opens Credit Account in ETH (for example)
 2. The attacker takes flash loan, and change USDC/ETH rate in Uniswap  to pay more in ETH that normal rate.
@@ -10,7 +10,7 @@
 6. After this transaction he got less ETH, than at the beginning. Attacker repeats it in one block till he didn't drain all funds from credit Account
 7. Then account will be liquidated, however, attacker gets funds from margin loan.
 
-### Solution
+## Solution
 
 To prevent such attack, we should compute health factor after each operation and reverts when HF is less than 1. We called that **health factor protection,** it saves funds, however computing HF is not gas efficeint.
 
