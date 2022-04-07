@@ -1,6 +1,6 @@
 # Gearbox Core
 
-As illustrated in [Architecture](./architecture), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
+As illustrated in [Architecture](../../documentation/architecture.md), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
 These services are provided by serveal smart contracts: AddressProvider, AccountFactory, ContractsRegister, WETHGateway, ACL&ACL Trait, DataCompressor and Oracles.  
 
 In this section we'll dig deeper into these smart contracts.
