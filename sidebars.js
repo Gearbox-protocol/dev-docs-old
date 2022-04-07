@@ -32,6 +32,31 @@ const sidebars = {
       label: "Architecture",
       id: "documentation/architecture",
     },
+    {
+      type: "category",
+      label: "1. Pools",
+      link: {
+        type: "doc",
+        id: "documentation/pools/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "1.1. Pool economy",
+          id: "documentation/pools/economy"
+        },
+        {
+          type: "doc",
+          label: "1.2. Pool service",
+          id: "documentation/pools/poolservice"
+        },
+        {
+          type: "doc",
+          label: "1.2. Interest rate model",
+          id: "documentation/pools/linearInterestRateModel"
+        }
+      ]
+    },
   ],
   tutorialSidebar: [
     "tutorials/intro",
