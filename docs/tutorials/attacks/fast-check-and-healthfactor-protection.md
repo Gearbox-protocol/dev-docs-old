@@ -1,13 +1,13 @@
 # "Fast check and healthFactor protection" attack
 
-## Attack description
+## Attack sequence description
 
-1. Attacker opens Credit Account in ETH (for example)
-2. The attacker takes flash loan, and change USDC/ETH rate in Uniswap  to pay more in ETH that normal rate.
-3. The attacker swap all ETH to USDC.
-4. The attacker use flashloan to change USDC/ETH rate on Uniswap to may less than normal rate.
-5. He trades UDSC to ETH back.
-6. After this transaction he got less ETH, than at the beginning. Attacker repeats it in one block till he didn't drain all funds from credit Account
+1. Attacker opens a Credit Account denominated in ETH (for example).
+2. Attacker takes flash loan, and changes USDC/ETH rate in Uniswap to pay more in ETH that normal rate.
+3. Attacker swaps all ETH to USDC.
+4. Attacker uses flashloan to change USDC/ETH rate on Uniswap to pay less than normal rate.
+5. Attacker swaps UDSC back to ETH.
+6. Attacker now has less ETH than at the beginning. Attacker repeats it in one block until he's drained all funds from `Credit Account`.
 7. Then account will be liquidated, however, attacker gets funds from margin loan.
 
 ## Solution
