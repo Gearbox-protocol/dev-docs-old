@@ -10,11 +10,12 @@ Core is a service layer which provides unified services for contracts discovery,
 
 ## Pool
 
-Pool allows liquidity to be accessed throughout the service via a common liquidity pool.
+Pool is responsible for liquidity operations for LPs. It also manages diesel (LP) tokens and provides funds to credit account
 
-Pool is connected with Credit Manager, which is responsible for all policies for a credit account.  
+Pool is connected with Credit Manager, which is responsible for all policies for Credit Account.  
 Pool corresponds to one underlying token and there could be more than one Credit Manager connected to one Pool.  
-A Credit Manager can borrow money from Pool to provide to the Credit Account.  
+
+Credit Manager can borrow money from Pool to provide to Credit Account.  
 Credit Manager reroutes financial orders from Adapter to Credit Account.  
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.001.png)
@@ -23,17 +24,22 @@ Liquidity providers interact with Pool contracts by using the `addLiquidity` / `
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.003.png)
 
+[FIXME: Clarify exactly which methods are to be invoked]
 Credit Manager contracts are connected to Pool contracts and can `borrow` / `repay` money from them. They implement logic to `open` / `close` leveraged positions using virtual account concepts and also manages trading / farming operations.
 
-## Credit Manager
+## Credit Manager (CM)
 
-Each Credit Manager connects with one pool, pool can have some Credit Managers connected. Each Credit Manager has only one CreditFilter.
+Credit Manager takes margin loans from pools, and provides leveraged positions to Credit Accounts (open/close/liquidate/repay etc.). It also filters users operations using a Credit Manager filter to allow whitelisted DEXes and tokens only
+
+Each Credit Manager connects only with one Pool, but Pool can have multiple Credit Managers connected. Each Credit Manager has only one CreditFilter.
+
 
 ![](../../../static/img/tutorial/Gearbox\_white\_high.012.jpeg)
 
-Each credit manager (CM), which can takes margin loans from pools.
 
-On the full schema you can see contracts interaction:
+:::info
+
+A quick overview of all core components:
 
 | Contract            | Function                                                                                                                                                                                       |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,3 +49,6 @@ On the full schema you can see contracts interaction:
 | Account Factory     | Keeps and provide on demand Reusable Credit Accounts                                                                                                                                           |
 | CreditFilter        | Keeps allowed smart contracts & tokens list. It also computes total portfolio value using Price oracle and Liquidation value.                                                                  |
 | Price Oracle        | Computes rates using Chainlink oracles information                                                                                                                                             |
+
+:::
+
