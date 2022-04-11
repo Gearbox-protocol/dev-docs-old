@@ -27,9 +27,191 @@ const sidebars = {
     "documentation/intro",
 
     {
-      type: "doc",
+      type: "category",
       label: "Architecture",
-      id: "documentation/architecture",
+      link: {
+        type: "doc",
+        id: "documentation/architecture/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Contracts discovery",
+          id: "documentation/architecture/discovery",
+        },
+        {
+          type: "doc",
+          label: "Account Factory",
+          id: "documentation/architecture/account-factory",
+        },
+        {
+          type: "doc",
+          label: "Role model",
+          id: "documentation/architecture/roles",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Pools",
+      link: {
+        type: "doc",
+        id: "documentation/pools/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Liquidity",
+          id: "documentation/pools/liquidity",
+        },
+        {
+          type: "doc",
+          label: "Interest rate model",
+          id: "documentation/pools/linearInterestRateModel",
+        },
+        {
+          type: "doc",
+          label: "Fees collection",
+          id: "documentation/pools/fees",
+        },
+        {
+          type: "doc",
+          label: "Insurance",
+          id: "documentation/pools/insurance",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Credit accounts",
+      link: {
+        type: "doc",
+        id: "documentation/credit/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Architecture",
+          id: "documentation/credit/architecture",
+        },
+
+        {
+          type: "doc",
+          label: "Open credit account",
+          id: "documentation/credit/open",
+        },
+        {
+          type: "doc",
+          label: "Executing transactions",
+          id: "documentation/credit/execute",
+        },
+        {
+          type: "doc",
+          label: "Multicall",
+          id: "documentation/credit/multicall",
+        },
+        {
+          type: "doc",
+          label: "Adding collateral",
+          id: "documentation/credit/add-collateral",
+        },
+        {
+          type: "doc",
+          label: "Debt management",
+          id: "documentation/credit/debt-management",
+        },
+        {
+          type: "doc",
+          label: "Closing credit account",
+          id: "documentation/credit/closure",
+        },
+        {
+          type: "doc",
+          label: "Risk management",
+          id: "documentation/credit/risk",
+        },
+        {
+          type: "doc",
+          label: "Liquidation",
+          id: "documentation/credit/liquidation",
+        },
+        {
+          type: "doc",
+          label: "Account transfer",
+          id: "documentation/credit/transfer",
+        },
+        {
+          type: "doc",
+          label: "Working with ETH",
+          id: "documentation/credit/eth",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Integrations",
+      link: {
+        type: "doc",
+        id: "documentation/integrations/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Building an adapter",
+          id: "documentation/integrations/build",
+        },
+        {
+          type: "category",
+          label: "Existing adapters",
+          link: {
+            type: "doc",
+            id: "documentation/integrations/existing/intro",
+          },
+          items: [
+            {
+              type: "doc",
+              label: "Uniswap adapter",
+              id: "documentation/integrations/existing/uniswap",
+            },
+            {
+              type: "doc",
+              label: "Curve adapter",
+              id: "documentation/integrations/existing/curve",
+            },
+            {
+              type: "doc",
+              label: "Yearn adapter",
+              id: "documentation/integrations/existing/yearn",
+            },
+            {
+              type: "doc",
+              label: "Lido adapter",
+              id: "documentation/integrations/existing/lido",
+            },
+            {
+              type: "doc",
+              label: "Convex adapter",
+              id: "documentation/integrations/existing/convex",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      type: "category",
+      label: "Oracles",
+      link: {
+        type: "doc",
+        id: "documentation/credit/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Architecture",
+          id: "documentation/credit/architecture",
+        },
+      ],
     },
   ],
   tutorialSidebar: [

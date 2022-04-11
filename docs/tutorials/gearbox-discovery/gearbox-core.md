@@ -1,16 +1,18 @@
 # Gearbox Core
 
-As illustrated in [Architecture](../../documentation/architecture.md), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
+As illustrated in [Architecture](/), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
 These services are provided by serveal smart contracts: AddressProvider, AccountFactory, ContractsRegister, WETHGateway, ACL&ACL Trait, DataCompressor and Oracles.  
 
 In this section we'll dig deeper into these smart contracts.
 
 ## AddressProvider
 
-AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../environment-setup/a-simple-example.md) we built previously, we can start to use other functionality of AddressProvider.
+AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the 
+[simple example](../environment-setup/a-simple-example) 
+ we built previously, we can start to use other functionality of AddressProvider.
 
 :::note
-We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk.md) for instructions.
+We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk) for instructions.
 :::
 
 Create a new source file called `scripts/gearbox-discovery.ts`
@@ -177,7 +179,7 @@ ETH <=> WETH wrapper for Gearbox protocol. It implements IWETHGateway interface.
 
 Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs. 
 
-![](../../../static/img/tutorial/Gearbox\_white\_high.021.png)
+![](/images/tutorial/Gearbox\_white\_high.021.png)
 
 Each time, when a user opens a credit account in Gearbox protocol, `CreditManager` takes a pre-deployed credit account contract from the `AccountFactory` and when the user closes the credit account, `CreditManager` returns it.
 
@@ -199,7 +201,7 @@ If `AccountFactory` has no pre-deployed contracts, it clones it using [https://e
 
 The account factory uses a list to keep credit accounts and two pointers: head and tail.
 
-![](../../../static/img/tutorial/va\_list.jpeg)
+![](/images/tutorial/va\_list.jpeg)
 
 When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
