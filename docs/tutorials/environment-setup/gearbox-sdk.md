@@ -2,7 +2,9 @@ import CodeBlock from '@theme/CodeBlock';
 
 # Gearbox SDK  and Mainnet Forking 
 
-After we've [set up Hardhat](./initialize-hardhat.md), we will import the [Gearbox SDK](https://github.com/Gearbox-protocol/gearbox-sdk) into our codebase. We will then use Hardhat to fork the Ethereum Mainnet.
+After we've [set up Hardhat](./initialize-hardhat),
+
+ we will import the [Gearbox SDK](https://github.com/Gearbox-protocol/gearbox-sdk) into our codebase. We will then use Hardhat to fork the Ethereum Mainnet.
 
 ### Gearbox SDK ⚙️🧰
 

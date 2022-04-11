@@ -44,5 +44,6 @@ $$
 max\;collateral\;loss = \chi^n, where \; n - \; hfCheckInterval
 $$
 
-There are some limitations for $\chi$ and $hfCheckInterval$, for more read ["Risk free long" attack](./risk-free-long-attack.md).
+There are some limitations for $\chi$ and $hfCheckInterval$, for more read 
+<!-- ["Risk free long" attack](./risk-free-long-attack.md). -->
 
