@@ -1,6 +1,6 @@
 # Pools
 
-`PoolSevice` contract provides API for managing liquidity and computing interest rates. PoolService lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./gearbox-pools#pool-operations) are the main functions of `PoolService` contract.
+`PoolService` contract provides an API for managing liquidity and computing interest rates. `PoolService` lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./gearbox-pools#pool-operations) are the main functions of `PoolService` contract.
 
 ![Pool Service](</images/tutorial/Gearbox\_white.010.jpeg>)
 
@@ -20,7 +20,7 @@ $$
 rate = \frac{expected\;liquidity}{diesel\;tokens\;supply}
 $$
 
-Liquidity providers get profits from holding diesel tokens cause they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest or can use them as collateral in lending protocols or even sell them on the secondary market.
+Liquidity providers get profits from holding diesel tokens because they grow with expected interest. LP can keep diesel tokens in their wallets and then withdraw the deposit + interest or can use them as collateral in lending protocols or even sell them on the secondary market.
 Diesel tokens are 100% liquid yield-generating assets.
 
 ### Basic parameters
@@ -33,7 +33,7 @@ Diesel tokens are 100% liquid yield-generating assets.
 
 #### **Periods and timestamp**
 
-All functions are piecewise linear functions. Each change in available liquidity  or borrowed amount [updates rate parameters](./gearbox-pools#rate-parameters-update). In follow formulas we use the convention:
+All functions are piecewise linear functions. Each change in available liquidity or borrowed amount [updates rate parameters](./gearbox-pools#rate-parameters-update). In the following formulas we use the convention:
 
 $$
 t_n - current\;timestamp,
@@ -48,7 +48,7 @@ The amount of money available in pool.
 
 #### EL(t) - Expected Liquidity <a href="#expected-liquidity" id="expected-liquidity"></a>
 
-The amount of money should be in the pool if all users close their Credit Accounts and return debt. If no action happens during $t_{n-1}$ and $t_n$, then the equation of $EL$ should be
+Represents the amount of money that should be in the pool if all users close their Credit Accounts and return debt. If no action happens during $t_{n-1}$ and $t_n$, then the equation of $EL$ should be
 
 $$
 EL(t_{n})= EL(t_{n-1})+B(t_{n-1})*r(t_{n-1})*(t_{n}-t_{n-1})
@@ -58,7 +58,7 @@ Beside, [Add Liquidity](./gearbox-pools#add-liquidity) and [Remove Liquidity](./
 
 #### B(t) - Total borrowed <a href="#total-borrowed" id="total-borrowed"></a>
 
-Represents total borrowed amount without accrued interest rate:
+Represents the total borrowed amount without accrued interest rate:
 
 $$
 B(t) = \sum b_i
@@ -66,11 +66,11 @@ $$
 
 #### r(t) - Borrow APY <a href="#borrow-apy" id="borrow-apy"></a>
 
-Represents current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](./gearbox-pools#linear-interest-rate-model).
+Represents the current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](./gearbox-pools#linear-interest-rate-model).
 
 #### d(t) Diesel rate <a href="#diesel-rate" id="diesel-rate"></a>
 
-Liquidity providers get profits from holding diesel tokens cause they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest.
+Liquidity providers get profits from holding diesel tokens because they grow with expected interest. LPs can keep diesel tokens in their wallets and then withdraw the deposit + interest.
 
 Diesel Rate is the price of Diesel token (LP token).
 
@@ -83,7 +83,7 @@ $$
 
 #### Cumulative Index
 
-Cumulative Index is aggregated variable that shows value of borrowing money.
+Cumulative Index is an aggregated variable that shows value of borrowing money.
 
 $$
 CI(t_{n})=CI(t_{n-1})(1+r(t_{n-1})*(t_{n}-t_{n-1})),

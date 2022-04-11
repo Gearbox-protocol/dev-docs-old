@@ -155,7 +155,6 @@ const sidebars = {
         id: "documentation/integrations/intro",
       },
       items: [
-        
         {
           type: "doc",
           label: "Building an adapter",
@@ -352,16 +351,25 @@ const sidebars = {
         },
       ],
     },
-
     {
-      type: "doc",
-      label: "Fast check and HealthFactor protection",
-      id: "tutorials/fast-check-and-healthfactor-protection",
-    },
-    {
-      type: "doc",
-      label: '"Risk Free Long" attack',
-      id: "tutorials/risk-free-long-attack",
+      type: "category",
+      label: "6. Possible Attacks",
+      link: {
+        type: "doc",
+        id: "tutorials/attacks/attacks",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Fast check and HealthFactor protection",
+          id: "tutorials/attacks/fast-check-and-healthfactor-protection",
+        },
+        {
+          type: "doc",
+          label: '"Risk Free Long" attack',
+          id: "tutorials/attacks/risk-free-long-attack",
+        },
+      ],
     },
   ],
   analyticsSidebar: [
