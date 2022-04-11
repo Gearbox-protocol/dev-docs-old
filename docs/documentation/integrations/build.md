@@ -72,22 +72,23 @@ Let's check the example of exactInputSingle adapter to clarify how it works.
 
 At first, the adapter has the same signature than ISwapRouter.sol from original uniswap v3 package. So, you need only to reroute the same calldata to this adapter to execute transaction using funds from credit account.
 
-At line 10, we get credit account address. The fundtion reverts, if msg.sender has no opened accounts.
+At line 10, we get credit account address. The function reverts, if msg.sender has no opened accounts.
 
-Then, at line 14, we check that credit account has enough allowance for operation and privide MAX\_INT, if no.
+Then, at line 14, we check that credit account has enough allowance for operation and provide MAX_INT, if no.
 
-Then, we check parameters, and change recipient to credit account to eliminate taking funds out from credit account, thenk we pack updated parameters in line 24-27.
+Then, we check parameters, and change recipient to credit account to eliminate taking funds out from credit account, then we pack updated parameters in line 24-27.
 
-In lines 29-36, we take existing balances of two assets which will be traded. The policy is not to trust for return values, cause they could be malicouse, and adapter is designed for particiular interface not protocol (like UniswapV2 interface could be used for many services).
+In lines 29-36, we take existing balances of two assets which will be traded. The policy is not to trust for return values, cause they could be malicious, and adapter is designed for particular interface not protocol (like UniswapV2 interface could be used for many services).
 
-In lines 37-40,  the adaper calls executeOrder method of creditManager, which check that this adapter and contract are allowed, and then it calls the same call data using credit account contract and returns result.
+In lines 37-40,  the adapter calls executeOrder method of creditManager, which check that this adapter and contract are allowed, and then it calls the same call data using credit account contract and returns result.
 
-It's significant to decode return values and return them cause this adapter could be called programatically and they could be used in the logic of other smart contracts,
+It's significant to decode return values and return them cause this adapter could be called programmatically and they could be used in the logic of other smart contracts,
 
 At the last step, it calls checkCollateralChange function, which checks the following policies:
 
 * tokenOut is in allowed token list
-* operatoin could pass fastCheck / healthFactorCheck -[ check more](../security/fast-check-and-healthfactor-protection.md)
+* operation could pass fastCheck / healthFactorCheck - [check more](/)
+
 
 It's crucial to provide delta in two token balances to compute correct health factor computations.
 

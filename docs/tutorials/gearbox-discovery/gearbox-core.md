@@ -1,16 +1,18 @@
 # Gearbox Core
 
-As illustrated in [Architecture](../../documentation/architecture.md), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
+As illustrated in [Architecture](/), Gearbox Core is a service layer which provides unified services including six component: AddressProvider, PoolRegistry, ACL, WETHGateway, AccountFactory, PriceOracle.  
 These services are provided by serveal smart contracts: AddressProvider, AccountFactory, ContractsRegister, WETHGateway, ACL&ACL Trait, DataCompressor and Oracles.  
 
 In this section we'll dig deeper into these smart contracts.
 
 ## AddressProvider
 
-AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the [simple example](../environment-setup/a-simple-example.md) we built previously, we can start to use other functionality of AddressProvider.
+AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the 
+[simple example](../environment-setup/a-simple-example) 
+ we built previously, we can start to use other functionality of AddressProvider.
 
 :::note
-We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk.md) for instructions.
+We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk) for instructions.
 :::
 
 Create a new source file called `scripts/gearbox-discovery.ts`

@@ -58,8 +58,6 @@ function addLiquidity(
 
 
 
-[More about adding liquidity and math behind](economy.md#add-liquidity)
-
 ### removeLiquidity
 
 ```solidity

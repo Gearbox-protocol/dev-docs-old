@@ -29,7 +29,7 @@ Diesel tokens are 100% liquid yield-generating assets.
 
 ### Periods and timestamp
 
-All functions are piecewise linear functions. Each change in available liquidity  or borrowed amount [updates rate parameters](./gearbox-pools#rate-parameters-update). In follow formulas we use the convention:
+All functions are piecewise linear functions. Each change in available liquidity  or borrowed amount [updates rate parameters](/). In follow formulas we use the convention:
 
 $$
 t_n - current\;timestamp,
@@ -50,7 +50,7 @@ $$
 EL(t_{n})= EL(t_{n-1})+B(t_{n-1})*r(t_{n-1})*(t_{n}-t_{n-1})
 $$
 
-Beside, [Add Liquidity](./gearbox-pools#add-liquidity) and [Remove Liquidity](./gearbox-pools#remove-liquidity) will have a new fumula of $EL$.
+Beside, [Add Liquidity](/) and [Remove Liquidity](/) will have a new formula of $EL$.
 
 ### B(t) - Total borrowed
 
@@ -62,7 +62,7 @@ $$
 
 ### r(t) - Borrow APY
 
-Represents current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](./gearbox-pools#linear-interest-rate-model).
+Represents current borrow APY. Depends on pool utilisation parameter and computed independently using [Interest rate model](/).
 
 ### d(t) Diesel rate
 
