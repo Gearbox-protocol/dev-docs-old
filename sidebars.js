@@ -117,7 +117,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Managing debt",
+          label: "Debt management",
           id: "documentation/credit/debt-management",
         },
         {
