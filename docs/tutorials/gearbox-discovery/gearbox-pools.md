@@ -2,7 +2,7 @@
 
 `PoolSevice` contract provides API for managing liquidity and computing interest rates. PoolService lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./gearbox-pools#pool-operations) are the main functions of `PoolService` contract.
 
-![Pool Service](<../../../static/img/tutorial/Gearbox\_white.010.jpeg>)
+![Pool Service](</images/tutorial/Gearbox\_white.010.jpeg>)
 
 ## Pool Economy
 
@@ -150,7 +150,7 @@ where amount\_B - borrowed amount. Then Pool Update().&#x20;
 
 #### Repay Credit Account
 
-PnL - is result of VA repaying:
+PnL - is result of repaying:
 
 $$
 PnL = total\;funds - amount_B - interest

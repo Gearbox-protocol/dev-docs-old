@@ -14,7 +14,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Gearbox Concepts",
-    image: "/img/gearbox_man.png",
+    image: "/images/gearbox_man.png",
     url: "docs/documentation/intro",
     description: (
       <>
@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Learn from our tutorials",
-    image: "/img/gearbox_contracts.png",
+    image: "/images/gearbox_contracts.png",
     url: "docs/tutorials/intro",
     description: (
       <>
@@ -36,7 +36,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Discover our SDK",
-    image: "/img/gearbox_men.png",
+    image: "/images/gearbox_men.png",
     url: "docs/sdk/intro",
     description: (
       <>

@@ -13,28 +13,47 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-
   fundementalSidebar: [
     {
       type: "doc",
       label: "Deployed Contracts",
-      id: "tutorials/deployed-contracts"
+      id: "tutorials/deployed-contracts",
     },
     {
-      type: 'html',
-      value: '<div />', // The HTML to be rendered
+      type: "html",
+      value: "<div />", // The HTML to be rendered
       defaultStyle: true, // Use the default menu item styling
     },
     "documentation/intro",
-   
+
     {
-      type: "doc",
+      type: "category",
       label: "Architecture",
-      id: "documentation/architecture",
+      link: {
+        type: "doc",
+        id: "documentation/architecture/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Contracts discovery",
+          id: "documentation/architecture/discovery",
+        },
+        {
+          type: "doc",
+          label: "Account Factory",
+          id: "documentation/architecture/account-factory",
+        },
+        {
+          type: "doc",
+          label: "Role model",
+          id: "documentation/architecture/roles",
+        },
+      ],
     },
     {
       type: "category",
-      label: "1. Pools",
+      label: "Pools",
       link: {
         type: "doc",
         id: "documentation/pools/intro",
@@ -42,20 +61,158 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "1.1. Pool economy",
-          id: "documentation/pools/economy"
+          label: "Liquidity",
+          id: "documentation/pools/liquidity",
         },
         {
           type: "doc",
-          label: "1.2. Pool service",
-          id: "documentation/pools/poolservice"
+          label: "Interest rate model",
+          id: "documentation/pools/linearInterestRateModel",
         },
         {
           type: "doc",
-          label: "1.2. Interest rate model",
-          id: "documentation/pools/linearInterestRateModel"
-        }
-      ]
+          label: "Fees collection",
+          id: "documentation/pools/fees",
+        },
+        {
+          type: "doc",
+          label: "Insurance",
+          id: "documentation/pools/insurance",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Credit accounts",
+      link: {
+        type: "doc",
+        id: "documentation/credit/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Architecture",
+          id: "documentation/credit/architecture",
+        },
+
+        {
+          type: "doc",
+          label: "Open credit account",
+          id: "documentation/credit/open",
+        },
+        {
+          type: "doc",
+          label: "Executing transactions",
+          id: "documentation/credit/execute",
+        },
+        {
+          type: "doc",
+          label: "Multicall",
+          id: "documentation/credit/multicall",
+        },
+        {
+          type: "doc",
+          label: "Adding collateral",
+          id: "documentation/credit/add-collateral",
+        },
+        {
+          type: "doc",
+          label: "Managing debt",
+          id: "documentation/credit/debt-management",
+        },
+        {
+          type: "doc",
+          label: "Closing credit account",
+          id: "documentation/credit/closure",
+        },
+        {
+          type: "doc",
+          label: "Risk management",
+          id: "documentation/credit/risk",
+        },
+        {
+          type: "doc",
+          label: "Liquidation",
+          id: "documentation/credit/liquidation",
+        },
+        {
+          type: "doc",
+          label: "Account transfer",
+          id: "documentation/credit/transfer",
+        },
+        {
+          type: "doc",
+          label: "Working with ETH",
+          id: "documentation/credit/eth",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Integrations",
+      link: {
+        type: "doc",
+        id: "documentation/integrations/intro",
+      },
+      items: [
+        
+        {
+          type: "doc",
+          label: "Building an adapter",
+          id: "documentation/integrations/build",
+        },
+        {
+          type: "category",
+          label: "Existing adapters",
+          link: {
+            type: "doc",
+            id: "documentation/integrations/existing/intro",
+          },
+          items: [
+            {
+              type: "doc",
+              label: "Uniswap adapter",
+              id: "documentation/integrations/existing/uniswap",
+            },
+            {
+              type: "doc",
+              label: "Curve adapter",
+              id: "documentation/integrations/existing/curve",
+            },
+            {
+              type: "doc",
+              label: "Yearn adapter",
+              id: "documentation/integrations/existing/yearn",
+            },
+            {
+              type: "doc",
+              label: "Lido adapter",
+              id: "documentation/integrations/existing/lido",
+            },
+            {
+              type: "doc",
+              label: "Convex adapter",
+              id: "documentation/integrations/existing/convex",
+            },
+          ],
+        },
+      ],
+    },
+
+    {
+      type: "category",
+      label: "Oracles",
+      link: {
+        type: "doc",
+        id: "documentation/credit/intro",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Architecture",
+          id: "documentation/credit/architecture",
+        },
+      ],
     },
   ],
   tutorialSidebar: [
@@ -93,7 +250,6 @@ const sidebars = {
         id: "tutorials/gearbox-discovery/gearbox-discovery",
       },
       items: [
-       
         {
           type: "doc",
           label: "2.2 Gearbox Core",
@@ -117,14 +273,14 @@ const sidebars = {
         {
           type: "doc",
           label: "3.1 Get Opened Accounts",
-          id: "tutorials/extracting-data/get-opened-accounts"
+          id: "tutorials/extracting-data/get-opened-accounts",
         },
         {
           type: "doc",
           label: "3.2 Monitor Your Health Factor",
-          id: "tutorials/extracting-data/monitor-your-health-factor"
-        }
-      ]
+          id: "tutorials/extracting-data/monitor-your-health-factor",
+        },
+      ],
     },
     {
       type: "category",
@@ -137,29 +293,29 @@ const sidebars = {
         {
           type: "doc",
           label: "4.1 Adapter",
-          id: "tutorials/build-upon-gearbox/adapter"
+          id: "tutorials/build-upon-gearbox/adapter",
         },
         {
           type: "category",
           label: "4.2 Trading Bot",
-          link: { 
+          link: {
             type: "doc",
-            id: "tutorials/build-upon-gearbox/trading-bot/trading-bot" 
+            id: "tutorials/build-upon-gearbox/trading-bot/trading-bot",
           },
           items: [
             {
               type: "doc",
               label: "4.2.1 Composable BTC short",
-              id: "tutorials/build-upon-gearbox/trading-bot/composable-btc-short"
+              id: "tutorials/build-upon-gearbox/trading-bot/composable-btc-short",
             },
             {
               type: "doc",
               label: "4.2.2 Time Arbitrage on sETH",
-              id: "tutorials/build-upon-gearbox/trading-bot/time-arbitrage-on-seth"
-            }
-          ]
-        }
-      ]
+              id: "tutorials/build-upon-gearbox/trading-bot/time-arbitrage-on-seth",
+            },
+          ],
+        },
+      ],
     },
     {
       type: "category",
@@ -172,48 +328,48 @@ const sidebars = {
         {
           type: "doc",
           label: "5.1 Run Liquidation Bot",
-          id: "tutorials/liquidation-bot/run-liquidation-bot"
+          id: "tutorials/liquidation-bot/run-liquidation-bot",
         },
         {
           type: "doc",
           label: "5.2 Bot Smart Contracts",
-          id: "tutorials/liquidation-bot/bot-smart-contracts"
+          id: "tutorials/liquidation-bot/bot-smart-contracts",
         },
         {
           type: "doc",
           label: "5.3 Credit Service",
-          id: "tutorials/liquidation-bot/credit-service"
+          id: "tutorials/liquidation-bot/credit-service",
         },
         {
           type: "doc",
           label: "5.4 Price Oracle",
-          id: "tutorials/liquidation-bot/price-oracle"
+          id: "tutorials/liquidation-bot/price-oracle",
         },
         {
           type: "doc",
           label: "5.5 Token Service",
-          id: "tutorials/liquidation-bot/token-service"
-        }
-      ]
+          id: "tutorials/liquidation-bot/token-service",
+        },
+      ],
     },
-    
+
     {
       type: "doc",
       label: "Fast check and HealthFactor protection",
-      id: "tutorials/fast-check-and-healthfactor-protection"
+      id: "tutorials/fast-check-and-healthfactor-protection",
     },
     {
       type: "doc",
-      label: "\"Risk Free Long\" attack",
-      id: "tutorials/risk-free-long-attack"
-    }
+      label: '"Risk Free Long" attack',
+      id: "tutorials/risk-free-long-attack",
+    },
   ],
   analyticsSidebar: [
     "analytics/intro",
     {
       type: "doc",
       label: "1 Python Analytical Tool",
-      id: "analytics/python-analytical-tool"
+      id: "analytics/python-analytical-tool",
     },
   ],
 };

@@ -177,7 +177,7 @@ ETH <=> WETH wrapper for Gearbox protocol. It implements IWETHGateway interface.
 
 Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs. 
 
-![](../../../static/img/tutorial/Gearbox\_white\_high.021.png)
+![](/images/tutorial/Gearbox\_white\_high.021.png)
 
 Each time, when a user opens a credit account in Gearbox protocol, `CreditManager` takes a pre-deployed credit account contract from the `AccountFactory` and when the user closes the credit account, `CreditManager` returns it.
 
@@ -199,7 +199,7 @@ If `AccountFactory` has no pre-deployed contracts, it clones it using [https://e
 
 The account factory uses a list to keep credit accounts and two pointers: head and tail.
 
-![](../../../static/img/tutorial/va\_list.jpeg)
+![](/images/tutorial/va\_list.jpeg)
 
 When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
