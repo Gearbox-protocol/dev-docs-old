@@ -14,7 +14,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "images/favicon.ico",
   organizationName: "GearboxProtocol",
   projectName: "dev-docs",
 
@@ -79,7 +79,7 @@ const config = {
       title: "Gearbox",
       logo: {
         alt: "Gearbox Finance",
-        src: "img/gearbox.png",
+        src: "images/gearbox.png",
       },
       items: [
         {
