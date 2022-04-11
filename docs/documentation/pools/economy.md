@@ -2,7 +2,6 @@
 
 `PoolSevice` contract provides API for managing liquidity and computing interest rates. PoolService lends money to connected credit account managers. Let's take a look at Pool Economy first. The [Pool operations](./economy#pool-operations) are the main functions of `PoolService` contract.
 
-![Pool Service](<../../../static/img/tutorial/Gearbox\_white.010.jpeg>)
 
 ## Pool Economy
 
