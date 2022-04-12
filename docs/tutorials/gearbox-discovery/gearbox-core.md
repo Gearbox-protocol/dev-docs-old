@@ -21,16 +21,18 @@ Create a new source file called `scripts/gearbox-discovery.ts`
 import { run, ethers } from "hardhat";
 import { AddressProvider__factory } from "@gearbox-protocol/sdk";
 
+// The address of Account #0
+const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
+// The address of Gearbox's AddressProvider contract
+const ADDRESS_PROVIDER_CONTRACT = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
+
 async function main() {
   // If you don't specify a //url//, Ethers connects to the default 
   // (i.e. ``http:/\/localhost:8545``)
   const provider = new ethers.providers.JsonRpcProvider(); 
-  // The address of Account #0
-  const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
   const accounts = await provider.getSigner(ACCOUNT0);
-  // The address of Gearbox's AddressProvider contract
-  const AddressProviderContract = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
-  const ap = AddressProvider__factory.connect(AddressProviderContract, provider);
+
+  const ap = AddressProvider__factory.connect(ADDRESS_PROVIDER_CONTRACT, provider);
 
   // Start to query AddressProvider
   //
@@ -82,6 +84,7 @@ npx hardhat run scripts/gearbox-discovery.ts
 This should produce the following output:
 
 ```
+
  ·-----------------|-------------·                                 
  |  Contract Name  ·  Size (KB)  │                                    
  ·-----------------|-------------·
@@ -187,13 +190,13 @@ If `AccountFactory` has no pre-deployed contracts, it clones it using [https://e
 
 ### Advantages
 
-  * **Gas efficiency:** This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
+* **Gas efficiency:** This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
 
-  * **Hacker-proof:** Contract funds are allocated on isolated contracts which makes a possible attack more complex and less economically reasonable. Furthermore, the gearbox protocol uses anomaly detection to pause contracts and keep funds safe if suspicious behavior is found. User can protect their funds by splitting them between a few virtual accounts, and it makes the attack less economic reasonable.
+* **Hacker-proof:** Contract funds are allocated on isolated contracts which makes a possible attack more complex and less economically reasonable. Furthermore, the gearbox protocol uses anomaly detection to pause contracts and keep funds safe if suspicious behavior is found. User can protect their funds by splitting them between a few virtual accounts, and it makes the attack less economic reasonable.
 
-  * **Balance transparency on Etherscan:** Trader or farmer could check all their transactions on Etherscan if they know at which block they start and finish virtual account renting.
+* **Balance transparency on Etherscan:** Trader or farmer could check all their transactions on Etherscan if they know at which block they start and finish virtual account renting.
 
-  * **Ethereum network ecology:** It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
+* **Ethereum network ecology:** It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
 
 ### Implementation
 

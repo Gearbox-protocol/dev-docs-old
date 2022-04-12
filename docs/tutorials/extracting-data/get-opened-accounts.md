@@ -1,7 +1,8 @@
 # Get Opened Accounts
 
-In this section, we'll get all the opened CreditAccounts by querying the `CreditManager`s. Let's directly go through the code below. 
-  1. First of all, we get the `AddressProvider` and then get the `ContractRegister` and get the `CreditManager` list by querying `ContractRegister`. 
+In this section, we'll get all the opened CreditAccounts by querying the `CreditManager`s. Let's directly go through the code below.  
+
+  1. First of all, we get the `AddressProvider` and then get the `ContractRegister` and get the `CreditManager` list by querying `ContractRegister`.
   2. Now, we can querying the `OpenCreditAccount` event from each `CreditManager`. As shown in the code, we query the event from block `13858003` to latest since the first `OpenCreditAccount` event happened in block `13858003`. 
   3. After get all the `OpenCreditAccountEvent`s, we still need to filter out those have been closed or liquidated. Same as querying `OpenCreditAccountEvent`, we get all the `CloseCreditAccountEvent`s and `LiquidateCreditAccountEvent`s.
 
@@ -13,17 +14,19 @@ import {AccountFactory__factory, AddressProvider__factory, ContractsRegister__fa
 import {Contract, Provider} from 'ethcall';
 import {ethers, run} from 'hardhat';
 
+// The address of Account #0
+const ACCOUNT0 = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266';
+const ADDRESS_PROVIDER_CONTRACT = '0xcF64698AFF7E5f27A11dff868AF228653ba53be0';
+
 const decimal = ethers.BigNumber.from('1000000000000000000');
 
 async function main() {
   const provider = new ethers.providers.JsonRpcProvider();
-  // The address of Account #0
-  const ACCOUNT0 = '0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266';
+
   const accounts = await provider.getSigner(ACCOUNT0);
   // The address of Gearbox's AddressProvider contract
-  const AddressProviderContract = '0xcF64698AFF7E5f27A11dff868AF228653ba53be0';
   const ap =
-      await AddressProvider__factory.connect(AddressProviderContract, provider);
+      await AddressProvider__factory.connect(ADDRESS_PROVIDER_CONTRACT, provider);
 
   // Start to query AddressProvider
   //
@@ -63,10 +66,12 @@ async function main() {
     // in this CreditManager from block 13858003 to the latest block
     let oca_events = await cm.queryFilter(
         cm.filters.OpenCreditAccount(), 13858003, 'latest');
+
     // query CloseCreditAccount event in this CreditManager from block 13858003
     // to the latest block
     let cca_events = await cm.queryFilter(
         cm.filters.CloseCreditAccount(), 13858003, 'latest');
+
     // query LiquidateCreditAccount event in this CreditManager from block
     // 13858003 to the latest block
     let lca_events = await cm.queryFilter(
