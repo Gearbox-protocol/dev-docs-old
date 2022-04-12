@@ -46,18 +46,18 @@ We are being shown 20 wallets that we can use to deploy. Using a Mainnet fork me
 import { run, ethers } from "hardhat";
 import { AddressProvider__factory } from "@gearbox-protocol/sdk";
 
+// The address of Account #0 as emitted from the fork shell command
+const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
+// The address of Gearbox's AddressProvider contract
+const ADDRESS_PROVIDER_CONTRACT = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
+
 async function main() {
   // If you don't specify a //url//, Ethers connects to the default 
   // (i.e. ``http:/\/localhost:8545``)
   const provider = new ethers.providers.JsonRpcProvider(); 
 
-  // The address of Account #0
-  const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
   const accounts = await provider.getSigner(ACCOUNT0);
-
-  // The address of Gearbox's AddressProvider contract
-  const AddressProviderContract = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
-  const ap = AddressProvider__factory.connect(AddressProviderContract, provider);
+  const ap = AddressProvider__factory.connect(ADDRESS_PROVIDER_CONTRACT, provider);
 
   // Get the latest version of Gearbox's contracts
   const version = await ap.version();
