@@ -7,8 +7,8 @@ Now that we have completed
 
 Now let's jump into Gearbox. In this chapter, we will introduce the architecture of Gearbox smart contracts and go through a series of query examples to better understand the resposibility of each component and how they work together.
 
-  * Architecture
-  * Gearbox Core
-  * Gearbox Pool
-  * Gearbox Credit Manager
+* Architecture
+* Gearbox Core
+* Gearbox Pool
+* Gearbox Credit Manager
 
