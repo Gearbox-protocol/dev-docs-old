@@ -10,7 +10,7 @@
 
    Each position has 1.16 heath factor.
 2. Then attacker waits when hf of one position will be \~ 1, and take N `fastCheckOperatins` with minimal allowed $\chi$ (which means decrease in collateral).
-3. Then attacker liquidates his account during the same transaction (cause account's $HF < 1$ and liquidation is more profitable than closing at the case).
+3. Then attacker liquidates his account during the same transaction (because account's $HF < 1$ and liquidation is more profitable than closing at the case).
 
 ### Protection
 

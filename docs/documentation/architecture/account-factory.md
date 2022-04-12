@@ -24,7 +24,7 @@ If the Account Factory has no pre-deployed contracts and a user opens a new Cred
 ## Advantages
 
 - **Gas efficiency**  
-This solution is much more gas-efficient, cause it doesn't require creating a new contract each time and has minimal operational overhead.
+This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
 
 - **Hacker-proof**  
 Funds are distributed between credit accounts (isolated contracts) which makes a possible attack more complex and less economically reasonable.  
