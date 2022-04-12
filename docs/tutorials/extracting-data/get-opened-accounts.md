@@ -3,11 +3,10 @@
 In this section, we'll get all the opened CreditAccounts by querying the `CreditManager`s. Let's directly go through the code below.  
 
   1. First of all, we get the `AddressProvider` and then get the `ContractRegister` and get the `CreditManager` list by querying `ContractRegister`.
-  2. Now, we can querying the `OpenCreditAccount` event from each `CreditManager`. As shown in the code, we query the event from block `13858003` to latest since the first `OpenCreditAccount` event happened in block `13858003`. 
+  2. Now, we can querying the `OpenCreditAccount` event from each `CreditManager`. As shown in the code, we query the event from block `13858003` to latest since the first `OpenCreditAccount` event happened in block `13858003`.  
   3. After get all the `OpenCreditAccountEvent`s, we still need to filter out those have been closed or liquidated. Same as querying `OpenCreditAccountEvent`, we get all the `CloseCreditAccountEvent`s and `LiquidateCreditAccountEvent`s.
 
   **NOTE:** For filtering out, we sort all the event by `blockNum` and `transactionIndex` because it is possible that a borrower has opened an `CreditAccount` with a `CreditManager` twice and the addresses of both `CreditAccount`s are same.
-
 
 ```jsx title="scripts/get-opened-accounts.ts"
 import {AccountFactory__factory, AddressProvider__factory, ContractsRegister__factory, CreditAccount__factory, CreditManager__factory, ERC20__factory} from '@gearbox-protocol/sdk';
@@ -142,7 +141,8 @@ main().then(() => process.exit(0)).catch((error) => {
 
 We can run this code by
 
-```
+```bash
 npx hardhat run scripts/get-opened-accounts.ts
 ```
+
 And you will get a table with columns `Borrower,CreditAccount,CreditManager,UnderlyingToken,BorrowerOwnedAmount,BorrowedAmount`.

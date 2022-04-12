@@ -1,12 +1,12 @@
 import CodeBlock from '@theme/CodeBlock';
 
-# Gearbox SDK  and Mainnet Forking 
+# Gearbox SDK  and Mainnet Forking
 
 After we've [set up Hardhat](./initialize-hardhat),
 
  we will import the [Gearbox SDK](https://github.com/Gearbox-protocol/gearbox-sdk) into our codebase. We will then use Hardhat to fork the Ethereum Mainnet.
 
-### Gearbox SDK ⚙️🧰
+## Gearbox SDK ⚙️🧰
 
 First of all, we need to import the Gearbox SDK into our project.
 
@@ -97,7 +97,8 @@ As we can see, `hardhat.config.file` will read the `.env` file. Thus we create a
 :::note
 To use this feature you need to connect to an archive node. We recommend using [Alchemy](https://www.alchemy.com/). Please get your mainnet API key from there, once you've created an account.
 :::
-### Mainnet Forking
+
+## Mainnet Forking
 
 We've set up a working environment with our tooling now. We will now move on to forking the Ethereum Mainnet.
 
@@ -115,6 +116,7 @@ npx hardhat node --fork $ETH_MAINNET_PROVIDER
 ```
 
 We may want to use `yarn` or `npm` to run this `fork.sh` file, so add the following to the `package.json` file.
+
 ```json
 "scripts": {
     "fork": "scripts/fork.sh"
@@ -126,4 +128,3 @@ Now we can fork mainnet by running
 ```bash npm2yarn
 npm run fork
 ```
-

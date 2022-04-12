@@ -1,6 +1,7 @@
 # Monitor Your Health Factor
 
 In this section, we're gonna make a simple monitor to check your `HealthFactor`.
+
   1. With our powerful `DataCompressor`, we can get the `CreditAccount` list of our wallet. There are many data in the return, you could try to output it.
   2. Since we want to build a monitor, the easy way is writting a while loop. And check the `blockNumber` each time, when a new block is finalized, we start doing our work.
   3. For each `CreditAccount` we opened, get the `CreditFilter` from `CreditManager`(**Note** here that CreditFilter and CreditManager are one-to-one correspondence.).

@@ -2,14 +2,14 @@
 
 ## Reusable credit accounts
 
-Credit account is implemented as an isolated smart contract. It helps to reduce gas consumption, 
-cause all balances are kept dcentralised, and there is no overhead to update pool balances and 
+Credit account is implemented as an isolated smart contract. It helps to reduce gas consumption,
+cause all balances are kept dcentralised, and there is no overhead to update pool balances and
 internal balances as well.
 
 ![Core contracts](/images/core/factory.jpg)
 
-Reusability means than once deployed this contract is "rented" by CreditManager, when user opens 
-Credit Account and returned when account is closed or liquidated. This approached allow users 
+Reusability means than once deployed this contract is "rented" by CreditManager, when user opens
+Credit Account and returned when account is closed or liquidated. This approached allow users
 not to pay gas cost for contract deployment and make protocol more gas-efficient.
 
 ## Account Factory
@@ -36,6 +36,7 @@ Traders could check transactions on Etherscan between blocks when they opened an
 It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
 
 ## Getters
+
 Despite AccountFactory is primary used internally, developers could get valuable data from AccountFactory.
 
 ```solidity

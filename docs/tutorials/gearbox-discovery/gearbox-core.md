@@ -7,9 +7,9 @@ In this section we'll dig deeper into these smart contracts.
 
 ## AddressProvider
 
-AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the 
-[simple example](../environment-setup/a-simple-example) 
- we built previously, we can start to use other functionality of AddressProvider.
+AddressProvider keeps addresses of core contracts which is used for smart contract address discovery.
+Continuing from the [simple example](../environment-setup/a-simple-example) we built previously,
+we can start to use other functionality of AddressProvider.
 
 :::note
 We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk) for instructions.
@@ -128,7 +128,6 @@ We'll add some code in `scripts/gearbox-discovery.ts` between `ContractsRegister
   ...
 ```
 
-
 Run this code by executing this shell command:
 
 ```bash
@@ -162,25 +161,22 @@ DataCompressor is  0x0050b1ABD1DD2D9b01ce954E663ff3DbCa9193B1
 WETHGateway is  0x4F952c4C5415B2609899AbDC2F8F352F600d14D6
 ```
 
-
 ## ACL
 
 ACL keeps permissions for different addresses. For the moment, it keeps 2 different roles:
 
-  * **PausableAdmin**: Can pause and unpause contracts
-  * **Configurator**: Can configure contracts parameters
+* **PausableAdmin**: Can pause and unpause contracts
+* **Configurator**: Can configure contracts parameters
 
 This part is mainly related to security and we can see from this [article](./anomaly-detection) how it will be used.
-
 
 ## WETHGateway
 
 ETH <=> WETH wrapper for Gearbox protocol. It implements IWETHGateway interface.
 
-
 ## AccountFactory
 
-Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs. 
+Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs.
 
 ![](/images/tutorial/Gearbox\_white\_high.021.png)
 
@@ -208,18 +204,17 @@ The account factory uses a list to keep credit accounts and two pointers: head a
 
 When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
-
 ## DataCompressor
 
 `DataCompressor` collects data from different contracts in order to transmit this information in an aggregated way to a dApp.  
 
 Let's list some main function in `DataCompressor`:
 
-  * `getCreditAccountList(address borrower)` for getting the list of `CreditAccountData`s of a specified borrower
-  * `getCreditAccountData(address _creditManager, address borrower)` for getting `CreditAccountData` of a specified borrower under a specified `CreditManager`
-  * `getCreditAccountDataExtended(address creditManager, address borrower)` for getting `CreditAccountDataExtended` of a specified borrower under a specified `CreditManager`, `CreditAccountDataExtended` is the extension types of `CreditAccountData`, you can check `Types.sol` for more details.
-  * `getCreditManagersList(address borrower)` for getting list of `CreditManagerData` of a specified borrower
-  * `getPoolsList()` for getting list of `PoolData`
+* `getCreditAccountList(address borrower)` for getting the list of `CreditAccountData`s of a specified borrower
+* `getCreditAccountData(address _creditManager, address borrower)` for getting `CreditAccountData` of a specified borrower under a specified `CreditManager`
+* `getCreditAccountDataExtended(address creditManager, address borrower)` for getting `CreditAccountDataExtended` of a specified borrower under a specified `CreditManager`, `CreditAccountDataExtended` is the extension types of `CreditAccountData`, you can check `Types.sol` for more details.
+* `getCreditManagersList(address borrower)` for getting list of `CreditManagerData` of a specified borrower
+* `getPoolsList()` for getting list of `PoolData`
 
 :::info
 Datacompressor has an unstable API

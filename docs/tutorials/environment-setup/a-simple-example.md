@@ -8,7 +8,7 @@ npm run fork
 
 After running the command above, we will see something like this in the terminal.
 
-```
+```bash
 yarn run v1.22.17
 warning package.json: No license field
 $ scripts/fork.sh                                                   

@@ -1,8 +1,8 @@
 # "Risk free long" attack
 
-### Attack
+## Attack
 
-1. Attacker opens 2 positions (lets assume that 1ETH = 2500USDC) 
+1. Attacker opens 2 positions (lets assume that 1ETH = 2500USDC)
 
    **\[Position #1:  Long USDC->ETH]**: 1000 USDX x5 = 5K USDC -> 2 ETH
 
@@ -12,7 +12,7 @@
 2. Then attacker waits when hf of one position will be \~ 1, and take N `fastCheckOperatins` with minimal allowed $\chi$ (which means decrease in collateral).
 3. Then attacker liquidates his account during the same transaction (cause account's $HF < 1$ and liquidation is more profitable than closing at the case).
 
-### Protection
+## Protection
 
 This attack could beneficial only if attarcker could take money from pool, and this amount could be >> gas consumed. To be protected from Gearbox side, at first let's compute maximum possible drop between full health factor check:
 

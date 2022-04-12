@@ -1,6 +1,7 @@
 # Composable BTC short
 
 In this example, we will use some functions in [code](https://github.com/curiosityyy/play-with-gearbox/blob/main/scripts/composable-wBTC-short.ts) to illustrate how to use Gearbox to do composable wBTC short. The workflow is mainly in 5 steps:
+
  1. Open wBTC credit account (deposit `wBTC_deposit_amount` wBTC and open the wBTC credit account.)
  2. Add `USDC_deposit_amount` USDC as collateral.
  3. Borrow `wBTC_borrow_amount` wBTC.
@@ -8,6 +9,7 @@ In this example, we will use some functions in [code](https://github.com/curiosi
  5. Deposit all USDC to Yearn.
 
 So `composableWBTCShort` is the function to prepare token address, connect to token contract and call each step's function.
+
 ```jsx
 async function composableWBTCShort(wbtc_deposit_amount: number, usdc_deposit_amount: number, wbtc_borrow_amount: number, wallet_signer: any, account: string) {
 
@@ -38,13 +40,17 @@ async function composableWBTCShort(wbtc_deposit_amount: number, usdc_deposit_amo
 }
 ```
 
-### Open wBTC credit account
-The first step is to open a wBTC credit account. As we can see in `composableWBTCShort`, we call the function `openCreditAccount` to open a credit account. 
+## Open wBTC credit account
+
+The first step is to open a wBTC credit account. As we can see in `composableWBTCShort`, we call the function `openCreditAccount` to open a credit account.
+
 ```jsx
 // 1. Open wBTC credit account
 await openCreditAccount(wbtc_credit_manager_address, wbtc_address, wbtc_deposit_amount, 1, wallet_signer);
 ```
+
 `openCreditAccount` is for opening a credit account by interacting with credit manager contract. `wbtc_credit_manager_address` is passed to this function for opening a credit account under `wbtc_credit_manage`. Before opening credit account, we should approve the credit manager to spend tokens from our account. (We use a pre-defined function here, you can check the details in the github repo.) We also pass `wbtc_deposit_amount` and `leverage_factor` to tell the contract how much wBTC we want to deposit and borrow at the beginning. **Note that `leverage_factor/100` is the real leverage factor.**
+
 ```jsx
 async function openCreditAccount(credit_manager_address: string, underlying_token_address: string, deposit_amount: number, leverage_factor: number, wallet_signer: any) {
   // Assume we have got the address of wBTC Credit Manager contract
@@ -57,13 +63,17 @@ async function openCreditAccount(credit_manager_address: string, underlying_toke
 }
 ```
 
-### Add Some USDC as Collateral
-We have no much wBTC deposited as collateral since we want to do a wBTC short, so we may add some other token as collateral. In this example, we choose USDC, we use this line of code in `composableWBTCShort` to add some USDC as collateral. 
+## Add Some USDC as Collateral
+
+We have no much wBTC deposited as collateral since we want to do a wBTC short, so we may add some other token as collateral. In this example, we choose USDC, we use this line of code in `composableWBTCShort` to add some USDC as collateral.
+
 ```jsx
 // 2. put there USDC as collateral
 await addCollateral(usdc_address, usdc_deposit_amount, wbtc_credit_manager_address, wallet_signer);
 ```
+
 `addCollateral` function is simple which includes an `approve_contract` function call and an `addCollateral` call to tell the credit manager that we want to deposit `deposit_amount` token (e.g. USDC) to `wallet_signer.address` as collateral.
+
 ```jsx
 async function addCollateral(token_address: string, deposit_amount: number, credit_manager_address: string, wallet_signer: any) {
   const token = ERC20__factory.connect(token_address, wallet_signer);
@@ -74,12 +84,15 @@ async function addCollateral(token_address: string, deposit_amount: number, cred
 }
 ```
 
-### Borrow 4x wBTC
+## Borrow 4x wBTC
+
 Now, we have some wBTC and USDC as collateral, don't forget that we wang to do a wBTC short and we haven't borrow wBTC (Actually we borrow a little at the beginning, but it's a little.). We need more wBTC in this step, we call `increaseBorrowedAmount` to borrow more `wbtc_borrow_amount` wBTC.
+
 ```jsx
 // 3. borrow x4 wBTC
 await increaseBorrowedAmount(wbtc_borrow_amount, wbtc_address, wbtc_credit_manager_address, wallet_signer);
 ```
+
 ```jsx
 async function increaseBorrowedAmount(borrow_amount: number, underlying_token_address: string, credit_manager_address: string, wallet_signer: any) {
   const credit_manager = CreditManager__factory.connect(credit_manager_address, wallet_signer);
@@ -89,13 +102,17 @@ async function increaseBorrowedAmount(borrow_amount: number, underlying_token_ad
 }
 ```
 
-### Sell wBTC for USDC
+## Sell wBTC for USDC
+
 Okay, it's time to swap wBTC to USDC. At this time, we make the transaction in uniswapV3 dex. Since we deposited `wbtc_deposit_amount` wBTC and borrowed `wbtc_borrow_amount` wBTC, we can swap `wbtc_deposit_amount + wbtc_borrow_amount` wBTC to USDC.
+
 ```jsx
 // 4. sell wBTC for USDC
 await exactInputSingleUniswapV3(wbtc_address, usdc_address, wbtc_deposit_amount + wbtc_borrow_amount, wallet_signer);
 ```
-Fuction `exactInputSingleUniswapV3` is a little longer than other functions, because there is a swap order. We know how much amount of `tokenIn` exactly, so we use the `exactInputSingle` function in uniswapV3 adapter. The `exact_input_single_order` clealy shows the details of the swap transaction. 
+
+Fuction `exactInputSingleUniswapV3` is a little longer than other functions, because there is a swap order. We know how much amount of `tokenIn` exactly, so we use the `exactInputSingle` function in uniswapV3 adapter. The `exact_input_single_order` clealy shows the details of the swap transaction.
+
 ```jsx
 async function exactInputSingleUniswapV3(token_in_address: string, token_out_address: string, token_in_amount: number, wallet_signer: any) {
   const wbtc_credit_manager_uniswapv3_adapter_address = "0x1D2d299C8cB6260F64dAF7aD7f5a6ABc58c88022";
@@ -118,12 +135,15 @@ async function exactInputSingleUniswapV3(token_in_address: string, token_out_add
 }
 ```
 
-### Deposit all USDC to Yearn
+## Deposit all USDC to Yearn
+
 Finally, we got lots of USDC in our credit account. I think nobody would want to hold USDC in an account and not do any operation on it, so we should find a place to stake USDC and earn rewards. Yearn is a good choice, we also have a yearn adapter. So let's do it
+
 ```jsx
 // 5. put USDC to Yearn
 await depositToYearn(wallet_signer);
 ```
+
 ```jsx
 async function depositToYearn(wallet_signer: any) {
   const wBTC_CM_Yearn_adapter_address = "0x759cF6ab3F9c6Edc504572d735bD383eF4e3Ce59";

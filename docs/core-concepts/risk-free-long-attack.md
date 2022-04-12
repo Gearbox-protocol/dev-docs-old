@@ -1,8 +1,8 @@
 # "Risk free long" attack
 
-### Attack
+## Attack
 
-1. Attacker opens 2 positions (lets assume that 1ETH = 2500USDC) 
+1. Attacker opens 2 positions (lets assume that 1ETH = 2500USDC)
 
    **\[Position #1:  Long USDC->ETH]**: 1000 USDX x5 = 5K USDC -> 2 ETH
 

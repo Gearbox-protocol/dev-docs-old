@@ -2,13 +2,14 @@
 
 You may have saw there are some `.sol` files in `contracts/` of [liquidation bot](https://github.com/Gearbox-protocol/liquidation-bot). They include a main contract `Terminator.sol` and some auxiliary contract like interfaces, etc. Thus we will focus on the `Terminator.sol` file in this chapter. This the tables of variables and functions.
 
-### Variables
+## Variables
+
 | Variable                                  | Interpretation                                                        |
 |-------------------------------------------|-----------------------------------------------------------------------|
 | mapping(address => bool) public executors | Map from address to a bool indicating if this address is an executor. |
 | address[] public yearn                    | List of yearn vaults connected.                                       |
 
-### Functions
+## Functions
 
 | Functions                                                                                                                                             | Interpretation                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|

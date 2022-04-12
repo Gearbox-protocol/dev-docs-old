@@ -1,18 +1,20 @@
 # Python Analytical Tool
 
-For some developers who prefer to use Python, we make an additional section here to show how to use jupyter notebook to get `CreditAccount` and make some analysis. So first of all, we need to install `web3` python package and `multicall` package. Yes, we will use `multicall` in the example below. If you go through the whole workflow below, you will get something like [GearboxCreditAccounts.ipyn](https://colab.research.google.com/drive/1YORBt-1ZzClkFYJGOjkAHD9Xx3_nf9eT?usp=sharing).
-
+For some developers who prefer to use Python, we make an additional section here to show how to use jupyter notebook to get `CreditAccount` and make some analysis. So first of all, we need to install the follio `web3` python package and `multicall` package. Yes, we will use `multicall` in the example below. If you go through the whole workflow below, you will get something like [GearboxCreditAccounts.ipyn](https://colab.research.google.com/drive/1YORBt-1ZzClkFYJGOjkAHD9Xx3_nf9eT?usp=sharing).
 
 In[1]:
+
 ```
 !pip uninstall jsonschema
 !pip3 install --force-reinstall jsonschema==3.2.0
 !pip install web3
 !pip install multicall
 ```
+
 Import some required packages and connect to ethereum rpc.
 
 In[2]:
+
 ```python
 from IPython.core.display import display, HTML
 display(HTML("<style>.container { width:100% !important; }</style>"))
@@ -40,6 +42,7 @@ w3_eth = Web3(Web3.HTTPProvider(RPC_Endpoint, request_kwargs={'timeout': 20}))
 print ('Ethereum connected:', w3_eth.isConnected())
 
 ```
+
 ```
 Ethereum connected: True
 
@@ -48,6 +51,7 @@ Ethereum connected: True
 Define three functions including `parse_abi`, `get_logs` and `pull_abi_etherscan`. We can use `pull_abi_etherscan` to pull the abi json by contract address through etherscan and then use `parse_abi` to parse the abi json to a dataframe for further uses. `getlogs` is used for get event logs of a specified contract.
 
 In[3]:
+
 ```python
 def parse_abi(abi_dict, abi_type = None):
     recs = []
@@ -108,6 +112,7 @@ def pull_abi_etherscan(contract_address, apikey = Etherscan_APIKEY):
 After defined these three functions, we use them to get some data of Gearbox Contract including address of `AccountFactory`, `masterCreditAccount`, `DataCompressor`, `ContractsRegister` and `CreditManager`s. And then get details of `CreditManager`s and `AllowedToken`s.
 
 In[4]:
+
 ```python
 print(datetime.utcnow(),'start')
 AddressProvider = Web3.toChecksumAddress(GearboxAddressProvider)
@@ -208,6 +213,7 @@ display(allowedTokens)
 We define some functions to use `multicall` to get `CreditAccount`s. To prevent timeout, we need to batch the chunks into chunks.
 
 In[5]:
+
 ```python
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
@@ -277,12 +283,14 @@ def get_data_multicall(df, function_name, df_abi, contract_address = None):
 ```
 
 Now we can start to get the `CreditAccount`s by multicall. We get 1000 `CreditAccount`s once.
-  * Get `CreditAccount`s' addresses from `AccountFactory`.
-  * For each `CreditAccount`, get its `CreditManager`.
-  * For each `CreditAccount`, get its `borrowedAmount`.
-  * For each `CreditAccount`, get the block number this account was minted.
+
+* Get `CreditAccount`s' addresses from `AccountFactory`.
+* For each `CreditAccount`, get its `CreditManager`.
+* For each `CreditAccount`, get its `borrowedAmount`.
+* For each `CreditAccount`, get the block number this account was minted.
 
 In[6]:
+
 ```python
 df = pd.DataFrame()
 df['id'] = range(countCreditAccounts)
@@ -309,6 +317,7 @@ df
 We can also get `CreditAccount`s through event logs.
 
 In[7]:
+
 ```python
 #Open, Close, Repay, Liquidate
 OpenCreditAccount_topic      =  df_abi[(df_abi['name']=='OpenCreditAccount') &(df_abi['type']=='event')]['topic'].values[0]
@@ -376,6 +385,7 @@ display(df)
 We can also get `CreditAccount`s' extended data through `DataCompressor`. **Note that do not use for data from data compressor for state-changing functions**
 
 In[8]:
+
 ```python
 def getCreditAccountDataExtended(id, cm, borrower):
     try:
@@ -422,6 +432,7 @@ df
 The `CreditAccount`s we got above including inactive account, we can get active `CreditAccount`s by filtering out `NAN`.
 
 In[9]:
+
 ```python
 df[pd.notna(df['Borrower'])] # active CAs
 ```
@@ -429,6 +440,7 @@ df[pd.notna(df['Borrower'])] # active CAs
 Get data types of columns in `CreditAccount`s list.
 
 In[10]:
+
 ```python
 #For compatability with BQ data types 
 numeric_cols = [x for x in df.columns if x not in ['CA', 'CM' ,'Symbol', 'Borrower', 'batchtime', 
@@ -442,6 +454,7 @@ df.dtypes
 Get price oracle of `allowedTokens`.
 
 In[11]:
+
 ```python
 df_price_oracle = pd.DataFrame.from_dict([allowedTokens[x] for x in allowedTokens])
 df_price_oracle = df_price_oracle.set_index('symbol', drop=True).transpose()
@@ -461,4 +474,3 @@ df_price_oracle[numeric_cols] = df_price_oracle[numeric_cols].astype('float64')
 
 df_price_oracle
 ```
-
