@@ -1170,14 +1170,6 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@diesellabs/gearbox-sdk@^0.0.273":
-  version "0.0.273"
-  resolved "https://registry.npmjs.org/@diesellabs/gearbox-sdk/-/gearbox-sdk-0.0.273.tgz"
-  integrity sha512-3IvTmMrVY7+OiTrTOtX5wt79nQzrj2FUeM6fKDfL878/CaineTAcnFpSseUBR1H97nU9cU8ZLMdyr88JLVojqg==
-  dependencies:
-    decimal.js-light "^2.5.1"
-    moment "^2.29.1"
-
 "@docsearch/css@3.0.0":
   version "3.0.0"
   resolved "https://registry.npmjs.org/@docsearch/css/-/css-3.0.0.tgz"
@@ -2008,6 +2000,14 @@
     "@ethersproject/logger" "^5.6.0"
     "@ethersproject/properties" "^5.6.0"
     "@ethersproject/strings" "^5.6.0"
+
+"@gearbox-protocol/sdk@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-0.0.4.tgz#1e4c88b18fa680b44c5007a2f0c64e8305e5994d"
+  integrity sha512-4mtXTcQ0m0ulO2/h7dvfaYLnmHXcHf3jNBYsTLhI1Ad+EIFhjQ1nhKCIKTZTY2jq9mM7IoeWvN0kunJlQNNEOA==
+  dependencies:
+    decimal.js-light "^2.5.1"
+    moment "^2.29.1"
 
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
