@@ -203,12 +203,12 @@ const sidebars = {
       label: "Oracles",
       link: {
         type: "doc",
-        id: "documentation/credit/intro",
+        id: "documentation/priceoracle",
       },
       items: [
         {
           type: "doc",
-          label: "Architecture",
+          label: "Yearn LP oracle",
           id: "documentation/credit/architecture",
         },
       ],
