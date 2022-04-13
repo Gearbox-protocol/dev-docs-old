@@ -78,11 +78,11 @@ Then, at line 14, we check that credit account has enough allowance for operatio
 
 Then, we check parameters, and change recipient to credit account to eliminate taking funds out from credit account, then we pack updated parameters in line 24-27.
 
-In lines 29-36, we take existing balances of two assets which will be traded. The policy is not to trust for return values, cause they could be malicious, and adapter is designed for particular interface not protocol (like UniswapV2 interface could be used for many services).
+In lines 29-36, we take existing balances of two assets which will be traded. The policy is not to trust for return values, because they could be malicious, and adapter is designed for particular interface not protocol (like UniswapV2 interface could be used for many services).
 
 In lines 37-40,  the adapter calls executeOrder method of creditManager, which check that this adapter and contract are allowed, and then it calls the same call data using credit account contract and returns result.
 
-It's significant to decode return values and return them cause this adapter could be called programmatically and they could be used in the logic of other smart contracts,
+It's significant to decode return values and return them because this adapter could be called programmatically and they could be used in the logic of other smart contracts,
 
 At the last step, it calls checkCollateralChange function, which checks the following policies:
 

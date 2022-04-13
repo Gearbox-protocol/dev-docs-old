@@ -5,19 +5,18 @@ sidebar_position: 1
 
 ## Introduction
 
-Gearbox Protocol is a peer-to-peer system designed to provide users with a non-custodial collateralized line of credit which can be used to interact in a leveraged way with DAO-approved [(**ERC-20 Tokens**)](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the [**Ethereum**](https://ethereum.org/) blockchain. 
+Gearbox Protocol is a peer-to-peer system designed to provide users with a non-custodial collateralized line of credit which can be used to interact in a leveraged way with DAO-approved [(**ERC-20 Tokens**)](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the [**Ethereum**](https://ethereum.org/) blockchain.
 The protocol is implemented as a suite of upgradable smart contracts that together create a credit provider which is accessible and confined only to a wallet which we define as a "Credit Account". By design the system is secure, self-custodial, and functions without any trusted intermediaries who may selectively restrict access.
-
 
 There are currently two versions of the Gearbox protocol.  
 V1 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE).  
-V2 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE). 
+V2 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE).
 
 Each version of Gearbox, once deployed, will function in perpetuity, with 100% uptime, provided the continued existence of the Ethereum blockchain.
 
 ## How does the Gearbox protocol allow to take credit onchain in a safe way?
 
-To understand how the Gearbox protocol allows its users to take leverage on their onchain operations in a secure way, it is helpful to first look at two subjects: how the protocol restricts funds to a specific non-custodial wallet, and how the DAO approves on which smartcontracts and ERC-20 tokens can be accessed. 
+To understand how the Gearbox protocol allows its users to take leverage on their onchain operations in a secure way, it is helpful to first look at two subjects: how the protocol restricts funds to a specific non-custodial wallet, and how the DAO approves on which smartcontracts and ERC-20 tokens can be accessed.
 
 ### Credit Accounts
 

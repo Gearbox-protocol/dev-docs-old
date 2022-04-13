@@ -74,6 +74,6 @@ You need only to reroute the same calldata to this adapter to execute transactio
 
   **NOTE: It's significant to decode return values and return them cause this adapter could be called programatically and they could be used in the logic of other smart contracts.**
   6. At the last step, it calls checkCollateralChange function, which checks the following policies:
-      * `tokenOut` is in allowed token list.
-      * Operation could pass fastCheck / healthFactorCheck -[ check more](../attacks/fast-check-and-healthfactor-protection)
+      *`tokenOut` is in allowed token list.
+      * Operation could pass fastCheck / healthFactorCheck -[check more](../attacks/fast-check-and-healthfactor-protection)
       * It's crucial to provide delta in two token balances to compute correct health factor computations. If the function doesn't pass these policies, it will revert.

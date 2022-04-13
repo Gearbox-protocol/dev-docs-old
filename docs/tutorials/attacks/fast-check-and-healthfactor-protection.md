@@ -19,12 +19,13 @@ To prevent such attack, we should compute health factor after each operation and
 To reduce gas costs, Gearbox uses "fast check protection" which just check the collateral change. For fast check we can compute $\chi$ parameter:
 
 where
+
 * $c_{out}$ - number of units of asset, that credit account recieves (out-asset) as a result of financial operation,
 * $p_{out}$ - price of asset to ETH
 * $c_{in}$ - number of units, that credit account sends to external smart-contract while doing financial operations,
 * $p_{in}$ - price of this asset to ETH
 
-If $\chi > 1$, it means that we get more collateral in than out, and this operations is safe. 
+If $\chi > 1$, it means that we get more collateral in than out, and this operations is safe.
 
 In other cases, we compare $\chi$ with $\chi_{min}$ -  maximum allowed colllateral drop without healthFactor check. This parameter is set by DAO.
 
@@ -44,6 +45,5 @@ $$
 max\;collateral\;loss = \chi^n, where \; n - \; hfCheckInterval
 $$
 
-There are some limitations for $\chi$ and $hfCheckInterval$, for more read 
+There are some limitations for $\chi$ and $hfCheckInterval$, for more read
 <!-- ["Risk free long" attack](./risk-free-long-attack.md). -->
-

@@ -7,9 +7,9 @@ In this section we'll dig deeper into these smart contracts.
 
 ## AddressProvider
 
-AddressProvider keeps addresses of core contracts which is used for smart contract address discovery. Continuing from the 
-[simple example](../environment-setup/a-simple-example) 
- we built previously, we can start to use other functionality of AddressProvider.
+AddressProvider keeps addresses of core contracts which is used for smart contract address discovery.
+Continuing from the [simple example](../environment-setup/a-simple-example) we built previously,
+we can start to use other functionality of AddressProvider.
 
 :::note
 We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk) for instructions.
@@ -21,16 +21,18 @@ Create a new source file called `scripts/gearbox-discovery.ts`
 import { run, ethers } from "hardhat";
 import { AddressProvider__factory } from "@gearbox-protocol/sdk";
 
+// The address of Account #0
+const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
+// The address of Gearbox's AddressProvider contract
+const ADDRESS_PROVIDER_CONTRACT = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
+
 async function main() {
   // If you don't specify a //url//, Ethers connects to the default 
   // (i.e. ``http:/\/localhost:8545``)
   const provider = new ethers.providers.JsonRpcProvider(); 
-  // The address of Account #0
-  const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
   const accounts = await provider.getSigner(ACCOUNT0);
-  // The address of Gearbox's AddressProvider contract
-  const AddressProviderContract = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
-  const ap = AddressProvider__factory.connect(AddressProviderContract, provider);
+
+  const ap = AddressProvider__factory.connect(ADDRESS_PROVIDER_CONTRACT, provider);
 
   // Start to query AddressProvider
   //
@@ -82,6 +84,7 @@ npx hardhat run scripts/gearbox-discovery.ts
 This should produce the following output:
 
 ```
+
  ·-----------------|-------------·                                 
  |  Contract Name  ·  Size (KB)  │                                    
  ·-----------------|-------------·
@@ -125,7 +128,6 @@ We'll add some code in `scripts/gearbox-discovery.ts` between `ContractsRegister
   ...
 ```
 
-
 Run this code by executing this shell command:
 
 ```bash
@@ -159,25 +161,22 @@ DataCompressor is  0x0050b1ABD1DD2D9b01ce954E663ff3DbCa9193B1
 WETHGateway is  0x4F952c4C5415B2609899AbDC2F8F352F600d14D6
 ```
 
-
 ## ACL
 
 ACL keeps permissions for different addresses. For the moment, it keeps 2 different roles:
 
-  * **PausableAdmin**: Can pause and unpause contracts
-  * **Configurator**: Can configure contracts parameters
+* **PausableAdmin**: Can pause and unpause contracts
+* **Configurator**: Can configure contracts parameters
 
 This part is mainly related to security and we can see from this [article](./anomaly-detection) how it will be used.
-
 
 ## WETHGateway
 
 ETH <=> WETH wrapper for Gearbox protocol. It implements IWETHGateway interface.
 
-
 ## AccountFactory
 
-Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs. 
+Reusable Credit Accounts are one of the main innovations of Gearbox. Users rent a predeployed credit account smart contract from the protocol, and thus save on deployment gas costs.
 
 ![](/images/tutorial/Gearbox\_white\_high.021.png)
 
@@ -187,13 +186,13 @@ If `AccountFactory` has no pre-deployed contracts, it clones it using [https://e
 
 ### Advantages
 
-  * **Gas efficiency:** This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
+* **Gas efficiency:** This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
 
-  * **Hacker-proof:** Contract funds are allocated on isolated contracts which makes a possible attack more complex and less economically reasonable. Furthermore, the gearbox protocol uses anomaly detection to pause contracts and keep funds safe if suspicious behavior is found. User can protect their funds by splitting them between a few virtual accounts, and it makes the attack less economic reasonable.
+* **Hacker-proof:** Contract funds are allocated on isolated contracts which makes a possible attack more complex and less economically reasonable. Furthermore, the gearbox protocol uses anomaly detection to pause contracts and keep funds safe if suspicious behavior is found. User can protect their funds by splitting them between a few virtual accounts, and it makes the attack less economic reasonable.
 
-  * **Balance transparency on Etherscan:** Trader or farmer could check all their transactions on Etherscan if they know at which block they start and finish virtual account renting.
+* **Balance transparency on Etherscan:** Trader or farmer could check all their transactions on Etherscan if they know at which block they start and finish virtual account renting.
 
-  * **Ethereum network ecology:** It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
+* **Ethereum network ecology:** It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
 
 ### Implementation
 
@@ -205,18 +204,17 @@ The account factory uses a list to keep credit accounts and two pointers: head a
 
 When a user open a credit account, `CreditManager` will ask `AccountFactory` for a virtual account by calling function `takeCreditAccount` which takes one `CreditAccount` from the head pointer. When returns a `CreditAccount`, `AccountFactory` adds it to the tail.
 
-
 ## DataCompressor
 
 `DataCompressor` collects data from different contracts in order to transmit this information in an aggregated way to a dApp.  
 
 Let's list some main function in `DataCompressor`:
 
-  * `getCreditAccountList(address borrower)` for getting the list of `CreditAccountData`s of a specified borrower
-  * `getCreditAccountData(address _creditManager, address borrower)` for getting `CreditAccountData` of a specified borrower under a specified `CreditManager`
-  * `getCreditAccountDataExtended(address creditManager, address borrower)` for getting `CreditAccountDataExtended` of a specified borrower under a specified `CreditManager`, `CreditAccountDataExtended` is the extension types of `CreditAccountData`, you can check `Types.sol` for more details.
-  * `getCreditManagersList(address borrower)` for getting list of `CreditManagerData` of a specified borrower
-  * `getPoolsList()` for getting list of `PoolData`
+* `getCreditAccountList(address borrower)` for getting the list of `CreditAccountData`s of a specified borrower
+* `getCreditAccountData(address _creditManager, address borrower)` for getting `CreditAccountData` of a specified borrower under a specified `CreditManager`
+* `getCreditAccountDataExtended(address creditManager, address borrower)` for getting `CreditAccountDataExtended` of a specified borrower under a specified `CreditManager`, `CreditAccountDataExtended` is the extension types of `CreditAccountData`, you can check `Types.sol` for more details.
+* `getCreditManagersList(address borrower)` for getting list of `CreditManagerData` of a specified borrower
+* `getPoolsList()` for getting list of `PoolData`
 
 :::info
 Datacompressor has an unstable API

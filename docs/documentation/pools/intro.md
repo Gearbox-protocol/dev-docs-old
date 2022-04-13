@@ -16,7 +16,7 @@ $$
 rate = \frac{expected\;liquidity}{diesel\;tokens\;supply}
 $$
 
-Liquidity providers get profits from holding diesel tokens cause they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest or can use them as collateral in lending protocols or even sell them on the secondary market.
+Liquidity providers get profits from holding diesel tokens because they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest or can use them as collateral in lending protocols or even sell them on the secondary market.
 Diesel tokens are 100% liquid yield-generating assets.
 
 ## Basic parameters
@@ -66,7 +66,7 @@ Represents current borrow APY. Depends on pool utilisation parameter and compute
 
 ### d(t) Diesel rate
 
-Liquidity providers get profits from holding diesel tokens cause they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest.
+Liquidity providers get profits from holding diesel tokens because they grow with expected interest. LP can keep diesel tokens on their wallets and then withdraw the deposit + interest.
 
 Diesel Rate is the price of Diesel token (LP token).
 

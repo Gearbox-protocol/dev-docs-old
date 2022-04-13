@@ -1,6 +1,6 @@
 # Executing transactions
 
-User can consider credit account as your additional account, cause all opeartions are executed on behalf of it.
+User can consider credit account as your additional account, because all opeartions are executed on behalf of it.
 
 ![Opening credit account](</images/credit/execute.jpg>)
 
