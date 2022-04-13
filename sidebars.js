@@ -211,6 +211,16 @@ const sidebars = {
           label: "Yearn LP oracle",
           id: "documentation/oracle/yearn-oracle",
         },
+        {
+          type: "doc",
+          label: "Curve LP oracle",
+          id: "documentation/oracle/curve-oracle",
+        },
+        {
+          type: "doc",
+          label: "Convex LP oracle",
+          id: "documentation/oracle/convex-oracle",
+        },
       ],
     },
   ],
