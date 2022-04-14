@@ -385,6 +385,14 @@ const sidebars = {
       id: "analytics/python-analytical-tool",
     },
   ],
+  kovanSidebar: [
+    "kovan/intro",
+    {
+      type: "doc",
+      label: "Kovan Deployed Contracts",
+      id: "kovan/deployed-contracts",
+    },
+  ],
 };
 
 module.exports = sidebars;
