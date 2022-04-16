@@ -23,7 +23,7 @@ To understand how the Gearbox protocol allows its users to take leverage on thei
 At a very high level, a user of the platform takes ownership of a Credit Account, and funds it with a collateral denominated in a list of approved ERC-20 Tokens (Currently WETH, WTBC, USDC and DAI) is deposited. Based on a maximum leverage multiplier, credit originating from a LP is made available only within the Credit Account and cannot be transferred out of it.
 This ensures that funds cannot be drained from the system, and that undercollateralized positions can be safely liquidated.
 
-[Credit Accounts](../credit/intro)
+[Credit Accounts](./credit/intro.md)
 
 
 ### DAO issues approval for contracts and tokens
