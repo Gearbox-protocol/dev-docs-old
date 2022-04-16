@@ -29,6 +29,9 @@ Technically, Credit Account is a simple contracts which is used for transactions
 contracts. Pools - CreditManagers are connected with `one-to-many` relationship, list of available pools & credit managers are availalbe 
 through ContractRegister which is a part of Core contracts.
 
+[Credit Accounts](../credit/intro.md)
+
+
 ## Core contracts
 
 Core contracts provide unified services for contracts discovery, price feeds, access control, etc.
