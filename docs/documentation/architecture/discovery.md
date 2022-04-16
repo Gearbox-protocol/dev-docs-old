@@ -23,6 +23,8 @@ AddressProvider keeps addresses of the latest version of smart contacts, so prev
 previous versions.
 :::
 
+[List of all deployed contracts on mainnet](../../tutorials/deployed-contracts)
+
 
 ## Getting list of pools & credit managers
 ContractsRegister keeps list of all pools and creditManagers. For getting them directly, we advise to use IContractsRegister.sol:

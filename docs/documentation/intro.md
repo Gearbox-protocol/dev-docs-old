@@ -23,11 +23,18 @@ To understand how the Gearbox protocol allows its users to take leverage on thei
 At a very high level, a user of the platform takes ownership of a Credit Account, and funds it with a collateral denominated in a list of approved ERC-20 Tokens (Currently WETH, WTBC, USDC and DAI) is deposited. Based on a maximum leverage multiplier, credit originating from a LP is made available only within the Credit Account and cannot be transferred out of it.
 This ensures that funds cannot be drained from the system, and that undercollateralized positions can be safely liquidated.
 
+[Credit Accounts](../credit/intro.md)
+
+
 ### DAO issues approval for contracts and tokens
 
 To mitigate risk within the platform, the DAO votes on whitelisting of specific contracts and ERC-20 tokens that can be used by Gearbox Protocol.
 The current token approvals can be read from the "Credit Filter" Smart contract, and the current list of approved Smart Contracts that can be interacted with can be read from the current list of Adapters that are active.
 
+[DAO Approval via Snapshot](https://snapshot.org/#/gearbox.eth)
+
 ## Anyone can access Gearbox Protocol in a Permissionless way
 
 Permissionless design means that the protocol’s services are entirely open for public use, with no ability to selectively restrict who can or cannot use them. Anyone can swap, provide liquidity, or create new markets at will. This is a departure from traditional financial services, which typically restrict access based on geography, wealth status, and age.
+
+[Gearbox dApp](https://gearbox.fi/)

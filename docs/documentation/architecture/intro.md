@@ -47,3 +47,5 @@ Core contracts provide unified services for contracts discovery, price feeds, ac
 | DataCompressor       | Prepares data for offchain services         |
 | PriceOracle          | Provides price data for CreditManager       |
 | WETHGateway          | Converts ETH to WETH and vice versa         |
+
+[Contracts Discovery](./discovery)
