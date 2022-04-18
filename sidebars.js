@@ -228,7 +228,7 @@ const sidebars = {
     "tutorials/intro",
     {
       type: "category",
-      label: "1. Environment Setup",
+      label: "Environment Setup",
       link: {
         type: "doc",
         id: "tutorials/environment-setup/intro",
@@ -236,24 +236,24 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "1.1 Initialize Hardhat",
+          label: "Initialize Hardhat",
           id: "tutorials/environment-setup/initialize-hardhat",
         },
         {
           type: "doc",
-          label: "1.2 Gearbox SDK And Mainnet Forking",
+          label: "Gearbox SDK And Mainnet Forking",
           id: "tutorials/environment-setup/gearbox-sdk",
         },
         {
           type: "doc",
-          label: "1.3 A Simple Example",
+          label: "A Simple Example",
           id: "tutorials/environment-setup/a-simple-example",
         },
       ],
     },
     {
       type: "category",
-      label: "2. Gearbox Discovery",
+      label: "Gearbox Discovery",
       link: {
         type: "doc",
         id: "tutorials/gearbox-discovery/gearbox-discovery",
@@ -261,14 +261,14 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "2.1 Gearbox Core",
+          label: "Gearbox Core",
           id: "tutorials/gearbox-discovery/gearbox-core",
         },
       ],
     },
     {
       type: "category",
-      label: "3. Extracting Data",
+      label: "Extracting Data",
       link: {
         type: "doc",
         id: "tutorials/extracting-data/extracting-data",
@@ -276,19 +276,19 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "3.1 Get Opened Accounts",
+          label: "Get Opened Accounts",
           id: "tutorials/extracting-data/get-opened-accounts",
         },
         {
           type: "doc",
-          label: "3.2 Monitor Your Health Factor",
+          label: "Monitor Your Health Factor",
           id: "tutorials/extracting-data/monitor-your-health-factor",
         },
       ],
     },
     {
       type: "category",
-      label: "4. Build Upon Gearbox",
+      label: "Build Upon Gearbox",
       link: {
         type: "doc",
         id: "tutorials/build-upon-gearbox/build-upon-gearbox",
@@ -296,34 +296,19 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "4.1 Adapter",
-          id: "tutorials/build-upon-gearbox/adapter",
+          label: "Composable BTC short",
+          id: "tutorials/build-upon-gearbox/trading-bot/composable-btc-short",
         },
         {
-          type: "category",
-          label: "4.2 Trading Bot",
-          link: {
-            type: "doc",
-            id: "tutorials/build-upon-gearbox/trading-bot/trading-bot",
-          },
-          items: [
-            {
-              type: "doc",
-              label: "4.2.1 Composable BTC short",
-              id: "tutorials/build-upon-gearbox/trading-bot/composable-btc-short",
-            },
-            {
-              type: "doc",
-              label: "4.2.2 Time Arbitrage on sETH",
-              id: "tutorials/build-upon-gearbox/trading-bot/time-arbitrage-on-seth",
-            },
-          ],
+          type: "doc",
+          label: "Time Arbitrage on sETH",
+          id: "tutorials/build-upon-gearbox/trading-bot/time-arbitrage-on-seth",
         },
       ],
     },
     {
       type: "category",
-      label: "5. Liquidation Bot",
+      label: "Liquidation Bot",
       link: {
         type: "doc",
         id: "tutorials/liquidation-bot/liquidation-bot",
@@ -331,34 +316,34 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "5.1 Run Liquidation Bot",
+          label: "Run Liquidation Bot",
           id: "tutorials/liquidation-bot/run-liquidation-bot",
         },
         {
           type: "doc",
-          label: "5.2 Bot Smart Contracts",
+          label: "Bot Smart Contracts",
           id: "tutorials/liquidation-bot/bot-smart-contracts",
         },
         {
           type: "doc",
-          label: "5.3 Credit Service",
+          label: "Credit Service",
           id: "tutorials/liquidation-bot/credit-service",
         },
         {
           type: "doc",
-          label: "5.4 Price Oracle",
+          label: "Price Oracle",
           id: "tutorials/liquidation-bot/price-oracle",
         },
         {
           type: "doc",
-          label: "5.5 Token Service",
+          label: "Token Service",
           id: "tutorials/liquidation-bot/token-service",
         },
       ],
     },
     {
       type: "category",
-      label: "6. Possible Attacks",
+      label: "Possible Attacks",
       link: {
         type: "doc",
         id: "tutorials/attacks/attacks",
