@@ -11,11 +11,11 @@ such account was liquidated
 
 ### Normal call
 ```solidity
-function addCollateral(
-    address onBehalfOf,
-    address token,
-    uint256 amount
-) external payable;
+    function addCollateral(
+        address onBehalfOf,
+        address token,
+        uint256 amount
+    ) external payable;
 ```
 
 | Parameter      | Description                                                                          |
@@ -26,3 +26,18 @@ function addCollateral(
 
 
 ### Adding collateral in multicall
+
+During multicall it's possible to addCollateral:
+
+```solidity
+    MultiCall[] memory calls = new MultiCall[](1);
+    calls[0] = MultiCall({
+        target: address(creditFacade),
+        callData: abi.encodeWithSelector(
+            ICreditFacade.addCollateral.selector,
+            BORROWER,
+            token,
+            amount
+        )
+    });
+```

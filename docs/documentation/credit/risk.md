@@ -1,6 +1,6 @@
 # Risk management
 
-### Allowed token list
+## Allowed token list
 Allowed tokens list is key CreditManager parameter, which contains tokens used to compute collateral. It's limited with 256 tokens, and if token added once, it could not be removed from this list. Underlying token is always has `0` index in this list.
 
 Credit account could be shown as list of allowed tokens with balances, our risk models based on three parameters:
@@ -8,17 +8,48 @@ Credit account could be shown as list of allowed tokens with balances, our risk 
 ![Opening credit account](</images/credit/creditAccount.jpg>)
 
 
-### Total value
-Represents how much money in underlying balance could be got if user swap all assets into underlying one using chainlink oracle based prices.
+## Total value & healh factor
 
-### Threshold wighted value
+### Total value and Threshold wighted value
+Total value represents how much money in underlying balance could be got if user swap all assets into underlying one using chainlink oracle based prices.
+ 
 To make position overcollaterized, Gearbox uses another parameter which is called `Threshold wighted value`, which has one more multiplier called
 Liquidation Threshold (LTi). It represents maximum expected price drop during liquidation time between i-asset and underlying one. 
 
+All functions connected with collateral computation are availabe in ICreditFacade:
 
-he
+```solidity
+    function calcTotalValue(address creditAccount)
+        external
+        view
+        returns (uint256 total, uint256 twv);
+```
+| Parameter     | Description                                 |
+| ------------- | ------------------------------------------- |
+| creditAccount | Address of creditAccount (not borrower!)    |
+| total         | Total value for particular account          |
+| twv           | Total weighted value for particular account |
 
-### Collateral check
+
+### Health factor
+Health factor is ratio between threshold weighted value and debt + interest rate. Account could be liquidated if Hf <1.
+
+
+
+```solidity
+    function calcCreditAccountHealthFactor(address creditAccount)
+        external
+        view
+        returns (uint256 hf);
+```
+| Parameter     | Description                                 |
+| ------------- | ------------------------------------------- |
+| creditAccount | Address of creditAccount (not borrower!)    |
+| hf            | Health factor for particular account        |
+
+
+
+## Collateral check
 After each transaction, Gearbox checks that the account has enough collateral, otherwise (if hf< 1) it's reverted. 
 
 ### Enabled token mask
