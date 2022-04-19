@@ -2001,10 +2001,10 @@
     "@ethersproject/properties" "^5.6.0"
     "@ethersproject/strings" "^5.6.0"
 
-"@gearbox-protocol/sdk@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-0.0.4.tgz#1e4c88b18fa680b44c5007a2f0c64e8305e5994d"
-  integrity sha512-4mtXTcQ0m0ulO2/h7dvfaYLnmHXcHf3jNBYsTLhI1Ad+EIFhjQ1nhKCIKTZTY2jq9mM7IoeWvN0kunJlQNNEOA==
+"@gearbox-protocol/sdk@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-0.0.6.tgz#75b3c0544f4c6e5279932f8a07b9aa6e4e3fd687"
+  integrity sha512-4eFrj90Ejt2AsFg3ShMVm1xKB7k1baA93ucTG8zaNtPY9awMYBZECcjhYrTjPQuPR6be5pB6iYpEORwtGzJfmg==
   dependencies:
     decimal.js-light "^2.5.1"
     moment "^2.29.1"
