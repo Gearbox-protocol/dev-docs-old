@@ -11,7 +11,7 @@ After we've [set up Hardhat](./initialize-hardhat),
 First of all, we need to import the Gearbox SDK into our project.
 
 ```bash npm2yarn
-npm install --save-dev @diesellabs/gearbox-sdk
+npm install --save-dev @gearbox-protocol/sdk
 ```
 
 Next, we'll install some additional dependencies:
