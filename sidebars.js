@@ -14,7 +14,6 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   fundementalSidebar: [
-  
     {
       type: "html",
       value: "<div />", // The HTML to be rendered
@@ -225,7 +224,7 @@ const sidebars = {
       label: "Deployments",
       link: {
         type: "doc",
-        id: "documentation/oracle/priceoracle",
+        id: "documentation/deployments/intro",
       },
       items: [
         {
@@ -239,14 +238,32 @@ const sidebars = {
           id: "documentation/deployments/supported-tokens",
         },
         {
-          type: "doc",
-          label: "Kovan playground",
-          id: "documentation/deployments/kovan-playground",
+          type: "category",
+          label: "Kovan playgound",
+          link: {
+            type: "doc",
+            id: "documentation/deployments/kovan-playground/intro",
+          },
+          items: [
+            {
+              type: "doc",
+              label: "Tokens",
+              id: "documentation/deployments/kovan-playground/tokens",
+            },
+            {
+              type: "doc",
+              label: "PriceFeeds",
+              id: "documentation/deployments/kovan-playground/pricefeeds",
+            },
+            {
+              type: "doc",
+              label: "Protocols",
+              id: "documentation/deployments/kovan-playground/protocols",
+            },
+          ],
         },
       ],
     },
-
-    
   ],
   tutorialSidebar: [
     "tutorials/intro",

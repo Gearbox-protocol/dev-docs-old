@@ -6,6 +6,9 @@ export interface TokenTableProps {
 }
 
 export function TokenTable({ network }: TokenTableProps) {
+
+console.log(tokenDataByNetwork[network])
+
   const tokenLines = Object.entries(tokenDataByNetwork[network]).map(
     ([symbol, addr]) => (
       <tr>
