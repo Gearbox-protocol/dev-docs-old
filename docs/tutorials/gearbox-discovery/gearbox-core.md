@@ -15,64 +15,61 @@ we can start to use other functionality of AddressProvider.
 We assume that you're running a Mainnet fork by now. Please refer to the last step in [Gearbox SDK and Mainnet Forking](../environment-setup/gearbox-sdk) for instructions.
 :::
 
-Create a new source file called `scripts/gearbox-discovery.ts`
+Create a new source file [scripts/gearbox-discovery.ts](https://github.com/Gearbox-protocol/play-with-gearbox/blob/main/scripts/gearbox-discovery.ts) and query the latest vesion of Gearbox Contract. 
+Let's take a look at the code. We can see that the code queries the address of contracts register `contractsRegisterAddress` from `addressProvider` and gets the list of pools and credit managers from `contractsRegister`. After quering the address of AccountFactory from AddressProvider and connecting to AccountFactory, we can get the accounts stats from `AccountFactory`.
 
 ```jsx title="scripts/gearbox-discovery.ts"
-import { run, ethers } from "hardhat";
-import { AddressProvider__factory } from "@gearbox-protocol/sdk";
-
-// The address of Account #0
-const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
-// The address of Gearbox's AddressProvider contract
-const ADDRESS_PROVIDER_CONTRACT = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
-
 async function main() {
-  // If you don't specify a //url//, Ethers connects to the default 
+  // If you don't specify a //url//, Ethers connects to the default
   // (i.e. ``http:/\/localhost:8545``)
-  const provider = new ethers.providers.JsonRpcProvider(); 
-  const accounts = await provider.getSigner(ACCOUNT0);
-
-  const ap = AddressProvider__factory.connect(ADDRESS_PROVIDER_CONTRACT, provider);
+  const provider = new ethers.providers.JsonRpcProvider();
+  // The address of Gearbox's AddressProvider contract
+  const addressProvider = AddressProvider__factory.connect(ADDRESS_PROVIDER_ADDRESS, provider);
 
   // Start to query AddressProvider
   //
   // Get the latest version of Gearbox's contracts
-  const version = await ap.version();
+  const version = await addressProvider.version();
   console.log("version of Gearbox Contract is ", version);
 
   // Get ContractsRegister
-  const ContractsRegister = await ap.getContractsRegister();
-  console.log("ContractsRegister is ", ContractsRegister);
+  const contractsRegisterAddress = await addressProvider.getContractsRegister();
+  console.log("ContractsRegisterAddress is ", contractsRegisterAddress);
+  //******************** ContractsRegister ********************
+  const contractsRegister = ContractsRegister__factory.connect(contractsRegisterAddress, provider);
+  const poolList = await contractsRegister.getPools();
+  console.log("Pool List: ", poolList);
+  const creditManagerList = await contractsRegister.getCreditManagers();
+  console.log("Credit Manager List: ", creditManagerList);
+  //******************** ContractsRegister ********************
 
   // Get ACL
-  const ACL = await ap.getACL();
-  console.log("ACL is ", ACL);
+  const ACLAddress = await addressProvider.getACL();
+  console.log("ACL is ", ACLAddress);
 
   // Get PriceOracle
-  const PriceOracle = await ap.getPriceOracle();
-  console.log("PriceOracle is ", PriceOracle);
+  const priceOracleAddress = await addressProvider.getPriceOracle();
+  console.log("PriceOracle is ", priceOracleAddress);
 
   // Get AccountFactory
-  const AccountFactory = await ap.getAccountFactory();
-  console.log("AccountFactory is ", AccountFactory);
+  const accountFactoryAddress = await addressProvider.getAccountFactory();
+  console.log("AccountFactory is ", accountFactoryAddress);
+  //******************** AccountFactory ********************
+  const accountFactory = AccountFactory__factory.connect(accountFactoryAddress, provider);
+  const countCreditAccount = await accountFactory.countCreditAccounts();
+  console.log("Count of Credit Accounts: ", countCreditAccount);
+  const countCreditAccountInStock = await accountFactory.countCreditAccountsInStock();
+  console.log("Count of Credit Accounts InStock: ", countCreditAccountInStock);
+  //******************** AccountFactory ********************
 
   // Get DataCompressor
-  const DataCompressor = await ap.getDataCompressor();
-  console.log("DataCompressor is ", DataCompressor);
+  const dataCompressorAddress = await addressProvider.getDataCompressor();
+  console.log("DataCompressor is ", dataCompressorAddress);
 
   // Get WETH Token
-  const WETHGateway = await ap.getWETHGateway();
+  const WETHGateway = await addressProvider.getWETHGateway();
   console.log("WETHGateway is ", WETHGateway);
 }
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
 ```
 
 Run this code by executing this shell command:
@@ -111,20 +108,15 @@ We'll add some code in `scripts/gearbox-discovery.ts` between `ContractsRegister
 ```jsx title="scripts/gearbox-discovery.ts"
   ...
   // Get ContractsRegister
-  const ContractsRegister = await ap.getContractsRegister();
-  console.log("ContractsRegister is ", ContractsRegister);
-  
+  const contractsRegisterAddress = await addressProvider.getContractsRegister();
+  console.log("ContractsRegisterAddress is ", contractsRegisterAddress);
   //******************** ContractsRegister ********************
-  const cr = await ContractsRegister__factory.connect(ContractsRegister, provider);
-  const pool_list = await cr.getPools();
-  console.log("Pool List: ", pool_list);
-  const credit_manager_list = await cr.getCreditManagers();
-  console.log("Credit Manager List: ", credit_manager_list);
+  const contractsRegister = ContractsRegister__factory.connect(contractsRegisterAddress, provider);
+  const poolList = await contractsRegister.getPools();
+  console.log("Pool List: ", poolList);
+  const creditManagerList = await contractsRegister.getCreditManagers();
+  console.log("Credit Manager List: ", creditManagerList);
   //******************** ContractsRegister ********************
-
-  // Get ACL
-  const ACL = await ap.getACL();
-  console.log("ACL is ", ACL);
   ...
 ```
 
