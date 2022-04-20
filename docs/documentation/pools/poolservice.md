@@ -16,7 +16,7 @@ PoolService implements [IPoolService](https://github.com/Gearbox-protocol/gearbo
 
 ### AddLiquidity <a href="#event_addliquidity" id="event_addliquidity"></a>
 
-```
+```solidity
 event AddLiquidity(
    address indexed sender,
    address indexed onBehalfOf,
@@ -29,7 +29,7 @@ Emits each time when LP adds liquidity to the pool
 
 ### RemoveLiquidity <a href="#event_removeliquidity" id="event_removeliquidity"></a>
 
-```
+```solidity
 event RemoveLiquidity(
     address indexed sender, 
     address indexed to, 
@@ -40,7 +40,7 @@ event RemoveLiquidity(
 
 ### Borrow
 
-```
+```solidity
 event Borrow(
     address indexed creditManager,
     address indexed creditAccount,
@@ -52,7 +52,7 @@ Emits each time when Virtual account manager borrows money from pool
 
 ### Repay
 
-```
+```solidity
 event Repay(
    address indexed creditManager,
    uint256 borrowedAmount,
@@ -65,7 +65,7 @@ event Repay(
 
 ### NewInterestRateModel
 
-```
+```solidity
 event NewInterestRateModel(
     address indexed newInterestRateModel);
 ```
@@ -74,7 +74,7 @@ Emits each time when Interest Rate model was changed
 
 ### NewCreditManagerConnected
 
-```
+```solidity
 event NewCreditManagerConnected(
     address indexed creditManager);
 ```
@@ -83,7 +83,7 @@ Emits each time when new credit Manager was connected
 
 ### BorrowForbidden
 
-```
+```solidity
 event BorrowForbidden(
     address indexed creditManager);
 ```
@@ -92,7 +92,7 @@ Emits each time when borrow forbidden for credit manager
 
 ### UncoveredLoss
 
-```
+```solidity
 event UncoveredLoss(
     address indexed creditManager, 
     uint256 loss);
@@ -115,7 +115,7 @@ Emits after expected liquidity limit update
 
 ### lendCreditAccount
 
-```sol
+```solidity
   function lendCreditAccount(
     uint256 borrowedAmount, 
     address creditAccount)
@@ -134,7 +134,7 @@ Restricted to be called by connected credit managers only with borrow permission
 
 ### repayCreditAccount
 
-```
+```solidity
 function repayCreditAccount(
     uint256 borrowedAmount,
     uint256 profit,
@@ -151,7 +151,7 @@ function repayCreditAccount(
 
 ### expectedLiquidity
 
-```
+```solidity
 function expectedLiquidity() public 
 view override returns (uint256)
 ```
@@ -166,7 +166,7 @@ $$
 
 ### availableLiquidity&#x20;
 
-```
+```solidity
 function availableLiquidity() 
 external 
 view 
@@ -179,7 +179,7 @@ Gets available liquidity in the pool (pool balance) by getting balance of udnerl
 
 ### getBorrowRate\_RAY
 
-```
+```solidity
 function getBorrowRate_RAY() 
 external 
 view 
@@ -190,7 +190,7 @@ Calculates borrow rate in RAY format
 
 ### totalBorrowed
 
-```
+```solidity
 function totalBorrowed() 
 external 
 view 
@@ -201,7 +201,7 @@ Gets the amount of total borrowed funds
 
 ### underlyingToken&#x20;
 
-```
+```solidity
 function underlyingToken() 
 external 
 view 
@@ -212,7 +212,7 @@ Gets underlying token address
 
 ### dieselToken
 
-```
+```solidity
 function dieselToken() 
 external 
 view
