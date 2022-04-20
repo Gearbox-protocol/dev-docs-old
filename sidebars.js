@@ -297,13 +297,23 @@ const sidebars = {
       label: "2. Gearbox Discovery",
       link: {
         type: "doc",
-        id: "tutorials/gearbox-discovery/gearbox-discovery",
+        id: "tutorials/gearbox-discovery/intro",
       },
       items: [
         {
           type: "doc",
           label: "2.1 Gearbox Core",
           id: "tutorials/gearbox-discovery/gearbox-core",
+        },
+        {
+          type: "doc",
+          label: "2.2 Gearbox Pools",
+          id: "tutorials/gearbox-discovery/gearbox-pools",
+        },
+        {
+          type: "doc",
+          label: "2.2 Gearbox Anomaly Detection",
+          id: "tutorials/gearbox-discovery/anomaly-detection",
         },
       ],
     },
