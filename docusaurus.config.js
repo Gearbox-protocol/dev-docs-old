@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const CardLink = require("./src/remark/CardLink");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 
@@ -27,7 +28,7 @@ const config = {
           beforeDefaultRemarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
-          remarkPlugins: [math],
+          remarkPlugins: [math, CardLink],
           rehypePlugins: [katex],
           editUrl:
             "https://github.com/Gearbox-protocol/dev-docs/tree/main/packages/create-docusaurus/templates/shared/",
@@ -60,9 +61,7 @@ const config = {
     ],
   ],
 
-  plugins: [
-    require.resolve("@easyops-cn/docusaurus-search-local"),
-  ],
+  plugins: [require.resolve("@easyops-cn/docusaurus-search-local")],
 
   stylesheets: [
     {
@@ -96,6 +95,12 @@ const config = {
         },
         {
           type: "doc",
+          docId: "kovan/intro",
+          position: "left",
+          label: "Kovan Playground",
+        },
+        {
+          type: "doc",
           docId: "analytics/intro",
           position: "left",
           label: "Analytics",
@@ -105,7 +110,7 @@ const config = {
           docId: "sdk/intro",
           position: "left",
           label: "SDK",
-        }
+        },
       ],
     },
     footer: {

@@ -38,4 +38,4 @@ CreditFacade provides user interface for all operations with credit accounts:
 - Managing debt
 - Liquidating credit account
 
-It also implements Multicall feature. For more information, please check [Multicall feature](/docs/documentation/credit/risk)
+It also implements Multicall feature. For more information, please check [Multicall feature](/docs/documentation/credit/multicall)
