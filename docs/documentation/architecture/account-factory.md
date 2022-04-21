@@ -3,7 +3,7 @@
 ## Reusable credit accounts
 
 Credit account is implemented as an isolated smart contract. It helps to reduce gas consumption,
-cause all balances are kept dcentralised, and there is no overhead to update pool balances and
+because all balances are kept decentralised, and there is no overhead to update pool balances and
 internal balances as well.
 
 ![Core contracts](/images/core/factory.jpg)
