@@ -23,7 +23,7 @@ AddressProvider keeps addresses of the latest version of smart contacts, so prev
 previous versions.
 :::
 
-[List of all deployed contracts on mainnet](../../tutorials/deployed-contracts)
+[List of all deployed contracts on mainnet](/docs/documentation/deployments/deployed-contracts)
 
 
 ## Getting list of pools & credit managers
