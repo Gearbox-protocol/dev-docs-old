@@ -2006,10 +2006,10 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.1.1.tgz#bf5d45611ab74890be386712a0e5d998c65ee2a1"
   integrity sha512-J/3yg2AIXc9wznaVqpHVX3Wa5jwKovVF0AMYSnbmcXTiL3PpRPfF58pzWucCwEiCJBp+hCNRLWClTomD8SseKg==
 
-"@gearbox-protocol/sdk@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-0.0.13.tgz#2c9647954b3b88dcd6a735719ff252c81c24aa51"
-  integrity sha512-m3JeHkDv05pR1kw7X6WU+x7XQhd6nvIo1zv/4D8JV4X/iUdEVMVGwVM7dsdbH2NfC0T8VCl3t1sbTarosl68iw==
+"@gearbox-protocol/sdk@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-0.0.14.tgz#b12d14cbc9fa1fe74fc131672201f8c12f93af55"
+  integrity sha512-TfvD4haNV1PhWG4ZjSMtsegu8hQ3zO2oL0SoIiz4FyAow66XV4plQJVWoKuJF5ojExgprc6ooJgmzwvQKZTBCg==
   dependencies:
     decimal.js-light "^2.5.1"
     moment "^2.29.1"
