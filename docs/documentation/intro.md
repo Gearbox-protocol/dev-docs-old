@@ -5,36 +5,30 @@ sidebar_position: 1
 
 ## Introduction
 
-Gearbox Protocol is a peer-to-peer system designed to provide users with a non-custodial collateralized line of credit which can be used to interact in a leveraged way with DAO-approved [(**ERC-20 Tokens**)](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) on the [**Ethereum**](https://ethereum.org/) blockchain.
-The protocol is implemented as a suite of upgradable smart contracts that together create a credit provider which is accessible and confined only to a wallet which we define as a "Credit Account". By design the system is secure, self-custodial, and functions without any trusted intermediaries who may selectively restrict access.
+Gearbox is a generalized leverage protocol: it allows anyone to take leverage in a DeFi-native way and then use it across various DeFi protocols. You take leverage with Gearbox and then use it on other protocols you already love. For example, you can leverage trade on Uniswap, leverage farm on Yearn or Curve and Convex, make complex delta-neutral strategies involving options and derivatives, get Leverage-as-a-Service for your structured product doing complex positions, etc.
 
-There are currently two versions of the Gearbox protocol.  
-V1 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE).  
-V2 is open source and licensed under the "Business Source License" which is viewable [**here**](https://github.com/Gearbox-protocol/gearbox-contracts/blob/master/LICENSE).
+The protocol has two sides to it: passive liquidity providers who earn higher APY by providing liquidity; - and active traders, farmers, or even other protocols who can borrow those assets to trade or farm with x4+ leverage.
 
-Each version of Gearbox, once deployed, will function in perpetuity, with 100% uptime, provided the continued existence of the Ethereum blockchain.
-
-## How does the Gearbox protocol allow to take credit onchain in a safe way?
-
-To understand how the Gearbox protocol allows its users to take leverage on their onchain operations in a secure way, it is helpful to first look at two subjects: how the protocol restricts funds to a specific non-custodial wallet, and how the DAO approves on which smartcontracts and ERC-20 tokens can be accessed.
+That is possible thanks to Credit Accounts…
 
 ### Credit Accounts
 
-At a very high level, a user of the platform takes ownership of a Credit Account, and funds it with a collateral denominated in a list of approved ERC-20 Tokens (Currently WETH, WTBC, USDC and DAI) is deposited. Based on a maximum leverage multiplier, credit originating from a LP is made available only within the Credit Account and cannot be transferred out of it.
-This ensures that funds cannot be drained from the system, and that undercollateralized positions can be safely liquidated.
+![](/images/leverageinfra.png)
 
-[Credit Accounts](./credit/intro.md)
+A Credit Account is an isolated smart contract which contains both the user funds and the borrowed funds. This is where your leverage is. After you open an account, all the operations go through this account and the assets stay on it as well. You can see a Credit Account as your automated DeFi wallet where you not only keep positions, but can also potentially program it the way you want.
+
+Funds on Credit Accounts are used as collateral for debt, and users can operate these funds by sending financial orders to their Credit Accounts. That could be: margin trading on Uniswap or Sushiswap; leverage farming on Yearn; arbitraging pegged assets on Curve, and more!
 
 
-### DAO issues approval for contracts and tokens
+### Cool Features
 
-To mitigate risk within the platform, the DAO votes on whitelisting of specific contracts and ERC-20 tokens that can be used by Gearbox Protocol.
-The current token approvals can be read from the "Credit Filter" Smart contract, and the current list of approved Smart Contracts that can be interacted with can be read from the current list of Adapters that are active.
+Composable. Gearbox does not have its own order book or trading environment. The leverage you get is used across multiple DeFi protocols and assets, fully composable! For example, a yield aggregator can be on the liquidity provider side of Gearbox Protocol, as well as be an avenue for Gearbox users to deploy their leverage into.
+0% Funding Rates. The leverage offered is not based on synthetic positions but instead is executed with real assets on third-party protocols. Because Gearbox does not create its own trading pairs, there is no short-long ratio that needs to be maintained with funding rates.
+Leverage as a Service. Other protocols can offer leverage to their users with the help of Gearbox Protocol, without modifying anything in their own architecture. As such, they also get exposure to the user base of Gearbox.
+Permissionless Strategies. Positions and trades within Credit Accounts can be extended to include complex strategies, for example, making a short position farm in Yearn; or having LP tokens as collateral for more composable actions.
+Low overhead on gas. Due to how data and operations are processed across isolated smart contracts, gas usage overhead is reduced to an insignificant overhead.
 
-[DAO Approval via Snapshot](https://snapshot.org/#/gearbox.eth)
 
-## Anyone can access Gearbox Protocol in a Permissionless way
 
-Permissionless design means that the protocol’s services are entirely open for public use, with no ability to selectively restrict who can or cannot use them. Anyone can swap, provide liquidity, or create new markets at will. This is a departure from traditional financial services, which typically restrict access based on geography, wealth status, and age.
 
 [Gearbox dApp](https://gearbox.fi/)
