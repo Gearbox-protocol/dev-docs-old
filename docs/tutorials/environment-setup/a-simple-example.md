@@ -34,45 +34,16 @@ Any funds sent to them on Mainnet or any other live network WILL BE LOST.
 ```
 
 Congratulations, if you see an output like the above it means that we are running an instance of Hardhat Network that forks mainnet.
-We are being shown 20 wallets that we can use to deploy. Using a Mainnet fork means that we have the same state as mainnet, but it will work as a local development network with JSON-RPC server at `http://127.0.0.1:8545`. Thus, we can start to write our example code, we open a new command window and create a Typescript file `scripts/simple-example.ts`.
+We are being shown 20 wallets that we can use to deploy. Using a Mainnet fork means that we have the same state as mainnet, but it will work as a local development network with JSON-RPC server at `http://127.0.0.1:8545`. Thus, we can start to write our example code, we open a new command window and create a Typescript file [scripts/simple-example.ts](https://github.com/Gearbox-protocol/play-with-gearbox/blob/main/scripts/simple-example.ts).
 
 ```tsx title="scripts/simple-example.ts"
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
-
-import { run, ethers } from "hardhat";
-import { AddressProvider__factory } from "@gearbox-protocol/sdk";
-
-// The address of Account #0 as emitted from the fork shell command
-const ACCOUNT0 = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266";
-// The address of Gearbox's AddressProvider contract
-const ADDRESS_PROVIDER_CONTRACT = "0xcF64698AFF7E5f27A11dff868AF228653ba53be0";
-
 async function main() {
-  // If you don't specify a //url//, Ethers connects to the default 
-  // (i.e. ``http:/\/localhost:8545``)
-  const provider = new ethers.providers.JsonRpcProvider(); 
+  const provider = new ethers.providers.JsonRpcProvider();
 
-  const accounts = await provider.getSigner(ACCOUNT0);
-  const ap = AddressProvider__factory.connect(ADDRESS_PROVIDER_CONTRACT, provider);
-
-  // Get the latest version of Gearbox's contracts
-  const version = await ap.version();
-
+  const addressProvider = AddressProvider__factory.connect(ADDRESS_PROVIDER_ADDRESS, provider);
+  const version = await addressProvider.version();
   console.log(version);
 }
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });  
 ```
 
 Then we run this script by executing the following shell command:
