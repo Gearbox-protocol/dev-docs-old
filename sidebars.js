@@ -203,6 +203,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
+
           label: "Yearn LP oracle",
           id: "documentation/oracle/yearn-oracle",
         },
