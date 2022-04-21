@@ -11,6 +11,7 @@ If you would like a Github repository containing all the TS code that we will sh
 ```bash
 git clone https://github.com/Gearbox-protocol/play-with-gearbox
 ```
+
 :::
 
 In this section, we will go through the following tutorials:
