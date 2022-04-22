@@ -66,7 +66,8 @@ function openCreditAccountMulticall(
 
 ## Degen mode
 
-Degen mode is designed for testing and iterations. If `degen mode` is enables, only accounts which have `Degen Gearbox NFT` could open credit account. Furthermore, it's allowed to open such credit account only once, so, it account would be closed or liquidated, user can't open a new one.
+
+Degen mode is designed for testing and iterations. If `degen mode` is enabled, only accounts which have `Degen Gearbox NFT` could open credit account. Furthermore, it's allowed to open such credit account only once, so, it account would be closed or liquidated, user can't open a new one.
 
 DegenMode is a property of CreditFacade contract, you can find some common cases following:
 
