@@ -247,6 +247,11 @@ const sidebars = {
           items: [
             {
               type: "doc",
+              label: "Deployed Contracts",
+              id: "documentation/deployments/kovan-playground/deployed-contracts",
+            },
+            {
+              type: "doc",
               label: "Tokens",
               id: "documentation/deployments/kovan-playground/tokens",
             },
