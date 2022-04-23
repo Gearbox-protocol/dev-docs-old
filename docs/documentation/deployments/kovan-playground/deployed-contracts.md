@@ -27,8 +27,8 @@
   - UniV3Adapter [0x0B91A5ACAA403210B734F1d29A5aD63934bFaeA3](https://kovan.etherscan.io/address0x0B91A5ACAA403210B734F1d29A5aD63934bFaeA3)
   - UniV2Adapter [0xF25aC37A426dd815ed9E584C50927f21fb7b034c](https://kovan.etherscan.io/address/0xF25aC37A426dd815ed9E584C50927f21fb7b034c)
   - SushiAdapter [0x7be84E5737d2b5D538DA4939cefAe55EaA32Bd55](https://kovan.etherscan.io/address/0x7be84E5737d2b5D538DA4939cefAe55EaA32Bd55)
-  - YearnDAIAdapter [0x6E71720EdCc46a8Da991c696E9E010b8a9Cf500B](https://kovan.etherscan.io/address/0x6E71720EdCc46a8Da991c696E9E010b8a9Cf500B)
-  - YearnUSDCAdapter [0x593fe8031A9436ea742C79F5Cb3b3596c819E827](https://kovan.etherscan.io/address/0x593fe8031A9436ea742C79F5Cb3b3596c819E827)
+  - YearnDAIAdapter [0x39f3026704aF781dCdFdb181B78f778bB4a5Eea3](https://kovan.etherscan.io/address/0x39f3026704aF781dCdFdb181B78f778bB4a5Eea3)
+  - YearnUSDCAdapter [0x0e6768D4e6Ef37B1f7f1099ECcA11F8B7b61cdcb](https://kovan.etherscan.io/address/0x0e6768D4e6Ef37B1f7f1099ECcA11F8B7b61cdcb)
 
 ## Pool USDC
 
@@ -43,8 +43,8 @@
   - UniV3Adapter [0xB2CbEcb500029F3374D0F767A291232201112BC4](https://kovan.etherscan.io/address0xB2CbEcb500029F3374D0F767A291232201112BC4)
   - UniV2Adapter [0x37c61fD2AFE4134d6020188C59Efdea3d143e28a](https://kovan.etherscan.io/address/0x37c61fD2AFE4134d6020188C59Efdea3d143e28a)
   - SushiAdapter [0xdE53b8A3E3DB330596aFe28Bbb9D6389dE0D6424](https://kovan.etherscan.io/address/0xdE53b8A3E3DB330596aFe28Bbb9D6389dE0D6424)
-  - YearnDAIAdapter [0xe057d83D8211fF9F78dabE1aa448DC1B0E20F0d7](https://kovan.etherscan.io/address/0xe057d83D8211fF9F78dabE1aa448DC1B0E20F0d7)
-  - YearnUSDCAdapter [0x0B21A1C329D75803d47cdc2FDB1c1A82863297FE](https://kovan.etherscan.io/address/0x0B21A1C329D75803d47cdc2FDB1c1A82863297FE)
+  - YearnDAIAdapter [0xA0fE7aE4C7f6702c4749358D7b19836e75834965](https://kovan.etherscan.io/address/0xA0fE7aE4C7f6702c4749358D7b19836e75834965)
+  - YearnUSDCAdapter [0x7DE5C945692858Cef922DAd3979a1B8bfA77A9B4](https://kovan.etherscan.io/address/0x7DE5C945692858Cef922DAd3979a1B8bfA77A9B4)
 
 ## Pool WETH
 
@@ -59,8 +59,8 @@
   - UniV3Adapter [0x1282fDD6FB140F0D77C45Cc62599EaA9aA0955E4](https://kovan.etherscan.io/address0x1282fDD6FB140F0D77C45Cc62599EaA9aA0955E4)
   - UniV2Adapter [0x65a2d770C1324431E791A6b30F8a410853560dC0](https://kovan.etherscan.io/address/0x65a2d770C1324431E791A6b30F8a410853560dC0)
   - SushiAdapter [0x9Da03939f60Ef18EA0a5A1b57334cB5f2356DD7B](https://kovan.etherscan.io/address/0x9Da03939f60Ef18EA0a5A1b57334cB5f2356DD7B)
-  - YearnDAIAdapter [0x3918b1CD09e9f4f638A9242170D940630a7a6612](https://kovan.etherscan.io/address/0x3918b1CD09e9f4f638A9242170D940630a7a6612)
-  - YearnUSDCAdapter [0x783F7773818bb602095b35Fbec06e58fAB0e4d66](https://kovan.etherscan.io/address/0x783F7773818bb602095b35Fbec06e58fAB0e4d66)
+  - YearnDAIAdapter [0x5372e92Cc87D744194af372FcCB413e70a998aAf](https://kovan.etherscan.io/address/0x5372e92Cc87D744194af372FcCB413e70a998aAf)
+  - YearnUSDCAdapter [0x911613e432b755159e562F868bBA75987a36bEf7](https://kovan.etherscan.io/address/0x911613e432b755159e562F868bBA75987a36bEf7)
 
 ## Pool WBTC
 
@@ -74,5 +74,5 @@
   - UniV3Adapter [0x714c4eF513283189Ed339bc89d9eF2d158b9591f](https://kovan.etherscan.io/address0x714c4eF513283189Ed339bc89d9eF2d158b9591f)
   - UniV2Adapter [0xC1B3Bf0eFc7193799b770000AE914C5df7cA8Daf](https://kovan.etherscan.io/address/0xC1B3Bf0eFc7193799b770000AE914C5df7cA8Daf)
   - SushiAdapter [0x6a895723b7e3F52F66e6aa0BB5a82bbD5D313828](https://kovan.etherscan.io/address/0x6a895723b7e3F52F66e6aa0BB5a82bbD5D313828)
-  - YearnDAIAdapter [0x120465C1851259dA12bA83874fDAdaF45BD9D7af](https://kovan.etherscan.io/address/0x120465C1851259dA12bA83874fDAdaF45BD9D7af)
-  - YearnUSDCAdapter [0x49D3aF975c6b598163864d49E1B5eC4D28858f91](https://kovan.etherscan.io/address/0x49D3aF975c6b598163864d49E1B5eC4D28858f91)
+  - YearnDAIAdapter [0x852bEe239D34FEaDDc27B0D7d78351858C8f8034](https://kovan.etherscan.io/address/0x852bEe239D34FEaDDc27B0D7d78351858C8f8034)
+  - YearnUSDCAdapter [0x05e7F6B0a61D94A20250508d0d09592B8138D1e3](https://kovan.etherscan.io/address/0x05e7F6B0a61D94A20250508d0d09592B8138D1e3)
