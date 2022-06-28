@@ -27,7 +27,7 @@
 * Credit Manager [0x777e23a2acb2fcbb35f6ccf98272d03c722ba6eb](https://etherscan.io/address/0x777e23a2acb2fcbb35f6ccf98272d03c722ba6eb)
 * Credit Filter [0x948d33a9537cf13bcc656218b385d19e5b6693e8](https://etherscan.io/address/0x948d33a9537cf13bcc656218b385d19e5b6693e8)
 * Adapters:
-  * UniV3Adapter [0x457Ef4713933689D1FF13412DAC2683E4E8bb0A8](https://etherscan.io/address/0x457Ef4713933689D1FF13412DAC2683E4E8bb0A8)
+  * UniV3Adapter [0x088809824D03858C4113538BB82Aa4ca7964bA78](https://etherscan.io/address/0x088809824D03858C4113538BB82Aa4ca7964bA78)
   * UniV2Adapter [0xEdBf8F73908c86a89f4D42344c8e01b82fE4Aaa6](https://etherscan.io/address/0xEdBf8F73908c86a89f4D42344c8e01b82fE4Aaa6)
   * UniV2Adapter [0x815E1373f2932b1C4D0B710f80100de8D1165e2D](https://etherscan.io/address/0x815E1373f2932b1C4D0B710f80100de8D1165e2D)
   * CurveV1Adapter [0x49b34e58baB86B3cD23b0bE0aF4A152bE1056902](https://etherscan.io/address/0x49b34e58baB86B3cD23b0bE0aF4A152bE1056902)
@@ -42,7 +42,7 @@
 * Credit Manager [0x2664cc24cbad28749b3dd6fc97a6b402484de527](https://etherscan.io/address/0x2664cc24cbad28749b3dd6fc97a6b402484de527)
 * Credit Filter [0x301e7ed8ac816747a65cf67d8901659e637a4383](https://etherscan.io/address/0x301e7ed8ac816747a65cf67d8901659e637a4383)
 * Adapters:
-  * UniV3Adapter [0xbA7B57D7E4d4A7516FC1CbfF1CA5182eBC0c1491](https://etherscan.io/address/0xbA7B57D7E4d4A7516FC1CbfF1CA5182eBC0c1491)
+  * UniV3Adapter [0xe8ca18E6E949160b34469290bB2Adb773534Ab87](https://etherscan.io/address/0xe8ca18E6E949160b34469290bB2Adb773534Ab87)
   * UniV2Adapter [0xC73Fd4828f1C47451c798078679d5e975967e489](https://etherscan.io/address/0xC73Fd4828f1C47451c798078679d5e975967e489)
   * UniV2Adapter [0xF37Db520d0cfe8B9C5Ddf18d12bE6325990A2787](https://etherscan.io/address/0xF37Db520d0cfe8B9C5Ddf18d12bE6325990A2787)
   * CurveV1Adapter [0x1de3f4ECD616EDd4613F107Bc91078B8C08F0e4a](https://etherscan.io/address/0x1de3f4ECD616EDd4613F107Bc91078B8C08F0e4a)
@@ -57,7 +57,7 @@
 * Credit Manager [0x968f9a68a98819e2e6bb910466e191a7b6cf02f0](https://etherscan.io/address/0x968f9a68a98819e2e6bb910466e191a7b6cf02f0)
 * Credit Filter [0x790d170c12e62ada6cd2d409a50177680c4ddf29](https://etherscan.io/address/0x790d170c12e62ada6cd2d409a50177680c4ddf29)
 * Adapters:
-  * UniV3Adapter [0x31955E787c46137A1F1a3e29C6128f9CFc2B0E27](https://etherscan.io/address/0x31955E787c46137A1F1a3e29C6128f9CFc2B0E27)
+  * UniV3Adapter [0x833f7bDa72AcDbE7acA33F28d00bBF2dF20682d6](https://etherscan.io/address/0x833f7bDa72AcDbE7acA33F28d00bBF2dF20682d6)
   * UniV2Adapter [0x99457B9EE91c813b4E23518c24bd9171d665629a](https://etherscan.io/address/0x99457B9EE91c813b4E23518c24bd9171d665629a)
   * UniV2Adapter [0x7C44d28b1ff05F49858Aa2ed12C758a538E1B19f](https://etherscan.io/address/0x7C44d28b1ff05F49858Aa2ed12C758a538E1B19f)
   * CurveV1Adapter [0x817eC9F7b2fC67840b5453EBdCf6C93353485BE2](https://etherscan.io/address/0x817eC9F7b2fC67840b5453EBdCf6C93353485BE2)
@@ -72,7 +72,7 @@
 * Credit Manager [0xC38478B0A4bAFE964C3526EEFF534d70E1E09017](https://etherscan.io/address/0xC38478B0A4bAFE964C3526EEFF534d70E1E09017)
 * Credit Filter [0xcf223eb26da2bf147d01b750d2d2393025cea7ca](https://etherscan.io/address/0xcf223eb26da2bf147d01b750d2d2393025cea7ca)
 * Adapters:
-  * UniV3Adapter [0xCBeed191339AF6f600853E493FAD9F8E8A46D273](https://etherscan.io/address/0xCBeed191339AF6f600853E493FAD9F8E8A46D273)
+  * UniV3Adapter [0x1D2d299C8cB6260F64dAF7aD7f5a6ABc58c88022](https://etherscan.io/address/0x1D2d299C8cB6260F64dAF7aD7f5a6ABc58c88022)
   * UniV2Adapter [0x66B450de8028DA06df75A952215702EcaB583710](https://etherscan.io/address/0x66B450de8028DA06df75A952215702EcaB583710)
   * UniV2Adapter [0x362121583e180aD056dE62bEBD80dbE95fD5c8Ee](https://etherscan.io/address/0x362121583e180aD056dE62bEBD80dbE95fD5c8Ee)
   * CurveV1Adapter [0x8F46a26150a80d5F32DEbC7a37af71Bc4CF16529](https://etherscan.io/address/0x8F46a26150a80d5F32DEbC7a37af71Bc4CF16529)
