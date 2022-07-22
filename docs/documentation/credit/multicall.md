@@ -5,20 +5,20 @@ import TabItem from '@theme/TabItem';
 
 ## Overview
 
-Multicall is new feature in Gearbox V2, which allows users to execute a batch of transactions in one transaction. Using multicall has a lot of advantages:
+Multicall is a new feature in Gearbox V2, which allows users to execute a batch of adapter or Credit Facade calls in one transaction. There is a number of advantages to using multicalls as opposed to individual adapter calls:
 
 - **Gas efficiency**  
-  Multicall makes only one collateral check after all transactions which dramatically reduce gas consumption
+  Multicall only performs one collateral check after executing all actions, compared to a fastCollateralCheck or fullCollateralCheck being invoked each time after separate calls. As health checks are some of the most expensive actions in the system, this saves a lot of gas.
 
-- **One-click strategies user experience**  
-  Multicall could be used as a part of open credit account or could be run alone. Developers could build complex strategies which requires only one transactions should be signed
+- **One-click strategies**  
+  Multicalls can be used while opening, closing, or liquidating accounts, or run separately to manage an existing account. From the standpoint of a user, very complex levered strategies can be entered or exited with a single transaction signing.
 
 - **Low-cost liquidations**  
-  Multicall changes closure and liquidation flow. In V2, you as developer should just make a list of transactions which swap all needed assets into underlying one. And then debt + interest rate will be paid from this funds
+  Instead of using flash loans, receiving collateral and then selling it (which is how liquidations are typically performed in overcollateralized systems), multicalls enable the liquidator to take temporary control of the account, convert collateral to underlying within the system, and then repay the loan. This flow significantly reduces liquidation costs, as borrowing/repaying a flash loan and sending a potentially large number of assets to the liquidator are no longer required.
 
-## How to make a multicall
+## Building a multicall
 
-To make a multicall, developer should prepare an array of `Multicall`, providing the list of transaction in desired order and use it as parameter to function in CreditFacade which supports multicall:
+To build a multicall, the developer would prepare an array of `Multicall` structs, providing the list of call targets and corresponding calldata. They would then pass the array to one of the functions in CreditFacade that supports multicalls:
 
 ```solidity
     struct MultiCall {
@@ -114,7 +114,7 @@ To make a multicall, developer should prepare an array of `Multicall`, providing
 
 ### Examples
 
-Let's check how to make multicall by example
+The following is an example for constructing a multicall:
 
 <Tabs>
 <TabItem value="solidity" label="Solidity">
@@ -142,30 +142,30 @@ Let's check how to make multicall by example
     creditFacade.multicall(calls);
 ```
 
-</TabItem>
-<TabItem value="typescript" label="Typescript">
 
-```typescript
+### Multicall implementation
 
-```
+There are several essential steps to a multicall:
 
-</TabItem>
-</Tabs>
+- The credit account ownership is transferred to the CreditFacade, as adapters generally locate the CA owner by msg.sender;
+- Calls are executed sequentially;
+- A full collateral check is performed;
+- Account ownership is returned to the original owner;
 
+### Functions supported in multicalls
+During a multicall, the following functions can be called:
+- Any functions in adapters allowed within a CreditManager (**note:** the adapter address must be passed as the target, instead of the original contract);
+- A number of CreditFacade functions: `addCollateral`, `increaseDebt`, `decreaseDebt`, `enableToken`;
+- `ICreditFacadeBalanceChecker.revertIfBalanceLessThan`: (see more in a section below);
 
-### How it works
+### Multicall slippage protection
+A signature `revertIfBalanceLessThan(address token, uint256 minBalance)` is defined within the `ICreditFacadeBalanceChecker` interface. 
 
-- Multicall transfers account ownership to CreditFacade
-- Multical executes operations one by one
-- Multicall transafers account ownership back to borrower
+While this function has no formal implementation, it can be encoded as calldata and passed to CreditFacade to protect from slippage. Upon receiving this call, CreditFacade will check whether the balance of `token` is at least `minBalance`, and revert if not. 
 
-
-### Functions which could be called
-During multicall following funtions could be called:
-- Adapters function: Note! you should provide `adapter` (not targetContract!) as `target` parameter if you want to execute transaction
-- CreditFacade functions: addCollateral, increaseDebt, decreaseDebt. You should provide `creditFacade` as target prarameter. 
+Since multicalls support arbitrarily complex strategies, the call can be made at any point during a multicall and for any token, allowing the developer fine control over slippage protection.
 
 ### Restrictions
-- It's forbidden to increase and decrease debt in one multicall
-- It's forbidden to decrease debt if multicall was called in openCreditAccountMulticall
-- All creditFacade funtcions (addCollateral, increaseDebt, decreaseDebt) is forbidden during closure / liquidation multicall
+- It is forbidden to increase and then decrease debt within one multicall;
+- It is forbidden to decrease debt if a multicall is a part of `openCreditAccountMulticall`;
+- All creditFacade functions are forbidden during closure / liquidation multicalls.
