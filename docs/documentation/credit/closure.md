@@ -16,7 +16,7 @@ function closeCreditAccount(
 | to | The address to which the remaining collateral is sent after repaying the loan and closing the account.                                               |
 | skipTokenMask     | A mask that encodes the tokens which should not be sent back to the user. Can be used to avoid sending dust or tokens that revert on transfer. | 
 | convertWETH  | Whether to convert WETH to ETH before sending it to the user.  |
-| calls | The array of calls to execute immediately after opening an account.                                                  |
+| calls | The array of calls to execute before closing the account.                                                  |
 
 The multicall within `closeCreditAccount` would typically be used to convert collateral assets into underlying. If there is not enough underlying on the CA after performing the multicall, the Credit Manager will try to transfer the shortfall from the borrower.
 
