@@ -35,7 +35,3 @@ To learn how to build basic applications, go here:
 To learn how to build a simple liquidation bot, go here:
 
 [Liquidation Bot](./liquidation-bot)
-
-To learn about possible attacks and how we've mitigated against them, go here:
-
-[Possible Attacks](./attacks)

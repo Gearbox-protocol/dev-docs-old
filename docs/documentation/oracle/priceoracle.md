@@ -19,7 +19,7 @@ Each priceFeed (data source) has 3 key parameters:
 | Token type       | Which pricefeed is used                                          |
 | ---------------- | ---------------------------------------------------------------- |
 | Normal token     | Chainlink pricefeed                                              |
-| Yearn LP tokens  | [Yearn LP pricefeed](/docs/documentation/oracle/yearn-pricefee)  |
+| Yearn LP tokens  | [Yearn LP pricefeed](/docs/documentation/oracle/yearn-pricefeed) |
 | Curve LP tokens  | [Curve LP pricefeed](/docs/documentation/oracle/curve-pricefeed) |
 | Convex LP tokens | Curve LP token for underlying token is used                      |
 | Forbidden token  | In case of fast price drop risk, ZeroPriceFeed is recommended    |
