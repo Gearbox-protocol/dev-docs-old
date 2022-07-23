@@ -1,14 +1,15 @@
-# "Risk free long" attack
+# Liquidation Threshold in details
 
 ## Attack
 
 1. Attacker opens 2 positions (lets assume that 1ETH = 2500USDC)
 
-   **\[Position #1:  Long USDC->ETH]**: 1000 USDX x5 = 5K USDC -> 2 ETH
+   **\[Position #1: Long USDC->ETH]**: 1000 USDX x5 = 5K USDC -> 2 ETH
 
-   **\[Position #2:  Long ETH -> USDC]**: 0.4ETH x5 = 2 ETH -> 5000 USDC
+   **\[Position #2: Long ETH -> USDC]**: 0.4ETH x5 = 2 ETH -> 5000 USDC
 
    Each position has 1.16 heath factor.
+
 2. Then attacker waits when hf of one position will be \~ 1, and take N `fastCheckOperatins` with minimal allowed $\chi$ (which means decrease in collateral).
 3. Then attacker liquidates his account during the same transaction (because account's $HF < 1$ and liquidation is more profitable than closing at the case).
 
@@ -30,7 +31,7 @@ $$
 if\; h_f\approx 1,\;debt + interest = amount*(1-l_p-f_l)
 $$
 
-On the other side, the liquidator pays, and we want to construct constraint for drop\_max:
+On the other side, the liquidator pays, and we want to construct constraint for drop_max:
 
 $$
 amount * drop_{max} * (1-l_p) \geqslant amount * (1-l_p -f_l)

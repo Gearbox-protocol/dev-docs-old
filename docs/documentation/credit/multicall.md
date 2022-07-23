@@ -142,6 +142,8 @@ The following is an example for constructing a multicall:
     creditFacade.multicall(calls);
 ```
 
+</TabItem>
+</Tabs>
 
 ### Multicall implementation
 
@@ -153,19 +155,23 @@ There are several essential steps to a multicall:
 - Account ownership is returned to the original owner;
 
 ### Functions supported in multicalls
+
 During a multicall, the following functions can be called:
+
 - Any functions in adapters allowed within a CreditManager (**note:** the adapter address must be passed as the target, instead of the original contract);
 - A number of CreditFacade functions: `addCollateral`, `increaseDebt`, `decreaseDebt`, `enableToken`;
 - `ICreditFacadeBalanceChecker.revertIfBalanceLessThan`: (see more in a section below);
 
 ### Multicall slippage protection
-A signature `revertIfBalanceLessThan(address token, uint256 minBalance)` is defined within the `ICreditFacadeBalanceChecker` interface. 
 
-While this function has no formal implementation, it can be encoded as calldata and passed to CreditFacade to protect from slippage. Upon receiving this call, CreditFacade will check whether the balance of `token` is at least `minBalance`, and revert if not. 
+A signature `revertIfBalanceLessThan(address token, uint256 minBalance)` is defined within the `ICreditFacadeBalanceChecker` interface.
+
+While this function has no formal implementation, it can be encoded as calldata and passed to CreditFacade to protect from slippage. Upon receiving this call, CreditFacade will check whether the balance of `token` is at least `minBalance`, and revert if not.
 
 Since multicalls support arbitrarily complex strategies, the call can be made at any point during a multicall and for any token, allowing the developer fine control over slippage protection.
 
 ### Restrictions
+
 - It is forbidden to increase and then decrease debt within one multicall;
 - It is forbidden to decrease debt if a multicall is a part of `openCreditAccountMulticall`;
 - All creditFacade functions are forbidden during closure / liquidation multicalls.

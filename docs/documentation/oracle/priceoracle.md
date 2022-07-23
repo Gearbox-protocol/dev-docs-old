@@ -14,9 +14,20 @@ Each priceFeed (data source) has 3 key parameters:
 | dependOnAddress   | Flag. If true the PriceFeed requires address to compute result                                  |
 | skipPriceCheck    | Flag. If true price check should be skipped                                                     |
 
+## How Gearbox evaluates different tokens
+
+| Token type       | Which pricefeed is used                                          |
+| ---------------- | ---------------------------------------------------------------- |
+| Normal token     | Chainlink pricefeed                                              |
+| Yearn LP tokens  | [Yearn LP pricefeed](/docs/documentation/oracle/yearn-pricefee)  |
+| Curve LP tokens  | [Curve LP pricefeed](/docs/documentation/oracle/curve-pricefeed) |
+| Convex LP tokens | Curve LP token for underlying token is used                      |
+| Forbidden token  | In case of fast price drop risk, ZeroPriceFeed is recommended    |
+| Other            | Tokens without pricefeeds could be used with ZeroPriceFeed       |
+
 ### Chainlink pricefeed
 
-PriceOracleV2 supports Chailink Pricefeeds which implements AggregatorV3Interface. By default, all data from chainlink priceFeeds is going through sanity check, which reverts if data incorrect:
+PriceOracleV2 supports Chainlink Pricefeeds which implements AggregatorV3Interface. By default, all data from chainlink priceFeeds is going through sanity check, which reverts if data incorrect:
 
 ```solidity
 
@@ -40,6 +51,8 @@ LP pricefeeds should use Chainlink priceOracles and could be dependent of some s
 ### NFT and address dependent pricefeeds
 
 ### ZeroPriceFeed
+
+ZeroPriceFeed returns zero for any price. One contract is used for any token which should have zero price.
 
 ### ConvertToUSD
 
