@@ -1,4 +1,4 @@
-# How fastCollateralCheck work
+# How Fast Check work
 
 ## Attack sequence description
 
@@ -16,7 +16,7 @@ To prevent such attack, we should compute health factor after each operation and
 
 ### Fast check protection
 
-To reduce gas costs, Gearbox uses "fast check protection" which just check the collateral change. For fast check we can compute $\chi$ parameter:
+To reduce gas costs, Gearbox uses "fast check protection" which just check the collateral change during swaps. Let's describe it in more details: 
 
 where
 
@@ -25,24 +25,11 @@ where
 - $c_{in}$ - number of units, that credit account sends to external smart-contract while doing financial operations,
 - $p_{in}$ - price of this asset to ETH
 
-If $\chi > 1$, it means that we get more collateral in than out, and this operations is safe.
-
-In other cases, we compare $\chi$ with $\chi_{min}$ - maximum allowed colllateral drop without healthFactor check. This parameter is set by DAO.
-
-To eliminate risk of draining funds using repeatable swaps with:
+To eliminate risk of draining funds protocol checks equation 
 
 $$
-\chi_{min} < \chi < 1
+1 - \frac{LT_{in}c_{in} p_{in}}{LT_{out}c_{out} p_{out}} \le f_p,
 $$
+where $f_p$ is liqudation premium parameter. Protocol allows trade if this equation is true, overwise it calculates health factor of credit account after trade. 
 
-We have fast check counter, a parameters which increments each time fast check was done.&#x20;
-
-If $fastCheckCounter > hfCheckInterval$, we use health factor check, and if it's successful, set $fastCheckCounter$ to 1.
-
-So, the maximum possible collateral loss during fast check:
-
-$$
-max\;collateral\;loss = \chi^n, where \; n - \; hfCheckInterval
-$$
-
-There are some limitations for $\chi$ and $hfCheckInterval$, for more read
+Math proof of this approach is provided in next page. 

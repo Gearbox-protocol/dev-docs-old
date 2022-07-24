@@ -282,8 +282,13 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "How fastCollateralCheck works",
+          label: "Fast check",
           id: "documentation/risk/fast-collateral-check",
+        },
+        {
+          type: "doc",
+          label: "Fast Check. Math proof",
+          id: "documentation/risk/fast-check-proof",
         },
       ],
     },
