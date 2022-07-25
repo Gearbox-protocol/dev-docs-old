@@ -1,9 +1,10 @@
 ---
-title: Yearn oracle
+title: Yearn Vault Price Feed
 ---
 
-1. Yearn price oracle reads pricePerShare value from Yearn's Vault.
+The Yearn vault price feed returns the USD price for a single Yearn Vault share. It is calculated as a price of a single share in vault underlying (which is fetched from `IYVault.pricePerShare()`), multiplied by the underlying price in USD.
 
-2. To avoid manipulations of pricePerShare, the oracle has upper and lower boundaries of pricePerShare. If yearn vault retruns value inside this interval, then oracle returns pricePerShare value. If yearn vault returns value higher than upperBound, the oracle returns upperBound value and similarly oracle returns lowerBound value if pricePerShare < lowerBound.
+To avoid `pricePerShare()` manipulation affecting Gearbox, the price feed checks the `pricePerShare()` returned value against preset lower and upper bounds. If the value falls outside the bounds, the function reverts.
 
-3. Max and min allowed values of pricePerShare can be changed by governance.
+The bounds are configured by the governance and the upper bound is typically set to the current price per share + 4%.
+

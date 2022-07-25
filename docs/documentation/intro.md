@@ -22,13 +22,11 @@ Funds on Credit Accounts are used as collateral for debt, and users can operate 
 
 ### Cool Features
 
-Composable. Gearbox does not have its own order book or trading environment. The leverage you get is used across multiple DeFi protocols and assets, fully composable! For example, a yield aggregator can be on the liquidity provider side of Gearbox Protocol, as well as be an avenue for Gearbox users to deploy their leverage into.
-0% Funding Rates. The leverage offered is not based on synthetic positions but instead is executed with real assets on third-party protocols. Because Gearbox does not create its own trading pairs, there is no short-long ratio that needs to be maintained with funding rates.
-Leverage as a Service. Other protocols can offer leverage to their users with the help of Gearbox Protocol, without modifying anything in their own architecture. As such, they also get exposure to the user base of Gearbox.
-Permissionless Strategies. Positions and trades within Credit Accounts can be extended to include complex strategies, for example, making a short position farm in Yearn; or having LP tokens as collateral for more composable actions.
-Low overhead on gas. Due to how data and operations are processed across isolated smart contracts, gas usage overhead is reduced to an insignificant overhead.
-
-
+- **Composable**. Gearbox does not have its own order book or trading environment. The leverage you get is used across multiple DeFi protocols and assets, fully composable! For example, a yield aggregator can be on the liquidity provider side of Gearbox Protocol, as well as be an avenue for Gearbox users to deploy their leverage into.
+- **0% Funding Rates**. The leverage offered is not based on synthetic positions but instead is executed with real assets on third-party protocols. Because Gearbox does not create its own trading pairs, there is no short-long ratio that needs to be maintained with funding rates.
+- **Leverage as a Service**. Other protocols can offer leverage to their users with the help of Gearbox Protocol, without modifying anything in their own architecture. As such, they also get exposure to the user base of Gearbox.
+- **Permissionless Strategies**. Positions and trades within Credit Accounts can be extended to include complex strategies, for example, making a short position farm in Yearn; or having LP tokens as collateral for more composable actions.
+- **Low overhead on gas**. Due to how data and operations are processed across isolated smart contracts, gas usage overhead is reduced to an insignificant overhead.
 
 
 [Gearbox dApp](https://gearbox.fi/)
