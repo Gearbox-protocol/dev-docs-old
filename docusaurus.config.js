@@ -93,12 +93,7 @@ const config = {
           position: "left",
           label: "Tutorials",
         },
-        {
-          type: "doc",
-          docId: "kovan/intro",
-          position: "left",
-          label: "Kovan Playground",
-        },
+
         {
           type: "doc",
           docId: "analytics/intro",
