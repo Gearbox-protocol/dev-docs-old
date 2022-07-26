@@ -120,11 +120,7 @@ const sidebars = {
           label: "Closing credit account",
           id: "documentation/credit/closure",
         },
-        {
-          type: "doc",
-          label: "Risk management",
-          id: "documentation/credit/risk",
-        },
+
         {
           type: "doc",
           label: "Liquidation",
@@ -150,11 +146,6 @@ const sidebars = {
         id: "documentation/integrations/intro",
       },
       items: [
-        {
-          type: "doc",
-          label: "Building an adapter",
-          id: "documentation/integrations/build",
-        },
         {
           type: "category",
           label: "Existing adapters",
@@ -190,6 +181,16 @@ const sidebars = {
             },
           ],
         },
+        {
+          type: "doc",
+          label: "Universal adapter",
+          id: "documentation/integrations/universal",
+        },
+        {
+          type: "doc",
+          label: "Building an adapter",
+          id: "documentation/integrations/build",
+        },
       ],
     },
 
@@ -204,18 +205,13 @@ const sidebars = {
         {
           type: "doc",
 
-          label: "Yearn LP oracle",
-          id: "documentation/oracle/yearn-oracle",
+          label: "Yearn LP pricefeed",
+          id: "documentation/oracle/yearn-pricefeed",
         },
         {
           type: "doc",
-          label: "Curve LP oracle",
-          id: "documentation/oracle/curve-oracle",
-        },
-        {
-          type: "doc",
-          label: "Convex LP oracle",
-          id: "documentation/oracle/convex-oracle",
+          label: "Curve LP pricefeed",
+          id: "documentation/oracle/curve-pricefeed",
         },
       ],
     },
@@ -267,6 +263,32 @@ const sidebars = {
               id: "documentation/deployments/kovan-playground/protocols",
             },
           ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Risk management",
+
+      link: {
+        type: "doc",
+        id: "documentation/risk/risk",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Liquidation threshold in details",
+          id: "documentation/risk/liquidation-threshold",
+        },
+        {
+          type: "doc",
+          label: "Fast check",
+          id: "documentation/risk/fast-collateral-check",
+        },
+        {
+          type: "doc",
+          label: "Fast Check. Math proof",
+          id: "documentation/risk/fast-check-proof",
         },
       ],
     },
@@ -395,26 +417,6 @@ const sidebars = {
           type: "doc",
           label: "Token Service",
           id: "tutorials/liquidation-bot/token-service",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Possible Attacks",
-      link: {
-        type: "doc",
-        id: "tutorials/attacks/attacks",
-      },
-      items: [
-        {
-          type: "doc",
-          label: "Fast check and HealthFactor protection",
-          id: "tutorials/attacks/fast-check-and-healthfactor-protection",
-        },
-        {
-          type: "doc",
-          label: '"Risk Free Long" attack',
-          id: "tutorials/attacks/risk-free-long-attack",
         },
       ],
     },

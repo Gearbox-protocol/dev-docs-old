@@ -1,7 +1,5 @@
 ---
-title: Convex oracle
-
+title: Curve price feed
 ---
-
 
 to be developed...

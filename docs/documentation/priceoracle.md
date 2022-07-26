@@ -1,6 +1,5 @@
 ---
 title: Price oracle
-
 ---
 
 # PriceOracle
@@ -11,7 +10,7 @@ PriceOracle is connected to each pool via [Credit Facade](credit/architecture#cr
 
 Price oracle gets prices to ETH from Chainlink oracles. Gathering the data, PriceOracle computes the rate between two tokens and supply it to Token Filter. TokenFilter computes the total balance converted to the underlying asset and supply it to the pool contract.
 
-[Credit Facade](credit/architecture#creditfacade)  uses this data to compute [Threshold Weighted Value](/credit/risk.md#threshold-wighted-value), which is used in AbstractCreditAccountManager to calculate [the health factor](credit/architecture).
+[Credit Facade](credit/architecture#creditfacade) uses this data to compute [Threshold Weighted Value](risk/risk.md#threshold-wighted-value), which is used in AbstractCreditAccountManager to calculate [the health factor](credit/architecture).
 
 PriceOracle implements [IPriceOracle](https://github.com/Gearbox-protocol/gearbox-v2/blob/master/contracts/interfaces/IPriceOracle.sol) interface.
 
@@ -54,6 +53,3 @@ function getLastPrice(address token1, address token2)
 ```
 
 Gets token rate with 18 decimals. Reverts if priceFeed doesn't exist
-
-
-

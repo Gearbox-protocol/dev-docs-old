@@ -1,33 +1,26 @@
 # Open credit account
 
-To interact with Gearbox, user should open an credit account. During the opening flow, credit account takes margin loan from the pool and get collateral from user account as well.
+To interact with Gearbox, a user must open a credit account. During the opening, the credit account borrows funds in underlying from the pool and transfers collateral from the user.
 
-Let's check an example:
+Example:
 
 ![Opening credit account](/images/credit/openCreditAccount.jpg)
 
-Trader takes 90 ETH loan and provide 10 ETH of his own initial funds. So, after opening account, the total balance on credit account would be 100 ETH.
+The trader borrows 90 ETH and provides 10 ETH of their own funds. After opening an account, its total balance is 100 ETH. The trader can then use the credit account to interact with various protocols, but has no access to funds.
 
-Note! In our example, trader provides 10 ETH for simplicity, however, it's possible to provide collateral in different assets and use multicollateral if needed.
+**Note:** It is possible to provide collateral in an asset different from the underlying, however, this can only be done through `openCreditAccountMulticall`.
 
-Credit account is an isolated smart contract, trader could execute different transactions, however, has no direct access to the funds.
+## Borrowing limits and other restrictions
 
-## Limits & restrictions
+Each CreditFacade imposes limits on the borrowed amount for a single CA, set by the DAO. Those limits can retrieved by using a CreditFacade getter `CreditFacade.limits()`, which returns a tuple of `(minAmount, maxAmount)`.
 
-Each creditManager has it's own limits for min and max allowed borrowed amount, which are set by DAO. To get these limits, use creditManager getters:
+It is also forbidden to open and close a Credit Account in the same block, and reducing the debt immediately after opening the account.
 
-```solidity
-/// @return minimal borrowed amount per credit account
-function minBorrowedAmount() external view returns (uint256);
-
-/// @return maximum borrowed amount per credit account
-function maxBorrowedAmount() external view returns (uint256);
-```
-
-Note! It's forbidden to open & close (liquidate) credit account in the same block.
+Opening a CreditAccount on behalf of another user (`onBehalfOf != msg.sender`) is only possible of [account transfer allowance](/) from the account opener to the user is set to `true`.
 
 ## Methods
-To open credit account you can use 2 methods in `CreditFacade` contract. If you open creditAccount for other account (`onBehalfOf != msg.sender`), keep in mind, that you should have allowance for [account transfer](/).
+
+To open a Credit Account, two `CreditFacade` functions can be used:
 
 ### Open credit account
 
@@ -42,12 +35,12 @@ function openCreditAccount(
 
 | Parameter      | Description                                                                          |
 | -------------- | -------------------------------------------------------------------------------------|
-| amount         | Borrowers initial funds                                                              |
-| onBehalfOf     | The address that we open credit account. Same as msg.sender if the user wants to open it for  his own wallet, or a different address if the beneficiary is a different wallet | 
-| leverageFactor | Multiplier to borrowers own funds                                                    |
-| referralCode   | Referral code which is used for potential rewards. 0 if no referral code provided    |
+| amount         | Borrower's initial funds                                                              |
+| onBehalfOf     | The address for which the Credit Account is being opened | 
+| leverageFactor | The amount of leverage to take on. The borrowed amount is computed as `amount * leverageFactor / 100`, hence `leverageFactor = 100` corresponds to 2x leverage.                        |
+| referralCode   | Referral code, which is used for potential partner rewards. 0 if no referral code provided.    |
 
-### Open credit account with multicall
+### Open credit account with a multicall
 
 ```solidity
 function openCreditAccountMulticall(
@@ -59,19 +52,20 @@ function openCreditAccountMulticall(
 ```
 | Parameter      | Description                                                                          |
 | -------------- | -------------------------------------------------------------------------------------|
-| borrowedAmount | Debt size                                                                            |
-| onBehalfOf     | The address that we open credit account. Same as msg.sender if the user wants to open it for  his own wallet, or a different address if the beneficiary is a different wallet | 
-| leverageFactor | Multiplier to borrowers own funds                                                    |
-| referralCode   | Referral code which is used for potential rewards. 0 if no referral code provided    |
+| borrowedAmount | Amount of the underlying to borrow.                                                         |
+| onBehalfOf     | The address for which the Credit Account is being opened. | 
+| calls | The array of calls to execute immediately after opening an account.                                                  |
+| referralCode   | Referral code, which is used for potential partner rewards. 0 if no referral code provided.  |
+
+**NB!** While collateral is automatically transferred from the `msg.sender` during `openCreditAccount`, for `openCreditAccountMulticall` that is no longer the case, and collateral has to be transferred within a multicall by adding a call to `CreditFacade.addCollateral()` to the `calls` array.
 
 ## Degen mode
 
+Degen Mode is a special restricted mode in the Credit Facade, designed for testing in production. If Degen Mode is enabled, opening a credit account requires burning a special NFT from `msg.sender`. If `msg.sender`'s NFT balance is 0, account opening will fail.
 
-Degen mode is designed for testing and iterations. If `degen mode` is enabled, only accounts which have `Degen Gearbox NFT` could open credit account. Furthermore, it's allowed to open such credit account only once, so, it account would be closed or liquidated, user can't open a new one.
+The NFT is not returned after closing or liquidating the account, so each NFT allows to open 1 account only. 
 
-DegenMode is a property of CreditFacade contract, you can find some common cases following:
+The NFTs are distributed by the DAO to well-known traders and builders in the space, in order to test the system with limited exposure of pool funds.
 
-#### Check status of degen mode:
-```solidity
+`CreditFacade.whitelisted()` can be used to determine whether the Credit Facade has Degen Mode enabled. `CreditFacade.degenNFT()` can be used to retrieve the NFT address.
 
-```
