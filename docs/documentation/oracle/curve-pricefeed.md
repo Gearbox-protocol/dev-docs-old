@@ -2,9 +2,6 @@
 title: Curve price feed
 ---
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-
 
 The Curve price feed returns the USD price for a single Curve LP share. The price is computed as `ICurvePool.get_virtual_price()` multiplied by the USD price of the cheapest asset in the Curve pool currently.
 
@@ -17,23 +14,24 @@ The bounds are configured by the governance and the upper bound is typically set
 
 ## Math proof
 
+Beyond the intuition, we also want to show that the defined calculation cannot overestimate the value of a Curve LP, since otherwise the discrepancy can be exploited to steal money from LPs.
+
 ### Definitions
 
-Curve invariant works as 
+Curve's invariant is defined as
 
 $$
 An^n\sum x_i + D = ADn^n + \frac{D^{n+1}}{n^n \prod x_i},
 $$
-where $x_i$ is balance for i-th token in pool, $n$ - number of tokens, $A$ - amplification parameter and $D$ - constant representing virtual price of $LP$ token. 
+where $x_i$ is balance for the i-th token in pool, $n$ is the number of tokens, $A$ is the amplification parameter and $D$ is a constant representing the virtual price of the $LP$ token. 
 
 ### Curve price oracle equation
 
-Let's look on equation below: 
+We want to prove that 
 $$
 p_j \ge \min\limits_{i \in 1,..,n} p_{ij} \sum x_i, 
 $$
-where $p_j$ is price of Curve LP token nominated in $j$-th coin. This equation is true for any Curve pool. 
-
+is true for any Curve pool. $p_j$ is price of Curve LP token nominated in $j$-th coin.
 
 ### Proof
 
@@ -43,15 +41,12 @@ $$
 p_j = \sum x_i \frac{\partial x_i}{\partial x_j}, 
 $$
 
-where $\partial x_i/\partial x_j$ can be noticed as price if $i$-th coin nominated in $j$-th coin (or $p_{ij}$). Let's put this $p_j$ to oracle's equation and we've got
+where $\partial x_i/\partial x_j$ by definition is the price of $i$-th coin nominated in $j$-th coin (or $p_{ij}$). Substituting, we get:
 
 $$
 \sum x_i p_{ij}\ge \min\limits_{i \in 1,..,n} p_{ij} \sum x_i,
 $$
-which is always true by $\min$ characteristics.
+which is always true by definition of $\min$.
 
-
-## Tech design
-
-Curve LP's `ICurvePool.get_virtual_price()` is calculated as $\sum x_i$. So price oracle calculated as 
-`ICurvePool.get_virtual_price()*min(p_i)` calculates the right expression of Curve price oracle equation. So Gearbox always value conservatively Curve LPs positions and such design is safe for LPs.
+Curve LP's `ICurvePool.get_virtual_price()` is calculated as $\sum x_i$. So the price oracle value calculated as 
+`ICurvePool.get_virtual_price()*min(p_i)` corresponds to the right hand side in the inequality. Hence, Gearbox will always value Curve LP tokens conservatively as long as `get_virtual_price()` is not manipulated.
