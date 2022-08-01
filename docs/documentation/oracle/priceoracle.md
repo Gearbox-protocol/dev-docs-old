@@ -13,7 +13,6 @@ Each priceFeed (data source) has 3 key parameters:
 | Parameter         | Description                                                                                     |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
 | priceFeed address | The address of the price feed, which should be a contract implementing `AggregatorV3Interface` or `IPriceFeedAddress interface`. |
-| dependOnAddress   | A flag that determines whether the price feed's output is dependent on the target address. This is mainly used to value NFT's (see below).                           |
 | skipPriceCheck    | A flag determining whether the check for price feed result correctness should be skipped. Used for `ZeroPriceFeed`, and LP price feeds, which have their own correctness checks. |
 
 
@@ -78,7 +77,6 @@ function convertToUSD(
 ```
 | Parameter         | Description                                                                                     |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
-| creditAccount | The address of the credit account to convert for. Only relevant for price feeds with `dependOnAddress == true`, and is ignored otherwise.  |
 | amount   | Amount to convert into USD.                       |
 | token    | The token for which the conversion is performed. |
 
@@ -95,7 +93,6 @@ function convertFromUSD(
 ```
 | Parameter         | Description                                                                                     |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
-| creditAccount | The address of the credit account to convert for. Only relevant for price feeds with `dependOnAddress == true`, and is ignored otherwise.  |
 | amount   | Amount of USD to convert.                      |
 | token    | The token for which the conversion is performed. |
 
@@ -112,7 +109,6 @@ function getPrice(address creditAccount, address token)
 ```
 | Parameter         | Description                                                                                     |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
-| creditAccount | The address of the credit account to get the price for. Only relevant for price feeds with `dependOnAddress == true`, and is ignored otherwise.  |
 | token    | The token for which the price is requested. |
 
 ### convert
@@ -129,7 +125,6 @@ function convert(
 ```
 | Parameter         | Description                                                                                     |
 | ----------------- | ----------------------------------------------------------------------------------------------- |
-| creditAccount | The address of the credit account to convert for. Only relevant for price feeds with `dependOnAddress == true`, and is ignored otherwise.  |
 | amount   | Amount of `tokenFrom` to convert.                  |
 | tokenFrom    | Token to convert from. |
 | tokenTo    | Token to convert into. |
@@ -144,7 +139,6 @@ function priceFeedsWithFlags(address token)
     view
     returns (
         address priceFeed,
-        bool dependsOnAddress,
         bool skipCheck,
         uint256 decimals
     );
