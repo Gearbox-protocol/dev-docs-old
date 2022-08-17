@@ -17,7 +17,7 @@ where $dP$ is max price drop during liquidation time, $f_L$ - liquidation fee (g
     
 5. During swap protocol calculates fast check 
 $$
-1 - \frac{LT_1\Delta c_1 p_1}{LT_2\Delta c_2 p_2} \le f_p
+1 - \frac{LT_2\Delta c_2 p_2}{LT_1\Delta c_1 p_1} \le f_p
 $$
 and allows trade if and only if fast check is successful
 
