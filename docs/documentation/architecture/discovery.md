@@ -1,9 +1,7 @@
 # Contracts discovery 
 
 ## Core contracts
-Each interaction with Gearbox protocol start from contracts discovery to find corresponding contract which you need. 
-You need to know AddressProvider address to get all others, which has methods to get addresses of all core contracts 
-in the system.
+Each interaction with Gearbox starts from retrieving the addresses of important contracts. `AddressProvider` stores the addresses of all core contracts.
 
 | function                | return value                     | 
 | ----------------------- | -------------------------------- |
@@ -19,15 +17,14 @@ in the system.
 
    
 :::note
-AddressProvider keeps addresses of the latest version of smart contacts, so previously deployed contracts could relate on 
-previous versions.
+AddressProvider stores the most up-to-date addresses. It is recommended to avoid caching Gearbox-related addresses for a long time and refresh them periodically through `AddressProvider`, since they can be changed by the governance.
 :::
 
 [List of all deployed contracts on mainnet](/docs/documentation/deployments/deployed-contracts)
 
 
 ## Getting list of pools & credit managers
-ContractsRegister keeps list of all pools and creditManagers. For getting them directly, we advise to use IContractsRegister.sol:
+`ContractsRegister` keeps a list of all active pools and Credit Managers:
 
 ```solidity
 interface IContractsRegisterEvents {
@@ -75,9 +72,7 @@ interface IContractsRegister is IContractsRegisterEvents {
 ```
 
 ## Versioning
-Each contract in the protocol has a function `version` which returns version in format uint256. 
-API could be changed in other versions, so it's recommended to get it before interacting with 
-some particular contract.
+Each contract in the protocol has a function `version` which returns the current version as a `uint256` value. Contract ABIs can change between versions, so it is recommended to get and verify the value before interacting with a particular contract.
 
 Code snippet from CreditManager:
 ```solidity

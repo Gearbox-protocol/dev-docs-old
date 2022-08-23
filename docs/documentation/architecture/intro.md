@@ -4,37 +4,33 @@
 
 ![Core contracts](/images/architecture.jpg)
 
-Gearbox is two-side protocol, on the left side you can see Liquidity Proviers who are interested in
-passive investent strategy. They provide money and get APY. This part is similar to major lending protocols
-like Aave or Compound.
+Gearbox is a two-sided protocol, with passive liquidity providers on one side and active traders and position managers on the other.
 
-On the right side, you can see a trader, who is intereested to get leverage and use it accross diffeerent DEFI protocol.
-He opens a Credit Account providing initial funds, and Credit Account takes margin loan from the pool. After opening credit 
-accoount, it has both trader's and borrowed funds on it. It's where leverage comes.
+Liquidity providers can commit their funds into the liquidity pool to be borrowed and receive yield from interest. This works similarly in principle to other major lending protocols, such as Aave or Compound.
+
+Active traders seek to get leverage and use it across different DeFi protocols. They open a Credit Account, providing initial funds, and additional funds are borrowed from the pool. The trader can then use their new Credit Account with borrowed funds to interact with connected protocols.
 
 ## Credit account
 
-Credit Account is new DEFI primitive, technically it's an isolated smart contract, which allows to execute financial orders
-(interactions with third-party protocols), but do not provide direct access to the funds on it.
+A Credit Account is new DeFi primitive - an isolated smart contract that allows to execute financial orders
+(interactions with third-party protocols), but doesn't provide direct access to funds contained within it.
 
 ![Core contracts](/images/core/execute-transaction.jpg)
 
-Credit Account executes transaction on behalf of itself, however, each transaction to be executed should pass following requrements:
+Credit Accounts execute transactions on behalf of themselves, however, each executed transaction has to pass several checks:
 
-- Target contract should be in whitelist (allowed contract)
-- Tokens which would be get as result should be in (allowed token list)[]
-- Credit Account should have enough collateral to pay debt + interest rate back (health factor >1) after transaction
+- The target contract must be in a whitelist
+- Incoming tokens must be in a whitelist 
+- The Credit Account's health factor must be more than 1 after the transaction (i.e., it must be able to repay its debt with interest)
 
-Technically, Credit Account is a simple contracts which is used for transactions, all policies mentioned about are kept in CreditManager 
-contracts. Pools - CreditManagers are connected with `one-to-many` relationship, list of available pools & credit managers are availalbe 
-through ContractRegister which is a part of Core contracts.
+More technically, Credit Accounts themselves are simple contracts that route calls, and all aforementioned policies are enforced by the Credit Manager.
 
 [Credit Accounts](../credit/intro.md)
 
 
 ## Core contracts
 
-Core contracts provide unified services for contracts discovery, price feeds, access control, etc.
+Core contracts provide functionality necessary to interact with the protocol, including contract discovery, price feeds, access control, etc.
 
 ![](/images/core/core.jpg)
 

@@ -28,7 +28,7 @@ where
 To eliminate risk of draining funds protocol checks equation 
 
 $$
-1 - \frac{LT_{in}c_{in} p_{in}}{LT_{out}c_{out} p_{out}} \le f_p,
+1 - \frac{LT_{out}c_{out} p_{out}}{LT_{in}c_{in} p_{in}} \le f_p,
 $$
 where $f_p$ is liqudation premium parameter. Protocol allows trade if this equation is true, overwise it calculates health factor of credit account after trade. 
 

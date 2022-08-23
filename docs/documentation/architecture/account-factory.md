@@ -2,42 +2,37 @@
 
 ## Reusable credit accounts
 
-Credit account is implemented as an isolated smart contract. It helps to reduce gas consumption,
-because all balances are kept decentralised, and there is no overhead to update pool balances and
-internal balances as well.
+Each Credit account is implemented as an isolated smart contract. This helps to reduce gas consumption, as balances, account health and other data can be tracked naturally on a per-address basis, instead of being stored in a contract.
 
 ![Core contracts](/images/core/factory.jpg)
 
-Reusability means than once deployed this contract is "rented" by CreditManager, when user opens
-Credit Account and returned when account is closed or liquidated. This approached allow users
-not to pay gas cost for contract deployment and make protocol more gas-efficient.
+Reusability means that Credit Account contracts are deployed once, and then "rented" by a Credit Manager when a user opens an account. Once the account is closed or liquidated, the contract is retuned. Users do not need to pay to deploy a new `CreditAccount` each time, which saves gas.
 
 ## Account Factory
 
-AccountFactory is responsible to supply credit accounts to CreditManager. It's organised as linked list,
-and takes an credit account from the head and adds it to the tale when it's returned:
+`AccountFactory` is responsible for supplying Credit Accounts to Credit Managers. The pre-deployed Credit Accounts are organized into a linked list, and the current head is given each time a Credit Manager requests one. Returned accounts are appended to the list tail:
 
 ![Core contracts](/images/core/linked-list.jpg)
 
-If the Account Factory has no pre-deployed contracts and a user opens a new Credit Account, it clones it using [https://eips.ethereum.org/EIPS/eip-1167](https://eips.ethereum.org/EIPS/eip-1167)
+If the Account Factory has no pre-deployed contracts available and a user tries to open a new Credit Account, a new one is cloned using [EIP-1167](https://eips.ethereum.org/EIPS/eip-1167).
 
 ## Advantages
 
 - **Gas efficiency**  
-This solution is much more gas-efficient, because it doesn't require creating a new contract each time and has minimal operational overhead.
+This solution is more gas-efficient compared to creating a new Credit Account, since deployment costs do not need to be paid as long as there are available pre-deployed contracts in the `AccountFactory`.
 
-- **Hacker-proof**  
-Funds are distributed between credit accounts (isolated contracts) which makes a possible attack more complex and less economically reasonable.  
+- **Resistance to insolvency contagion**
+Funds being kept on isolated accounts ensures that there is no system-wide contagion when a particular account, Credit Manager or integrated protocol is compromised. Collateralization and safety of Credit Accounts unrelated to the event is not affected.
 
 - **Balance transparency on Etherscan**  
-Traders could check transactions on Etherscan between blocks when they opened and closed credit accounts.
+Transactions for each account can be directly tracked on Etherscan - a user only needs to know the blocks in which the account was opened and closed in order to index transactions made by a particular borrower.
 
 - **Ethereum network ecology**  
-It generates significantly less data in comparison with deployment credit contract for each new customer, and consume significantly less gas than keeping all balances in one place. As result it makes less impact on Ethereum infrastructure.
+The pattern generates significantly less data in comparison with deploying new accounts every time; and saves a considerable amount of gas both at account opening and during usage. As a result, less of an impact is made on Ethereum infrastructure.
 
 ## Getters
 
-Despite AccountFactory is primary used internally, developers could get valuable data from AccountFactory.
+Despite `AccountFactory` being primarily for internal use, developers can retrieve information on the current account stock if they require it:
 
 ```solidity
 interface IAccountFactoryGetters {
