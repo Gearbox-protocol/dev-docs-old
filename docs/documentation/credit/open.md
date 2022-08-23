@@ -28,17 +28,17 @@ To open a Credit Account, two `CreditFacade` functions can be used:
 function openCreditAccount(
     uint256 amount,
     address onBehalfOf,
-    uint256 leverageFactor,
-    uint256 referralCode
+    uint16 leverageFactor,
+    uint16 referralCode
 ) external payable;
 ```
 
-| Parameter      | Description                                                                          |
-| -------------- | -------------------------------------------------------------------------------------|
-| amount         | Borrower's initial funds                                                              |
-| onBehalfOf     | The address for which the Credit Account is being opened | 
-| leverageFactor | The amount of leverage to take on. The borrowed amount is computed as `amount * leverageFactor / 100`, hence `leverageFactor = 100` corresponds to 2x leverage.                        |
-| referralCode   | Referral code, which is used for potential partner rewards. 0 if no referral code provided.    |
+| Parameter      | Description                                                                                                                                                     |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| amount         | Borrower's initial funds                                                                                                                                        |
+| onBehalfOf     | The address for which the Credit Account is being opened                                                                                                        |
+| leverageFactor | The amount of leverage to take on. The borrowed amount is computed as `amount * leverageFactor / 100`, hence `leverageFactor = 100` corresponds to 2x leverage. |
+| referralCode   | Referral code, which is used for potential partner rewards. 0 if no referral code provided.                                                                     |
 
 ### Open credit account with a multicall
 
@@ -47,15 +47,16 @@ function openCreditAccountMulticall(
     uint256 borrowedAmount,
     address onBehalfOf,
     MultiCall[] calldata calls,
-    uint256 referralCode
+    uint16 referralCode
 ) external payable;
 ```
-| Parameter      | Description                                                                          |
-| -------------- | -------------------------------------------------------------------------------------|
+
+| Parameter      | Description                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------- |
 | borrowedAmount | Amount of the underlying to borrow.                                                         |
-| onBehalfOf     | The address for which the Credit Account is being opened. | 
-| calls | The array of calls to execute immediately after opening an account.                                                  |
-| referralCode   | Referral code, which is used for potential partner rewards. 0 if no referral code provided.  |
+| onBehalfOf     | The address for which the Credit Account is being opened.                                   |
+| calls          | The array of calls to execute immediately after opening an account.                         |
+| referralCode   | Referral code, which is used for potential partner rewards. 0 if no referral code provided. |
 
 **NB!** While collateral is automatically transferred from the `msg.sender` during `openCreditAccount`, for `openCreditAccountMulticall` that is no longer the case, and collateral has to be transferred within a multicall by adding a call to `CreditFacade.addCollateral()` to the `calls` array.
 
@@ -63,9 +64,8 @@ function openCreditAccountMulticall(
 
 Degen Mode is a special restricted mode in the Credit Facade, designed for testing in production. If Degen Mode is enabled, opening a credit account requires burning a special NFT from `msg.sender`. If `msg.sender`'s NFT balance is 0, account opening will fail.
 
-The NFT is not returned after closing or liquidating the account, so each NFT allows to open 1 account only. 
+The NFT is not returned after closing or liquidating the account, so each NFT allows to open 1 account only.
 
 The NFTs are distributed by the DAO to well-known traders and builders in the space, in order to test the system with limited exposure of pool funds.
 
 `CreditFacade.whitelisted()` can be used to determine whether the Credit Facade has Degen Mode enabled. `CreditFacade.degenNFT()` can be used to retrieve the NFT address.
-
