@@ -61,7 +61,7 @@ const config: HardhatUserConfig = {
     },
     mainnet: {
       url: process.env.ETH_MAINNET_PROVIDER,
-      accounts: [KOVAN_PRIVATE_KEY],
+      accounts: [GOERLI_PRIVATE_KEY],
       chainId: MAINNET_NETWORK,
     },
     ropsten: {

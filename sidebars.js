@@ -236,31 +236,31 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Kovan playgound",
+          label: "Goerli playgound",
           link: {
             type: "doc",
-            id: "documentation/deployments/kovan-playground/intro",
+            id: "documentation/deployments/goerli-playground/intro",
           },
           items: [
             {
               type: "doc",
               label: "Deployed Contracts",
-              id: "documentation/deployments/kovan-playground/deployed-contracts",
+              id: "documentation/deployments/goerli-playground/deployed-contracts",
             },
             {
               type: "doc",
               label: "Tokens",
-              id: "documentation/deployments/kovan-playground/tokens",
+              id: "documentation/deployments/goerli-playground/tokens",
             },
             {
               type: "doc",
               label: "PriceFeeds",
-              id: "documentation/deployments/kovan-playground/pricefeeds",
+              id: "documentation/deployments/goerli-playground/pricefeeds",
             },
             {
               type: "doc",
               label: "Protocols",
-              id: "documentation/deployments/kovan-playground/protocols",
+              id: "documentation/deployments/goerli-playground/protocols",
             },
           ],
         },
@@ -429,12 +429,12 @@ const sidebars = {
       id: "analytics/python-analytical-tool",
     },
   ],
-  kovanSidebar: [
-    "kovan/intro",
+  goerliSidebar: [
+    "goerli/intro",
     {
       type: "doc",
-      label: "Kovan Deployed Contracts",
-      id: "kovan/deployed-contracts",
+      label: "Goerli Deployed Contracts",
+      id: "goerli/deployed-contracts",
     },
   ],
 };

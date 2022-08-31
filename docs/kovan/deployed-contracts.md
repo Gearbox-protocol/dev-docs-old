@@ -1,3 +1,3 @@
-# Deployed Contracts on Kovan Testnet
+# Deployed Contracts on Goerli Testnet
 
 

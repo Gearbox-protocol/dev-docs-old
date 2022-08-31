@@ -2006,13 +2006,13 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.1.1.tgz#bf5d45611ab74890be386712a0e5d998c65ee2a1"
   integrity sha512-J/3yg2AIXc9wznaVqpHVX3Wa5jwKovVF0AMYSnbmcXTiL3PpRPfF58pzWucCwEiCJBp+hCNRLWClTomD8SseKg==
 
-"@gearbox-protocol/sdk@^0.0.92":
-  version "0.0.92"
-  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-0.0.92.tgz#8e0dddddeefd69d6e704f94c16645261aae3479f"
-  integrity sha512-WsSMWedNriWH5Jppe9K5K2mV20gUA3Bh5eSBe3xhWQkDafMjBjObmdCfvrykdTggnCGOZ32GoOeFUgt/RUHUOw==
+"@gearbox-protocol/sdk@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@gearbox-protocol/sdk/-/sdk-1.2.0.tgz#082b457dae67d6f13eeafddb3986c43032e5846e"
+  integrity sha512-q8S4Wb2EgKKoJsnzscmahldfglqP+Nt1hUsJksQYF7h7CESR36+FRjJ+fNXBuzzaXqd22h2buudK2Kh6+jDgPA==
   dependencies:
     decimal.js-light "^2.5.1"
-    moment "^2.29.1"
+    moment "^2.29.4"
 
 "@hapi/hoek@^9.0.0":
   version "9.2.1"
@@ -6815,10 +6815,10 @@ mocha@^9.2.0:
     yargs-parser "20.2.4"
     yargs-unparser "2.0.0"
 
-moment@^2.29.1:
-  version "2.29.1"
-  resolved "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
-  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 mrmime@^1.0.0:
   version "1.0.0"

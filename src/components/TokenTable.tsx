@@ -17,8 +17,8 @@ export function TokenTable({ network }: TokenTableProps) {
         <td>
           <a
             href={
-              network === "Kovan"
-                ? `https://kovan.etherscan.io/address/${addr}`
+              network === "Goerli"
+                ? `https://goerli.etherscan.io/address/${addr}`
                 : `https://etherscan.io/address/${addr}`
             }
             target="_blank"
