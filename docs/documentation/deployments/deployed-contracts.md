@@ -78,3 +78,10 @@
   * CurveV1Adapter [0x8F46a26150a80d5F32DEbC7a37af71Bc4CF16529](https://etherscan.io/address/0x8F46a26150a80d5F32DEbC7a37af71Bc4CF16529)
   * YearnAdapter [0x1f3bc865c368e672Bda8C829b1Baf53E8BEFAaeb](https://etherscan.io/address/0x1f3bc865c368e672Bda8C829b1Baf53E8BEFAaeb)
   * YearnAdapter [0x759cF6ab3F9c6Edc504572d735bD383eF4e3Ce59](https://etherscan.io/address/0x759cF6ab3F9c6Edc504572d735bD383eF4e3Ce59)
+
+## Pool wstETH
+
+* Pool service [0xB8cf3Ed326bB0E51454361Fb37E9E8df6DC5C286](https://etherscan.io/address/0xB8cf3Ed326bB0E51454361Fb37E9E8df6DC5C286)
+* Diesel Token (dwstETH) [0x2158034dB06f06dcB9A786D2F1F8c38781bA779d](https://etherscan.io/address/0x2158034dB06f06dcB9A786D2F1F8c38781bA779d)
+* Interest Rate Model [0xA7Fd618aCe9451888363C1064983411245883352](https://etherscan.io/address/0xA7Fd618aCe9451888363C1064983411245883352)
+* stETH Gateway [0x5a97e3E43dCBFe620ccF7865739075f92E93F5E4](https://etherscan.io/address/0x5a97e3E43dCBFe620ccF7865739075f92E93F5E4)
