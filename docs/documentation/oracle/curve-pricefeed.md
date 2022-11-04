@@ -9,7 +9,7 @@ The intuition behind this is that it is more profitable to withdraw the asset wi
 
 To avoid `get_virtual_price()` manipulation affecting Gearbox, the price feed checks the `get_virtual_price()` returned value against preset lower and upper bounds. If the value falls outside the bounds, the function reverts.
 
-The bounds are configured by the governance and the upper bound is typically set to the current value + 4%.
+The bounds are configured by the governance and the upper bound is typically set to the current value + 2%.
 
 
 ## Math proof
