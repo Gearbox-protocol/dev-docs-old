@@ -6,5 +6,5 @@ The Yearn vault price feed returns the USD price for a single Yearn Vault share.
 
 To avoid `pricePerShare()` manipulation affecting Gearbox, the price feed checks the `pricePerShare()` returned value against preset lower and upper bounds. If the value falls outside the bounds, the function reverts.
 
-The bounds are configured by the governance and the upper bound is typically set to the current price per share + 4%.
+The bounds are configured by the governance and the upper bound is typically set to the current price per share + 2%.
 
