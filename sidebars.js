@@ -421,20 +421,48 @@ const sidebars = {
       ],
     },
   ],
-  analyticsSidebar: [
-    "analytics/intro",
+  // analyticsSidebar: [
+  //   "analytics/intro",
+  //   {
+  //     type: "doc",
+  //     label: "1 Python Analytical Tool",
+  //     id: "analytics/python-analytical-tool",
+  //   },
+  // ],
+  // kovanSidebar: [
+  //   "kovan/intro",
+  //   {
+  //     type: "doc",
+  //     label: "Kovan Deployed Contracts",
+  //     id: "kovan/deployed-contracts",
+  //   },
+  // ],
+  riskFramework: [
+    "risks/intro",
     {
       type: "doc",
-      label: "1 Python Analytical Tool",
-      id: "analytics/python-analytical-tool",
+      label: "Notifications",
+      id: "risks/notifications",
     },
-  ],
-  kovanSidebar: [
-    "kovan/intro",
     {
       type: "doc",
-      label: "Kovan Deployed Contracts",
-      id: "kovan/deployed-contracts",
+      label: "Smart contract risks",
+      id: "risks/smartContract",
+    },
+    {
+      type: "category",
+      label: "Collateral token risks",
+      link: {
+        type: "doc",
+        id: "risks/collateral",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "Chailink price feed",
+          id: "risks/collateral/chainlink",
+        },
+      ],
     },
   ],
 };

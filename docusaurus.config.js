@@ -94,17 +94,24 @@ const config = {
           label: "Tutorials",
         },
 
+        // {
+        //   type: "doc",
+        //   docId: "analytics/intro",
+        //   position: "left",
+        //   label: "Analytics",
+        // },
+        // {
+        //   type: "doc",
+        //   docId: "sdk/intro",
+        //   position: "left",
+        //   label: "SDK",
+        // },
+
         {
           type: "doc",
-          docId: "analytics/intro",
+          docId: "risks/intro",
           position: "left",
-          label: "Analytics",
-        },
-        {
-          type: "doc",
-          docId: "sdk/intro",
-          position: "left",
-          label: "SDK",
+          label: "Risk Framework",
         },
       ],
     },
